@@ -20,6 +20,7 @@ pipeline {
             steps {
                 // Step 3: Build and run Docker Compose
                 script {
+                    sh "docker-compose -f $DOCKER_COMPOSE_FILE down"
                     sh "docker-compose -f $DOCKER_COMPOSE_FILE up --build -d"
                 }
 
