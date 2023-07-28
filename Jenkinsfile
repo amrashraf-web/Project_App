@@ -30,7 +30,7 @@ pipeline {
                     sh "docker build -t $DOCKER_IMAGE_NAME ."
                     sh "docker tag $DOCKER_IMAGE_NAME:latest $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // Step 5: Push the Docker image to ECR
-                    sh "docker push $ECR_REPO:$DOCKER_IMAGE_NAME_$DOCKER_IMAGE_TAG"
+                    sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
                 }
             }
         }
