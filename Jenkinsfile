@@ -5,8 +5,16 @@ pipeline {
     AWS_SECRET_ACCESS_KEY = credentials('kJAT6MaTj1joeP/zFD3GUVtpPSlf/bl16iLvD81b')
   }
   stages {
+    stage('Checkout') {
+        steps {
+            // Step 1: Checkout the code from the GitHub repository
+            checkout scm
+        }
+    }
+  stages {
     stage('Build Docker Image') {
       steps {
+        sh "docker-compose -f $DOCKER_COMPOSE_FILE up -d"
         sh 'docker build -t amora .'
       }
     }
@@ -30,7 +38,7 @@ pipeline {
 
   post {
     always {
-      echo 'The website is deployed at: http://your-website-url'
+      echo 'The website is deployed at: http://3.239.79.183:5000'
     }
   }
 }
