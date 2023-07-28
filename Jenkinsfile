@@ -1,48 +1,36 @@
 pipeline {
-    agent any
-
-    environment {
-        // Define environment variables for AWS ECR
-        AWS_DEFAULT_REGION = 'us-east-1'
-        ECR_REPO = '812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo'
-        DOCKER_COMPOSE_FILE = 'docker-compose.yml'
+  agent any
+  environment {
+    AWS_ACCESS_KEY_ID = credentials('AKIA32KEJN5DQYJFXVQN')
+    AWS_SECRET_ACCESS_KEY = credentials('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')
+  }
+  stages {
+    stage('Build Docker Image') {
+      steps {
+        sh 'docker build -t amora .'
+      }
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                // Step 1: Checkout the code from the GitHub repository
-                checkout scm
-            }
+    stage('Push to ECR') {
+      steps {
+        withAWS(region: 'us-east-1', credentials: 'your-aws-credentials') {
+          sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 812428914503.dkr.ecr.us-east-1.amazonaws.com'
+          sh 'docker tag amora:latest 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest'
+          sh 'docker push 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest'
         }
-
-        stage('Build and Deploy') {
-            steps {
-                // Step 3: Build and run Docker Compose
-                script {
-                    sh "docker-compose -f $DOCKER_COMPOSE_FILE down"
-                    sh "docker-compose -f docker-compose.yml up --build -d"
-                }
-
-                // Step 4: Log in to your ECR registry
-                script {
-                    sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 812428914503.dkr.ecr.us-east-1.amazonaws.com"
-                }
-
-                // Step 5: Build the Docker image and tag it
-                script {
-                    sh "docker tag project-web:latest 812428914503.dkr.ecr.us-east-1.amazonaws.com/project-web:latest"
-                }
-
-                // Step 6: Push the Docker image to ECR
-                script {
-                    withEnv(["DOCKER_DEBUG=1"]) {
-                        sh "docker push 812428914503.dkr.ecr.us-east-1.amazonaws.com/project-web:latest"
-                    }
-                }
-            }
-        }
-
-        // Additional stages for testing, linting, etc. can be added as needed
+      }
     }
+
+    // stage('Deploy to Kubernetes') {
+    //   steps {
+    //     // Add your Kubernetes deployment script here to deploy the image
+    //   }
+    // }
+  }
+
+  post {
+    always {
+      echo 'The website is deployed at: http://your-website-url'
+    }
+  }
 }
