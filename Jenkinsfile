@@ -20,7 +20,7 @@ pipeline {
             steps {
                 // Step 3: Build and run Docker Compose
                 script {
-                    sh "docker-compose -f $DOCKER_COMPOSE_FILE up -d"
+                    sh "docker-compose -f $DOCKER_COMPOSE_FILE up --build -d"
                 }
 
                 // Step 4: Log in to your ECR registry
