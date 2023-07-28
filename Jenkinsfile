@@ -8,6 +8,7 @@ pipeline {
         DOCKER_IMAGE_NAME = 'amora'
         DOCKER_IMAGE_TAG = "v${BUILD_NUMBER}" // Use the build number as the Docker image tag
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
+        IP_Host = '3.239.79.183'
     }
 
     stages {
@@ -19,31 +20,22 @@ pipeline {
         }
 
         stage('Build and Deploy') {
-            steps withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
+            steps 
+                withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
                 // Step 2: Build and run Docker Compose (if applicable)
-                script {
                     sh 'docker-compose -f $DOCKER_COMPOSE_FILE up -d'
-                }
-
                 // Step 3: Log in to your ECR registry
-                script {
                     sh 'aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO'
-                }
-
                 // Step 4: Build the Docker image and tag it with the unique tag
-                script {
                     sh "docker build -t $ECR_REPO/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG ."
-                }
-
                 // Step 5: Push the Docker image to ECR
-                script {
                     sh "docker push $ECR_REPO/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG"
                 }
             }
         }
       post {
         always {
-          echo 'The website is deployed at: http://3.239.79.183:5000'
+          echo 'The website is deployed at: http://$IP_Host:5000'
         }
     }
         // Additional stages for testing, linting, etc. can be added as needed
