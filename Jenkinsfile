@@ -31,13 +31,13 @@ pipeline {
 
                 // Step 5: Build the Docker image and tag it
                 script {
-                    sh "docker tag flask-app-repo:latest 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest"
+                    sh "docker tag docker_file-web-1:latest 812428914503.dkr.ecr.us-east-1.amazonaws.com/docker_file-web-1:latest"
                 }
 
                 // Step 6: Push the Docker image to ECR
                 script {
                     withEnv(["DOCKER_DEBUG=1"]) {
-                        sh "docker push 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest"
+                        sh "docker push 812428914503.dkr.ecr.us-east-1.amazonaws.com/docker_file-web-1:latest"
                     }
                 }
             }
