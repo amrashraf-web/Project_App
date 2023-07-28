@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Define environment variables for AWS ECR
         AWS_DEFAULT_REGION = 'us-east-1'
-        ECR_REPO = 'public.ecr.aws/j5h9z7a9/amora'
+        ECR_REPO = '812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repos'
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
     }
 
