@@ -44,7 +44,7 @@ pipeline {
 
                 // Step 6: Push the Docker image to ECR
                 script {
-                    sh "docker push $ECR_REPO/$IMAGE_NAME"
+                    sh "DOCKER_DEBUG=1 docker push $ECR_REPO/$IMAGE_NAME"
                 }
             }
         }
