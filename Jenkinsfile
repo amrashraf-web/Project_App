@@ -39,12 +39,12 @@ pipeline {
 
                 // Step 5: Build the Docker image and tag it
                 script {
-                    sh "docker tag $IMAGE_NAME $ECR_REPO/$IMAGE_NAME:latest"
+                    sh "docker tag $IMAGE_NAME $ECR_REPO/$IMAGE_NAME"
                 }
 
                 // Step 6: Push the Docker image to ECR
                 script {
-                    sh "docker push $ECR_REPO/$IMAGE_NAME:latest"
+                    sh "docker push $ECR_REPO/$IMAGE_NAME"
                 }
             }
         }
