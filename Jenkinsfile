@@ -28,7 +28,7 @@ pipeline {
                     sh 'aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO'
                     // Step 4: Build the Docker image and tag it with the unique tag
                     sh "docker build -t $DOCKER_IMAGE_NAME ."
-                    sh "docker tag $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG $ECR_REPO:$DOCKER_IMAGE_TAG"
+                    sh "docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // Step 5: Push the Docker image to ECR
                     sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
                 }
