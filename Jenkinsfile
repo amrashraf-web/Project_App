@@ -16,15 +16,6 @@ pipeline {
             }
         }
 
-        stage('Get Image Name') {
-            steps {
-                // Step 2: Extract the image name from the docker-compose.yml file
-                script {
-                    IMAGE_NAME = sh(returnStdout: true, script: "grep 'image:' $DOCKER_COMPOSE_FILE | awk '{print \$2}'").trim()
-                }
-            }
-        }
-
         stage('Build and Deploy') {
             steps {
                 // Step 3: Build and run Docker Compose
@@ -39,13 +30,13 @@ pipeline {
 
                 // Step 5: Build the Docker image and tag it
                 script {
-                    sh "docker tag $IMAGE_NAME_'${BUILD_NUMBER}' $ECR_REPO/$IMAGE_NAME_'${BUILD_NUMBER}'"
+                    sh "docker tag project_app_${BUILD_NUMBER} $ECR_REPO/project_app_${BUILD_NUMBER}"
                 }
 
                 // Step 6: Push the Docker image to ECR
                 script {
                     withEnv(["DOCKER_DEBUG=1"]) {
-                        sh "docker push $ECR_REPO/$IMAGE_NAME_'${BUILD_NUMBER}'"
+                        sh "docker push $ECR_REPO/project_app_${BUILD_NUMBER}"
                     }
                 }
             }
