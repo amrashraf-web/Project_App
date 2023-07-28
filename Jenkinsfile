@@ -33,11 +33,11 @@ pipeline {
                 }
             }
         }
+    }
 
-        post {
-            always {
-                echo 'The website is deployed at: http://$IP_Host:5000'
-            }
+    post {
+        always {
+            echo 'The website is deployed at: http://$IP_Host:5000'
         }
     }
 }
