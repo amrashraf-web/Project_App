@@ -23,9 +23,9 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
                     // Step 2: Build and run Docker Compose (if applicable)
-                    sh 'docker-compose -f $DOCKER_COMPOSE_FILE up -d'
+                    sh "docker-compose -f $DOCKER_COMPOSE_FILE up -d"
                     // Step 3: Log in to your ECR registry
-                    sh 'aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO'
+                    sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
                     // Step 4: Build the Docker image and tag it with the unique tag
                     sh "docker build -t $DOCKER_IMAGE_NAME ."
                     sh "docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
@@ -38,7 +38,7 @@ pipeline {
 
     post {
         always {
-            echo 'The website is deployed at: http://$IP_HOST:5000'
+            echo "The website is deployed at: http://$IP_HOST:5000"
         }
     }
 }
