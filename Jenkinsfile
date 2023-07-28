@@ -5,7 +5,7 @@ pipeline {
         // Define environment variables for AWS ECR
         AWS_DEFAULT_REGION = 'us-east-1'
         ECR_REPO = '812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo'
-        DOCKER_IMAGE_NAME = 'amora'
+        DOCKER_IMAGE_NAME = 'latest'
         DOCKER_IMAGE_TAG = "v${BUILD_NUMBER}" // Use the build number as the Docker image tag
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
         IP_Host = '3.239.79.183'
