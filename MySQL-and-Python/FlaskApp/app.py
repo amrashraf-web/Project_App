@@ -12,7 +12,8 @@ app.secret_key = secrets.token_hex(16)
 # Function to execute SQL scripts from files
 
 def execute_sql_file(file_path):
-    mysql_queries_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), "MySQL_Queries")
+    current_file_dir = os.path.dirname(os.path.abspath(__file__))
+    mysql_queries_folder = os.path.join(current_file_dir.replace("FlaskApp", "MySQL_Queries"))
     full_file_path = os.path.join(mysql_queries_folder, file_path)
     with open(full_file_path, 'r') as file:
         sql_commands = file.read()
