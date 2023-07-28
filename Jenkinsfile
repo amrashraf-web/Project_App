@@ -1,41 +1,30 @@
 pipeline {
   agent any
   environment {
-    AWS_ACCESS_KEY_ID = credentials('AKIA32KEJN5DQYJFXVQN')
-    AWS_SECRET_ACCESS_KEY = credentials('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')
+    DOCKER_COMPOSE_FILE = 'docker-compose.yml'
   }
   stages {
     stage('Checkout') {
-        steps {
-            // Step 1: Checkout the code from the GitHub repository
-            checkout scm
-        }
+      steps {
+        checkout scm
+      }
     }
-  stages {
     stage('Build Docker Image') {
       steps {
         sh "docker-compose -f $DOCKER_COMPOSE_FILE up -d"
         sh 'docker build -t amora .'
       }
     }
-
     stage('Push to ECR') {
       steps {
-        withAWS(region: 'us-east-1', credentials: 'aws-credentials') {
+        withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AKIA32KEJN5DQYJFXVQN', passwordVariable: 'kJAT6MaTj1joeP/zFD3GUVtpPSlf/bl16iLvD81b')]) {
           sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 812428914503.dkr.ecr.us-east-1.amazonaws.com'
           sh 'docker tag amora:latest 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest'
           sh 'docker push 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest'
         }
       }
     }
-
-    // stage('Deploy to Kubernetes') {
-    //   steps {
-    //     // Add your Kubernetes deployment script here to deploy the image
-    //   }
-    // }
   }
-
   post {
     always {
       echo 'The website is deployed at: http://3.239.79.183:5000'
