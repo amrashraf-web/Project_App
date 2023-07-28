@@ -21,7 +21,7 @@ pipeline {
                 // Step 3: Build and run Docker Compose
                 script {
                     sh "docker-compose -f $DOCKER_COMPOSE_FILE down"
-                    sh "docker-compose -f $DOCKER_COMPOSE_FILE up --build -t flask-app-repo -d"
+                    sh "docker-compose -f docker-compose.yml up --build -d"
                 }
 
                 // Step 4: Log in to your ECR registry
