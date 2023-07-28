@@ -30,13 +30,13 @@ pipeline {
 
                 // Step 5: Build the Docker image and tag it
                 script {
-                    sh "docker tag project-web:${BUILD_NUMBER} $ECR_REPO/project-web:${BUILD_NUMBER}"
+                    sh "docker tag project-web:latest $ECR_REPO/project-web:latest"
                 }
 
                 // Step 6: Push the Docker image to ECR
                 script {
                     withEnv(["DOCKER_DEBUG=1"]) {
-                        sh "docker push $ECR_REPO/project-web:${BUILD_NUMBER}"
+                        sh "docker push $ECR_REPO/project-web:latest"
                     }
                 }
             }
