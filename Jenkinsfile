@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Push to ECR') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AKIA32KEJN5DQYJFXVQN', passwordVariable: 'kJAT6MaTj1joeP/zFD3GUVtpPSlf/bl16iLvD81b')]) {
+        withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
           sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 812428914503.dkr.ecr.us-east-1.amazonaws.com'
           sh 'docker tag amora:latest 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest'
           sh 'docker push 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest'
