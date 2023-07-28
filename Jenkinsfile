@@ -21,23 +21,23 @@ pipeline {
                 // Step 3: Build and run Docker Compose
                 script {
                     sh "docker-compose -f $DOCKER_COMPOSE_FILE down"
-                    sh "docker-compose -f $DOCKER_COMPOSE_FILE up --build -d"
+                    sh "docker-compose -f $DOCKER_COMPOSE_FILE up --build -t flask-app-repo -d"
                 }
 
                 // Step 4: Log in to your ECR registry
                 script {
-                    sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
+                    sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 812428914503.dkr.ecr.us-east-1.amazonaws.com"
                 }
 
                 // Step 5: Build the Docker image and tag it
                 script {
-                    sh "docker tag project-web:latest $ECR_REPO/project-web:latest"
+                    sh "docker tag flask-app-repo:latest 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest"
                 }
 
                 // Step 6: Push the Docker image to ECR
                 script {
                     withEnv(["DOCKER_DEBUG=1"]) {
-                        sh "docker push $ECR_REPO/project-web:latest"
+                        sh "docker push 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest"
                     }
                 }
             }
