@@ -29,7 +29,7 @@ pipeline {
             steps {
                 // Step 3: Build and run Docker Compose
                 script {
-                    sh "docker-compose -f $DOCKER_COMPOSE_FILE up -d"
+                    sh "sudo docker-compose -f $DOCKER_COMPOSE_FILE up -d"
                 }
 
                 // Step 4: Log in to your ECR registry
@@ -39,12 +39,12 @@ pipeline {
 
                 // Step 5: Build the Docker image and tag it
                 script {
-                    sh "docker tag $IMAGE_NAME $ECR_REPO/$IMAGE_NAME:${BUILD_NUMBER}"
+                    sh "sudo docker tag $IMAGE_NAME $ECR_REPO/$IMAGE_NAME:${BUILD_NUMBER}"
                 }
 
                 // Step 6: Push the Docker image to ECR
                 script {
-                    sh "docker push $ECR_REPO/$IMAGE_NAME:${BUILD_NUMBER}"
+                    sh "sudo docker push $ECR_REPO/$IMAGE_NAME:${BUILD_NUMBER}"
                 }
             }
         }
