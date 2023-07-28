@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Define environment variables for AWS ECR
         AWS_DEFAULT_REGION = 'us-east-1'
-        ECR_REPO = '812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repos'
+        ECR_REPO = '812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo'
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
     }
 
@@ -44,7 +44,9 @@ pipeline {
 
                 // Step 6: Push the Docker image to ECR
                 script {
-                    sh "DOCKER_DEBUG=1 docker push $ECR_REPO/$IMAGE_NAME"
+                    withEnv(["DOCKER_DEBUG=1"]) {
+                        sh "docker push $ECR_REPO/$IMAGE_NAME"
+                    }
                 }
             }
         }
