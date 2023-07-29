@@ -10,7 +10,7 @@ spec:
     - host: lusavcourses.store # Use <TERRAFORM_PUBLIC_IP> as a placeholder
       http:
         paths:
-          - path: /
+          - path: /flask(/|$)(.*)
             pathType: Prefix
             backend:
               service:
