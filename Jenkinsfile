@@ -32,15 +32,16 @@ pipeline {
                     sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
                 }
             }
+        }
+    }
 
-        post {
-            always {
-                script {
-                    // Stop and remove the Docker Compose containers after the build is finished
-                    sh 'docker-compose down'
-                }
-                echo "The website is deployed at: http://$IP_HOST:5000"
+    post {
+        always {
+            script {
+                // Stop and remove the Docker Compose containers after the build is finished
+                sh 'docker-compose down'
             }
+            echo "The website is deployed at: http://$IP_HOST:5000"
         }
     }
 }
