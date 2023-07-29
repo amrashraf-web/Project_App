@@ -9,7 +9,7 @@ spec:
     - host: lusavcourses.store # Use <TERRAFORM_PUBLIC_IP> as a placeholder
       http:
         paths:
-          - path: /(/|$)(.*
+          - path: /
             pathType: Prefix
             backend:
               service:
