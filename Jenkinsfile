@@ -53,7 +53,7 @@ pipeline {
 
     post {
         always {
-            sh "docker-compose up -d"
+            sh "docker-compose down"
             script {
                 // Get Ingress IP address
                 script {
