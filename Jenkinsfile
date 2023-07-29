@@ -47,6 +47,7 @@ pipeline {
                     sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml"
                     sh "kubectl apply -f Kubernets_Files/jenkins-rbac.yaml"
                     sh "kubectl apply -f Kubernets_Files/ingress.yaml"
+                    sh "kubectl create clusterrolebinding jenkins-cluster-admin --clusterrole=cluster-admin --serviceaccount=default:jenkins"
                 }
             }
         }
