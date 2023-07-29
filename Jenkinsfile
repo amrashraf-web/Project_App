@@ -32,8 +32,8 @@ pipeline {
                     sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
                     // Step 5: Push the Docker image to ECR
                     sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
-                    sh "kubectl create configmap ecr-image-config --from-literal=ecr_image_tag=${DOCKER_IMAGE_TAG}"
-                    sh "kubectl create configmap terraform-public-ip-config --from-literal=terraform_public_ip=${IP_HOST}"
+                    // sh "kubectl create configmap ecr-image-config --from-literal=ecr_image_tag=${DOCKER_IMAGE_TAG}"
+                    // sh "kubectl create configmap terraform-public-ip-config --from-literal=terraform_public_ip=${IP_HOST}"
 
                     // Step 6: Replace the ECR image tag in the deployment.yaml file
                     sh "sed -i 's|<ECR_IMAGE_TAG>|${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
