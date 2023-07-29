@@ -7,7 +7,7 @@ pipeline {
         ECR_REPO = '812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo'
         DOCKER_IMAGE_NAME = 'project'
         DOCKER_IMAGE_TAG = "v${BUILD_NUMBER}" // Use the build number as the Docker image tag
-        IP_HOST = '3.235.248.60'
+        IP_HOST = '3.237.171.163'
     }
 
     stages {
@@ -43,6 +43,7 @@ pipeline {
                     // Step 8: Apply the modified Kubernetes files
                     // sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml -n default"
                     // sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml -n default"
+                    sh "kubectl create secret generic mysql-secret --from-literal=root_password=your_root_password"
                     sh "kubectl apply -f Kubernets_Files/mysql-pvc.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/ingress.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/deployment.yaml -n default"
