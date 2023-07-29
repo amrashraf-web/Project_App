@@ -7,6 +7,7 @@ WORKDIR /app
 
 # Copy the Flask app files from the host into the container at /app
 COPY MySQL-and-Python/FlaskApp /app
+COPY MySQL-and-Python/MySQL_Queries /app
 
 # Install the required dependencies
 RUN pip install --upgrade pip
