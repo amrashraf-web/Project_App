@@ -57,9 +57,12 @@ pipeline {
         always {
             script {
                 // Get Ingress IP address
-                def ingressIp = sh(script: "kubectl get ingress flask-app-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}'", returnStdout: true).trim()
-                // Output the URL to the website
-                echo "The website is deployed at: http://${ingressIp}:80"
+                script {
+                    def serviceName = 'flask-app-service' // Replace 'your-service-name' with the name of your Kubernetes service
+                    def namespace = 'default' // Replace 'your-namespace' with the namespace where the service is deployed
+                    def url = sh(script: "kubectl get svc ${serviceName} -n ${namespace} -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'", returnStdout: true).trim()
+                    echo "Website URL: http://${url}"
+                }
             }
         }
     }
