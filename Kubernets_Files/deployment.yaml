@@ -20,15 +20,53 @@ spec:
           env:
             - name: ECR_IMAGE_TAG
               value: <ECR_IMAGE_TAG> # Add this line to define the ECR_IMAGE_TAG environment variable
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: 5000
-            initialDelaySeconds: 10
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: 5000
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            - name: DB_HOST
+              value: flask-app-db
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_NAME
+              value: BucketList
+            - name: DB_USER
+              value: root
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: root_password
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app-db
+  template:
+    metadata:
+      labels:
+        app: flask-app-db
+    spec:
+      containers:
+      - name: flask-app-db
+        image: mysql:latest
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: root_password
+          - name: MYSQL_DATABASE
+            value: BucketList
+          - name: MYSQL_ROOT_HOST
+            value: '%'
+        ports:
+          - containerPort: 3306
+        volumeMounts:
+          - name: mysql-data
+            mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-pvc
