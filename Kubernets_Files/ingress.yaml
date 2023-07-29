@@ -3,18 +3,12 @@ kind: Ingress
 metadata:
   name: flask-app-ingress
   annotations:
-    alb.ingress.kubernetes.io/group.order: "10"
-    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "30" # in seconds
-    alb.ingress.kubernetes.io/healthcheck-path: /healhtz
-    alb.ingress.kubernetes.io/healty-threshold-count: "1"
-    # by default, it will create a listener rule on port 80
-    # you can specify both ports as well like this: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/unhealthy-threshold-count: "3"
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: product-catalog
 spec:
   rules:
-    - host: lusavcourses.store # Use <TERRAFORM_PUBLIC_IP> as a placeholder
-      http:
+    - http: 
         paths:
           - path: /
             pathType: Prefix
