@@ -31,6 +31,8 @@ pipeline {
                     sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // sh "docker rmi $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // Step 5: Create Configmap
+                    sh "aws eks --region $AWS_DEFAULT_REGION describe-cluster --name sprints-eks-cluster --query cluster.status"
+                    sh "aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name sprints-eks-cluster"
                     // sh "kubectl create configmap ecr-image-config --from-literal=ecr_image_tag=${DOCKER_IMAGE_TAG}"
                     // sh "kubectl create configmap terraform-public-ip-config --from-literal=terraform_public_ip=${IP_HOST}"
 
