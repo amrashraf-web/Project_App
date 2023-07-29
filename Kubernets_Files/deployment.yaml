@@ -14,9 +14,15 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:v1 # Replace with the correct ECR image URL and tag
+          image: 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:<ECR_IMAGE_TAG> # Use <ECR_IMAGE_TAG> as a placeholder
           ports:
             - containerPort: 5000
+          env:
+            - name: ECR_IMAGE_TAG
+              valueFrom:
+                configMapKeyRef:
+                  name: ecr-image-config
+                  key: ecr_image_tag
           livenessProbe:
             httpGet:
               path: /healthz
