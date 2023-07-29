@@ -56,7 +56,7 @@ pipeline {
         always {
             script {
                 // Stop and remove the Docker Compose containers after the build is finished
-
+                sh "docker-compose down"
                 // Get Ingress IP address
                 def ingressIp = sh(script: "kubectl get ingress flask-app-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}'", returnStdout: true).trim()
                 // Output the URL to the website
