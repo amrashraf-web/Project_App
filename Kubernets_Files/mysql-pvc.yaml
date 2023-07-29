@@ -4,12 +4,9 @@ metadata:
   name: mysql-data
 spec:
   capacity:
-    storage: 1Gi  # Match the size with the EBS volume size
+    storage: 1Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete  # Set the desired reclaim policy
-  storageClassName: gp2  # Set the storage class name to match the EBS type
-  awsElasticBlockStore:
-    volumeID: "vol-03a9f2671085b891c"  # Reference the Terraform output
-    fsType: ext4
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: gp2
