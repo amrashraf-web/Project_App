@@ -9,6 +9,7 @@ spec:
     - protocol: TCP
       port: 3306
       targetPort: 3306
+  type: LoadBalancer
 
 ---
 
@@ -23,3 +24,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 5000
+  type: LoadBalancer
