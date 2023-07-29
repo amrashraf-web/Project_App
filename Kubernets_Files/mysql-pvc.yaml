@@ -3,10 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-data
 spec:
-  capacity:
-    storage: 1Gi
-  volumeMode: Filesystem
+  storageClassName: gp2
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: gp2
+  resources:
+    requests:
+      storage: 1Gi
