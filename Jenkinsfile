@@ -45,6 +45,7 @@ pipeline {
                     sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml"
                     sh "kubectl apply -f Kubernets_Files/services.yaml"
                     sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml"
+                    sh "kubectl apply -f Kubernets_Files/jenkins-rbac.yaml"
                     sh "kubectl apply -f Kubernets_Files/ingress.yaml"
                 }
             }
