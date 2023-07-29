@@ -28,7 +28,7 @@ pipeline {
                     sh "docker-compose up -d"
                     // Step 3: Log in to your ECR registry
                     sh "aws eks --region $AWS_DEFAULT_REGION describe-cluster --name sprints-eks-cluster"
-                    sh "aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name sprints-eks-cluste"
+                    sh "aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name sprints-eks-cluster"
                     sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
                     // Step 5: Push the Docker image to ECR
                     sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
