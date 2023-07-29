@@ -20,13 +20,13 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secrets
-                  key: root_password
+                  name: flask-app-secrets
+                  key: your_root_password
             - name: MYSQL_DATABASE
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secrets
-                  key: database_name
+                  name: flask-app-secrets
+                  key: BucketList
           ports:
             - containerPort: 3306
           resources:
@@ -47,4 +47,4 @@ spec:
             claimName: mysql-pvc
         - name: mysql-config
           configMap:
-            name: mysql-config-map
+            name: flask-app-configmap
