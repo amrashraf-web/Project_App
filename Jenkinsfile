@@ -18,15 +18,15 @@ pipeline {
             }
         }
 
-        // stage('Create ConfigMaps') {
-        //     steps {
-        //         // Step 1: Create a ConfigMap for the ECR image tag
-        //         sh "kubectl create configmap ecr-image-config --from-literal=ecr_image_tag=${DOCKER_IMAGE_TAG}"
+        stage('Create ConfigMaps') {
+            steps {
+                // Step 1: Create a ConfigMap for the ECR image tag
+                sh "kubectl create configmap ecr-image-config --from-literal=ecr_image_tag=${DOCKER_IMAGE_TAG}"
                 
-        //         // Step 2: Create a ConfigMap for the Terraform public IP
-        //         sh "kubectl create configmap terraform-public-ip-config --from-literal=terraform_public_ip=${IP_HOST}"
-        //     }
-        // }
+                // Step 2: Create a ConfigMap for the Terraform public IP
+                sh "kubectl create configmap terraform-public-ip-config --from-literal=terraform_public_ip=${IP_HOST}"
+            }
+        }
 
         stage('Build and Deploy') {
             steps {
@@ -37,6 +37,8 @@ pipeline {
                     // Step 2: run Docker Compose
                     sh "docker-compose up -d"
                     // Step 3: Log in to your ECR registry
+                    sh "aws eks --region $AWS_DEFAULT_REGION describe-cluster --name sprints-eks-cluster"
+                    sh "aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name sprints-eks-cluste"
                     sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
                     // Step 5: Push the Docker image to ECR
                     sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
