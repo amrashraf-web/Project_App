@@ -27,8 +27,6 @@ pipeline {
                     // Step 2: run Docker Compose
                     sh "docker-compose up -d"
                     // Step 3: Log in to your ECR registry
-                    sh "aws eks --region $AWS_DEFAULT_REGION describe-cluster --name sprints-eks-cluster"
-                    sh "aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name sprints-eks-cluster"
                     sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
                     // Step 5: Push the Docker image to ECR
                     sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
@@ -47,7 +45,6 @@ pipeline {
                     sh "kubectl apply -f Kubernets_Files/services.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/jenkins-rbac.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/ingress.yaml -n default"
-                    // sh "kubectl create clusterrolebinding jenkins-cluster-admin --clusterrole=cluster-admin --serviceaccount=default:jenkins"
                 }
             }
         }
