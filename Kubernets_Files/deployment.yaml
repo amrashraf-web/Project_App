@@ -21,7 +21,7 @@ spec:
             - name: ECR_IMAGE_TAG
               value: <ECR_IMAGE_TAG> # Add this line to define the ECR_IMAGE_TAG environment variable
             - name: DB_HOST
-              value: flask-app-db
+              value: flask-app-db-service
             - name: DB_PORT
               value: "3306"
             - name: DB_NAME
