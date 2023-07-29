@@ -43,7 +43,7 @@ pipeline {
                     sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/deployment.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/services.yaml -n default"
-                    sh "kubectl apply -f Kubernets_Files/jenkins-rbac.yaml -n default"
+                    // sh "kubectl apply -f Kubernets_Files/jenkins-rbac.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/ingress.yaml -n default"
                 }
             }
