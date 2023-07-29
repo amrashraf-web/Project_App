@@ -130,7 +130,8 @@ def validateLogin():
         # Validate user login
         cursor.execute("SELECT user_id, user_password FROM tbl_user WHERE user_username = %s", (_email,))
         data = cursor.fetchone()
-
+        cursor.close()
+        conn.close()
         if data:
             user_id, mypassword = data
             if str(mypassword) == str(_password):
@@ -143,10 +144,6 @@ def validateLogin():
     except Exception as e:
         traceback.print_exc()
         return render_template('error.html', error=f'An error occurred: {e}')
-    finally:
-        # Consume the result from the SELECT query and close the cursor and connection in the 'finally' block
-        cursor.close()
-        conn.close()
 
 
 @app.route('/userHome')
