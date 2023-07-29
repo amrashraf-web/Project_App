@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    - host: ip-10-0-1-204.ec2.internal # Use <TERRAFORM_PUBLIC_IP> as a placeholder
+    - host: lusavcourses.store # Use <TERRAFORM_PUBLIC_IP> as a placeholder
       http:
         paths:
           - path: /
