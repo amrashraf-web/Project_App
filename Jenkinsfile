@@ -28,8 +28,9 @@ pipeline {
                     sh "docker-compose up -d"
                     // Step 3: Log in to your ECR registry
                     sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
-                    // Step 4: Push the Docker image to ECR
+                    // Step 4: Push the Docker image to ECR then remove the image
                     sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
+                    // sh "docker rmi $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // Step 5: Create Configmap
                     // sh "kubectl create configmap ecr-image-config --from-literal=ecr_image_tag=${DOCKER_IMAGE_TAG}"
                     // sh "kubectl create configmap terraform-public-ip-config --from-literal=terraform_public_ip=${IP_HOST}"
