@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql:latest
+          image: mysql:5.7
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
@@ -29,10 +29,22 @@ spec:
                   key: database_name
           ports:
             - containerPort: 3306
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "0.5"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
           volumeMounts:
             - name: mysql-persistent-storage
               mountPath: /var/lib/mysql
+            - name: mysql-config
+              mountPath: /etc/mysql/conf.d
       volumes:
         - name: mysql-persistent-storage
           persistentVolumeClaim:
             claimName: mysql-pvc
+        - name: mysql-config
+          configMap:
+            name: mysql-config-map
