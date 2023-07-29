@@ -38,7 +38,7 @@ pipeline {
                     sh "sed -i 's|<ECR_IMAGE_TAG>|${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
 
                     // Step 7: Apply the modified Kubernetes files
-                    // sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml -n default"
+                    sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml -n default"
                     // sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml -n default"
                     sh "kubectl create secret generic mysql-secret --from-literal=root_password=your_root_password"
                     sh "kubectl apply -f Kubernets_Files/mysql-pvc.yaml -n default"
