@@ -7,7 +7,6 @@ pipeline {
         ECR_REPO = '812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo'
         DOCKER_IMAGE_NAME = 'project'
         DOCKER_IMAGE_TAG = "v${BUILD_NUMBER}" // Use the build number as the Docker image tag
-        IP_HOST = '3.237.171.163'
     }
 
     stages {
@@ -37,10 +36,8 @@ pipeline {
 
                     // Step 6: Replace the ECR image tag in the deployment.yaml file
                     sh "sed -i 's|<ECR_IMAGE_TAG>|${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
-                    // Step 7: Replace the Terraform public IP in the ingress.yaml file
-                    sh "sed -i 's|<TERRAFORM_PUBLIC_IP>|${IP_HOST}|g' Kubernets_Files/ingress.yaml"
 
-                    // Step 8: Apply the modified Kubernetes files
+                    // Step 7: Apply the modified Kubernetes files
                     // sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml -n default"
                     // sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml -n default"
                     sh "kubectl create secret generic mysql-secret --from-literal=root_password=your_root_password"
