@@ -21,14 +21,14 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
                     // Step 1: Build the Docker image and tag it with the unique tag
-                    sh "docker build -t $DOCKER_IMAGE_NAME ."
-                    sh "docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
+                    sh "sudo docker build -t $DOCKER_IMAGE_NAME ."
+                    sh "sudo docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // Step 2: run Docker Compose
-                    sh "docker-compose up -d"
+                    sh "sudo docker-compose up -d"
                     // Step 3: Log in to your ECR registry
                     sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
                     // Step 4: Push the Docker image to ECR then remove the image
-                    sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
+                    sh "sudo docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // sh "docker rmi $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // Step 5: Create Configmap
                     sh "aws eks --region $AWS_DEFAULT_REGION describe-cluster --name sprints-eks-cluster --query cluster.status"
@@ -54,7 +54,7 @@ pipeline {
 
     post {
         always {
-            sh "docker-compose down"
+            sh "sudo docker-compose down"
             script {
                 // Get Ingress IP address
                 script {
