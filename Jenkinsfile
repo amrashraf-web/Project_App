@@ -41,12 +41,12 @@ pipeline {
                     sh "sed -i 's|<TERRAFORM_PUBLIC_IP>|${IP_HOST}|g' Kubernets_Files/ingress.yaml"
 
                     // Step 8: Apply the modified Kubernetes files
-                    sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml"
-                    sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml"
-                    sh "kubectl apply -f Kubernets_Files/deployment.yaml"
-                    sh "kubectl apply -f Kubernets_Files/services.yaml"
-                    sh "kubectl apply -f Kubernets_Files/jenkins-rbac.yaml"
-                    sh "kubectl apply -f Kubernets_Files/ingress.yaml"
+                    sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml -n default"
+                    sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml -n default"
+                    sh "kubectl apply -f Kubernets_Files/deployment.yaml -n default"
+                    sh "kubectl apply -f Kubernets_Files/services.yaml -n default"
+                    sh "kubectl apply -f Kubernets_Files/jenkins-rbac.yaml -n default"
+                    sh "kubectl apply -f Kubernets_Files/ingress.yaml -n default"
                     // sh "kubectl create clusterrolebinding jenkins-cluster-admin --clusterrole=cluster-admin --serviceaccount=default:jenkins"
                 }
             }
