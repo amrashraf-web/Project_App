@@ -2,7 +2,6 @@ version: '3.7'
 services:
   db:
     image: mysql:latest
-    container_name: docker_file-db-1
     environment:
       MYSQL_ROOT_PASSWORD: your_root_password
       MYSQL_DATABASE: BucketList
@@ -16,9 +15,7 @@ services:
   web:
     networks:
         - default
-    build:
-      context: .
-    container_name: docker_file-web-1
+    build: .
     depends_on:
       - db
     environment:
