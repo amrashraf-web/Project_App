@@ -32,7 +32,6 @@ pipeline {
                     sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
                 }
             }
-        }
 
         post {
             always {
