@@ -145,7 +145,6 @@ def validateLogin():
         return render_template('error.html', error=f'An error occurred: {e}')
     finally:
         # Consume the result from the SELECT query and close the cursor and connection in the 'finally' block
-        cursor.fetchall()
         cursor.close()
         conn.close()
 
