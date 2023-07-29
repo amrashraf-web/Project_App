@@ -25,7 +25,7 @@ pipeline {
                     sh "docker build -t $DOCKER_IMAGE_NAME ."
                     sh "docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // Step 2: run Docker Compose
-                    sh "sudo docker-compose up -d"
+                    sh "docker-compose up -d"
                     // Step 3: Log in to your ECR registry
                     sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
                     // Step 5: Push the Docker image to ECR
@@ -38,7 +38,7 @@ pipeline {
             always {
                 script {
                     // Stop and remove the Docker Compose containers after the build is finished
-                    sh 'sudo docker-compose down'
+                    sh 'docker-compose down'
                 }
                 echo "The website is deployed at: http://$IP_HOST:5000"
             }
