@@ -18,15 +18,15 @@ pipeline {
             }
         }
 
-        stage('Create ConfigMaps') {
-            steps {
-                // Step 1: Create a ConfigMap for the ECR image tag
-                sh "kubectl create configmap ecr-image-config --from-literal=ecr_image_tag=${DOCKER_IMAGE_TAG}"
+        // stage('Create ConfigMaps') {
+        //     steps {
+        //         // Step 1: Create a ConfigMap for the ECR image tag
+        //         sh "kubectl create configmap ecr-image-config --from-literal=ecr_image_tag=${DOCKER_IMAGE_TAG}"
                 
-                // Step 2: Create a ConfigMap for the Terraform public IP
-                sh "kubectl create configmap terraform-public-ip-config --from-literal=terraform_public_ip=${IP_HOST}"
-            }
-        }
+        //         // Step 2: Create a ConfigMap for the Terraform public IP
+        //         sh "kubectl create configmap terraform-public-ip-config --from-literal=terraform_public_ip=${IP_HOST}"
+        //     }
+        // }
 
         stage('Build and Deploy') {
             steps {
