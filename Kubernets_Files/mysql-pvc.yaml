@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-persistent-storage-mysql-statefulset-0
+  name: my-pvc
 spec:
   accessModes:
     - ReadWriteOnce
