@@ -6,7 +6,7 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: flask-app
+      app: flask-app-container
   template:
     metadata:
       labels:
@@ -31,18 +31,22 @@ spec:
             periodSeconds: 5
           env:
             - name: DB_HOST
-              value: flask-app-db-service
+                configMapKeyRef:
+                  name: mysql-configmap
+                  key: DATABASE_HOST
             - name: DB_PORT
               value: "3306"
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
-                  key: database_name
+                  key: MYSQL_DATABASE
             - name: DB_USER
-              value: root
+                configMapKeyRef:
+                  name: mysql-configmap
+                  key: MYSQL_USER
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql-secret
-                  key: root_password
+                  key: MYSQL_PASSWORD
