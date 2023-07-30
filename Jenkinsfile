@@ -38,12 +38,12 @@ pipeline {
                     sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
 
                     // Step 7: Apply the modified Kubernetes files
-                    sh "kubectl apply -f Kubernets_Files/deployment.yaml -n default"
-                    sh "kubectl apply -f Kubernets_Files/services.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml -n default"
-                    sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/mysql-pv.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/mysql-pvc.yaml -n default"
+                    sh "kubectl apply -f Kubernets_Files/deployment.yaml -n default"
+                    sh "kubectl apply -f Kubernets_Files/services.yaml -n default"
+                    sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/ingress.yaml -n default"
                 }
             }
