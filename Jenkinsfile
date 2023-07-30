@@ -33,7 +33,6 @@ pipeline {
                     sh "aws eks --region $AWS_DEFAULT_REGION describe-cluster --name sprints-eks-cluster --query cluster.status"
                     sh "aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name sprints-eks-cluster"
                     // Step 6: Apply the modified Kubernetes files with replaced image tag and repo
-                    sh "sed -i 's|<ECR_IMAGE_TAG>|${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
                     sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
                     sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/mysql-pv.yaml -n default"
