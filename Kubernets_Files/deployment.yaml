@@ -31,6 +31,8 @@ spec:
             periodSeconds: 5
           env:
             - name: ECR_IMAGE_TAG
+              value: <ECR_REPO_IMAGE> # Add this line to define the ECR_REPO_IMAGE environment variable
+            - name: ECR_IMAGE_TAG
               value: <ECR_IMAGE_TAG> # Add this line to define the ECR_IMAGE_TAG environment variable
             - name: DB_HOST
               value: flask-app-db-service
