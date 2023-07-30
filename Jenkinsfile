@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         // Define environment variables for AWS ECR
-        AWS_DEFAULT_REGION = 'us-east-1'
-        ECR_REPO = '812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo'
-        DOCKER_IMAGE_NAME = 'project'
+        AWS_DEFAULT_REGION = 'us-east-1' // Use the region
+        ECR_REPO = '812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo' // Use the ecr repository
+        DOCKER_IMAGE_NAME = 'project' // Docker image tag name ( must be lower case )
         DOCKER_IMAGE_TAG = "v${BUILD_NUMBER}" // Use the build number as the Docker image tag
     }
 
@@ -20,7 +20,7 @@ pipeline {
         stage('Build and Deploy') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
-                    // Step 1: Build the Docker image and tag it any tag name ( must be lower case )
+                    // Step 1: Build the Docker image and tag it any tag name 
                     sh "docker build -t $DOCKER_IMAGE_NAME ."
                     sh "docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // Step 2: run Docker Compose
