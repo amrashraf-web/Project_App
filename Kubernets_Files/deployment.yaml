@@ -46,3 +46,4 @@ spec:
                 secretKeyRef:
                   name: mysql-secret
                   key: root_password
+          command: ["gunicorn", "app:app", "--bind", "0.0.0.0:5000", "--workers", "4"]
