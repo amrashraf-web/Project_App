@@ -8,3 +8,4 @@ spec:
   resources:
     requests:
       storage: 20Gi
+  storageClassName: gp2  # <-- Update this line to match the available StorageClass
