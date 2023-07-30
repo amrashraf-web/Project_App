@@ -17,18 +17,6 @@ spec:
           image: <ECR_REPO_IMAGE> # Replace <<ECR_REPO_IMAGE>> with the actual repo with tag name
           ports:
             - containerPort: 5000
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: 5000
-            initialDelaySeconds: 10
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: 5000
-            initialDelaySeconds: 5
-            periodSeconds: 5
           env:
             - name: DB_HOST
               value: mysql-service
@@ -47,6 +35,15 @@ spec:
                   name: mysql-secret
                   key: root_password
                 volumes:
-      - name: my-pvc
-        persistentVolumeClaim:
-          claimName: my-new-pvc
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 5
