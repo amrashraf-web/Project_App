@@ -46,3 +46,7 @@ spec:
                 secretKeyRef:
                   name: mysql-secret
                   key: root_password
+                volumes:
+      - name: my-pvc
+        persistentVolumeClaim:
+          claimName: my-new-pvc
