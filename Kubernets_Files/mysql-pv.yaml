@@ -1,15 +1,14 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: my-pv
+  name: mysql-pv
 spec:
   capacity:
-    storage: 1Gi
-  volumeMode: Filesystem
+    storage: 5Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
-  storageClassName: gp2
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ebs-sc
   awsElasticBlockStore:
     volumeID: vol-0b93f63f5ae0ae7ef # Put Here Your Aws Ebs Id That Created From Terraform
     fsType: ext4
