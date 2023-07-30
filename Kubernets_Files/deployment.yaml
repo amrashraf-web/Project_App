@@ -6,11 +6,11 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: flask-app-container
+      app: flask-app # Make sure this matches the label below in the template.metadata.labels
   template:
     metadata:
       labels:
-        app: flask-app
+        app: flask-app # Make sure this matches the label above in the spec.selector.matchLabels
     spec:
       containers:
         - name: flask-app
