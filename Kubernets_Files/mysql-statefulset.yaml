@@ -1,41 +1,43 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: flask-app-db-statefulset
+  name: mysql-statefulset
 spec:
-  serviceName: "flask-app-db-service"  # The service name for the MySQL database
-  replicas: 1  # Change the number of replicas as needed
+  serviceName: mysql
+  replicas: 1
   selector:
     matchLabels:
-      app: flask-app-db
+      app: mysql
   template:
     metadata:
       labels:
-        app: flask-app-db
+        app: mysql
     spec:
       containers:
-      - name: flask-app-db
-        image: mysql:latest
-        env:
-          - name: MYSQL_ROOT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysql-secret
-                key: root_password
-          - name: MYSQL_DATABASE
-            value: BucketList
-          - name: MYSQL_ROOT_HOST
-            value: '%'
-        ports:
-          - containerPort: 3306
-        volumeMounts:
-          - name: mysql-data
-            mountPath: /var/lib/mysql
+        - name: mysql
+          image: mysql:latest
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: root_password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: database_name
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
   volumeClaimTemplates:
     - metadata:
-        name: mysql-data
+        name: mysql-persistent-storage
       spec:
         accessModes: ["ReadWriteOnce"]
+        storageClassName: standard
         resources:
           requests:
-            storage: 1Gi  # Change the storage size as needed
+            storage: 20Gi
