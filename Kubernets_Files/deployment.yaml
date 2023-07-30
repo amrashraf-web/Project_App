@@ -39,7 +39,10 @@ spec:
             - name: DB_PORT
               value: "3306"
             - name: DB_NAME
-              value: BucketList
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: database_name
             - name: DB_USER
               value: root
             - name: DB_PASSWORD
