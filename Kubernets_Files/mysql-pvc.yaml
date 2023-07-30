@@ -1,14 +1,41 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
-  name: mysql-data-flask-app-db-statefulset-0  # Name of the PVC
+  name: flask-app-db-statefulset
 spec:
-  accessModes:
-    - ReadWriteOnce  # Must match the access mode specified in PV
-  resources:
-    requests:
-      storage: 1Gi  # Storage size requested, should match the PV capacity
-  storageClassName: gp2  # StorageClass name (if applicable)
+  serviceName: "flask-app-db-service"  # The service name for the MySQL database
+  replicas: 1  # Change the number of replicas as needed
   selector:
     matchLabels:
       app: flask-app-db
+  template:
+    metadata:
+      labels:
+        app: flask-app-db
+    spec:
+      containers:
+      - name: flask-app-db
+        image: mysql:latest
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: root_password
+          - name: MYSQL_DATABASE
+            value: BucketList
+          - name: MYSQL_ROOT_HOST
+            value: '%'
+        ports:
+          - containerPort: 3306
+        volumeMounts:
+          - name: mysql-data
+            mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi  # Change the storage size as needed
