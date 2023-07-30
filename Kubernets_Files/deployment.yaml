@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-app-deployment
+  name: python-deployment
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: flask-app
+      app: python-app
   template:
     metadata:
       labels:
-        app: flask-app
+        app: python-app
     spec:
       containers:
-        - name: flask-app
+        - name: python-app
           image: <ECR_REPO_IMAGE> # Replace <<ECR_REPO_IMAGE>> with the actual repo with tage name
           ports:
             - containerPort: 5000
@@ -35,7 +35,7 @@ spec:
             - name: ECR_IMAGE_TAG
               value: <ECR_IMAGE_TAG> # Add this line to define the ECR_IMAGE_TAG environment variable
             - name: DB_HOST
-              value: flask-app-db-service
+              value: python-service
             - name: DB_PORT
               value: "3306"
             - name: DB_NAME
