@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-app-db-service
+  name: mysql-service
 spec:
   selector:
-    app: flask-app-db
+    app: mysql
   ports:
     - protocol: TCP
       port: 3306
