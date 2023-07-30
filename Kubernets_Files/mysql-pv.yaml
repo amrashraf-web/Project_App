@@ -4,11 +4,12 @@ metadata:
   name: my-pv
 spec:
   capacity:
-    storage: 20Gi
+    storage: 1Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: gp2
   awsElasticBlockStore:
-    volumeID: vol-0b93f63f5ae0ae7ef  # Replace this with your EBS volume ID
+    volumeID: vol-0b93f63f5ae0ae7ef # Put Here Your Aws Ebs Id That Created From Terraform
     fsType: ext4
