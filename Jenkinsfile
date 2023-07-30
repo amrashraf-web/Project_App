@@ -35,6 +35,7 @@ pipeline {
                     // Step 6: Apply the modified Kubernetes files with replaced image tag and repo
                     sh "sed -i 's|<ECR_IMAGE_TAG>|${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
                     sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
+                    sh "kubectl apply -f Kubernets_Files/gp2-storage-class.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/mysql-pv.yaml -n default"
                     sh "kubectl apply -f Kubernets_Files/mysql-pvc.yaml -n default"
@@ -53,7 +54,7 @@ pipeline {
             sh "docker-compose down"
             script {
                 // Step 9: Get Ingress IP address
-                def serviceName = 'python-service' // Replace 'your-service-name' with the name of your Kubernetes service
+                def serviceName = 'flask-app-service' // Replace 'your-service-name' with the name of your Kubernetes service
                 def namespace = 'default' // Replace 'your-namespace' with the namespace where the service is deployed
                 def url = sh(script: "kubectl get svc ${serviceName} -n ${namespace} -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'", returnStdout: true).trim()
                 echo "Website URL: http://${url}"
