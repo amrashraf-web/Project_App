@@ -20,7 +20,7 @@ pipeline {
         stage('Build and Deploy') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
-                    // Step 1: Build the Docker image and tag it with the unique tag
+                    // Step 1: Build the Docker image and tag it any tag name ( must be lower case )
                     sh "docker build -t $DOCKER_IMAGE_NAME ."
                     sh "docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // Step 2: run Docker Compose
@@ -51,9 +51,10 @@ pipeline {
 
     post {
         always {
+            // Step 8: Docker Compose Down
             sh "docker-compose down"
             script {
-                // Get Ingress IP address
+                // Step 9: Get Ingress IP address
                 script {
                     def serviceName = 'flask-app-service' // Replace 'your-service-name' with the name of your Kubernetes service
                     def namespace = 'default' // Replace 'your-namespace' with the namespace where the service is deployed
