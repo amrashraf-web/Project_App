@@ -92,17 +92,17 @@ def signUp():
             data = cursor.fetchone()
 
             if data:
-                return render_template('check.html', error='Email already exists!')
+                return json.dumps({'message':'Email already exists!'})
             else:
                 # Insert the new user into the database
                 cursor.execute(
                     "INSERT INTO tbl_user (user_name, user_username, user_password) VALUES (%s, %s, %s)",
                     (_name, _email, _password))
                 conn.commit()
-                return render_template('check.html', error='User created successfully!')
+                return json.dumps({'message':'User created successfully !'})
         except Exception as e:
             traceback.print_exc()
-            return render_template('check.html', error=f'An error occurred while creating the user. {e}')
+            return json.dumps({'html':'<span>Enter the required fields</span>'}) 
         finally:
             # Consume the result from the SELECT query and close the cursor and connection in the 'finally' block
             cursor.fetchall()
