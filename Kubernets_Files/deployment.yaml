@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: <ECR_REPO_IMAGE> # Replace <<ECR_REPO_IMAGE>> with the actual repo with tage name
+          image: <ECR_REPO_IMAGE> # Replace <<ECR_REPO_IMAGE>> with the actual repo with tag name
           ports:
             - containerPort: 5000
           livenessProbe:
@@ -31,6 +31,7 @@ spec:
             periodSeconds: 5
           env:
             - name: DB_HOST
+              valueFrom:
                 configMapKeyRef:
                   name: mysql-configmap
                   key: DATABASE_HOST
@@ -42,6 +43,7 @@ spec:
                   name: mysql-secret
                   key: MYSQL_DATABASE
             - name: DB_USER
+              valueFrom:
                 configMapKeyRef:
                   name: mysql-configmap
                   key: MYSQL_USER
