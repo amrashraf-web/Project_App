@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: my-pvc
+  name: my-new-pvc  # Choose a new name for the PVC, e.g., "my-new-pvc"
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 20Gi
+  storageClassName: gp2  # Set the correct storageClassName here
