@@ -57,7 +57,7 @@ pipeline {
             script {
                 // Step 9: Get Ingress IP address
                 script {
-                    def serviceName = 'flask-app-service' // Replace 'your-service-name' with the name of your Kubernetes service
+                    def serviceName = 'python-service' // Replace 'your-service-name' with the name of your Kubernetes service
                     def namespace = 'default' // Replace 'your-namespace' with the namespace where the service is deployed
                     def url = sh(script: "kubectl get svc ${serviceName} -n ${namespace} -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'", returnStdout: true).trim()
                     echo "Website URL: http://${url}"
