@@ -1,50 +1,44 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mysql-statefulset
+  name: flask-app-db-statefulset
 spec:
-  replicas: 1
-  serviceName: mysql-service
+  serviceName: "flask-app-db-service"  # The service name for the MySQL database
+  replicas: 1  # Change the number of replicas as needed
   selector:
     matchLabels:
-      app: mysql
+      app: flask-app-db
   template:
     metadata:
       labels:
-        app: mysql
+        app: flask-app-db
     spec:
       containers:
-        - name: mysql
-          image: mysql:latest
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: root_password
-            - name: MYSQL_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: database_name
-          ports:
-            - containerPort: 3306
-          resources:
-            requests:
-              memory: "512Mi"
-              cpu: "0.5"
-            limits:
-              memory: "1Gi"
-              cpu: "1"
-          volumeMounts:
-            - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql
-            - name: mysql-config
-              mountPath: /etc/mysql/conf.d
-      volumes:
-        - name: mysql-persistent-storage
-          persistentVolumeClaim:
-            claimName: mysql-pvc
-        - name: mysql-config
-          configMap:
-            name: python-configmap
+      - name: flask-app-db
+        image: mysql:latest
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: root_password
+          - name: MYSQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: database_name
+          - name: MYSQL_ROOT_HOST
+            value: '%'
+        ports:
+          - containerPort: 3306
+        volumeMounts:
+          - name: mysql-data
+            mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi  # Change the storage size as needed
