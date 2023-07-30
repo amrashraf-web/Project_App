@@ -10,5 +10,5 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   awsElasticBlockStore:
-    volumeID: vol-0b93f63f5ae0ae7ef # Put here your AWS EBS volume ID that was created from Terraform
+    volumeID: vol-0b93f63f5ae0ae7ef  # Replace this with your EBS volume ID
     fsType: ext4
