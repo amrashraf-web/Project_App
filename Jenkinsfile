@@ -29,7 +29,7 @@ pipeline {
                     sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
                     // Step 4: Push the Docker image to ECR then remove the image
                     sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
-                    sh "docker rmi $ECR_REPO:$DOCKER_IMAGE_TAG"
+                    // sh "docker rmi $ECR_REPO:$DOCKER_IMAGE_TAG"
                     // Step 5: Update Kube Config
                     sh "aws eks --region $AWS_DEFAULT_REGION describe-cluster --name sprints-eks-cluster --query cluster.status"
                     sh "aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name sprints-eks-cluster"
