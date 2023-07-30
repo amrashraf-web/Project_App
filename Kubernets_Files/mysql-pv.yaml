@@ -11,5 +11,5 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: gp2
   awsElasticBlockStore:
-    volumeID: vol-03a9f2671085b891c
+    volumeID: vol-03a9f2671085b891c # Put Here Your Aws Ebs Id That Created From Terraform
     fsType: ext4
