@@ -33,8 +33,9 @@ pipeline {
                     // Step 5: Update Kube Config
                     sh "aws eks --region $AWS_DEFAULT_REGION describe-cluster --name sprints-eks-cluster --query cluster.status"
                     sh "aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name sprints-eks-cluster"
-                    // Step 6: Replace the ECR image tag in the deployment.yaml file
+                    // Step 6: Replace the ECR image tag and repo image in the deployment.yaml file
                     sh "sed -i 's|<ECR_IMAGE_TAG>|${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
+                    sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
 
                     // Step 7: Apply the modified Kubernetes files
                     sh "kubectl apply -f Kubernets_Files/deployment.yaml -n default"
