@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: python-app
-          image: <ECR_REPO_IMAGE> # Replace <<ECR_REPO_IMAGE>> with the actual repo with tage name
+          image: <ECR_REPO_IMAGE> # Replace <<ECR_REPO_IMAGE>> with the actual repo with tag name
           ports:
             - containerPort: 5000
           readinessProbe:
@@ -31,12 +31,8 @@ spec:
             initialDelaySeconds: 30
             timeoutSeconds: 30
           env:
-            - name: ECR_IMAGE_TAG
-              value: <ECR_REPO_IMAGE> # Add this line to define the ECR_REPO_IMAGE environment variable
-            - name: ECR_IMAGE_TAG
-              value: <ECR_IMAGE_TAG> # Add this line to define the ECR_IMAGE_TAG environment variable
             - name: DB_HOST
-              value: python-service
+              value: mysql-service
             - name: DB_PORT
               value: "3306"
             - name: DB_NAME
