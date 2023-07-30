@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: 812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:<ECR_IMAGE_TAG> # Replace <ECR_IMAGE_TAG> with the actual image tag
+          image: <ECR_REPO_IMAGE> # Replace <<ECR_REPO_IMAGE>> with the actual repo with tage name
           ports:
             - containerPort: 5000
           env:
