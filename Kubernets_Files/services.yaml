@@ -1,24 +1,24 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-service
+  name: flask-app-db-service
 spec:
   selector:
-    app: mysql
+    app: flask-app-db
   ports:
     - protocol: TCP
       port: 3306
       targetPort: 3306
-  type: LoadBalancer
+
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-service
+  name: flask-app-service
 spec:
   selector:
-    app: python-app
+    app: flask-app
   ports:
     - protocol: TCP
       port: 80
