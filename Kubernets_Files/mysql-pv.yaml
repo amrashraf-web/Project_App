@@ -10,5 +10,5 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ebs-sc
   awsElasticBlockStore:
-    volumeID: vol-01787a46f30725a6e # Put Here Your Aws Ebs Id That Created From Terraform
+    volumeID: vol-05a61293ef634c73d # Put Here Your Aws Ebs Id That Created From Terraform
     fsType: ext4
