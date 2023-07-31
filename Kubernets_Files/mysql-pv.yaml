@@ -10,7 +10,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: mysql-storage
   awsElasticBlockStore:
-    volumeID: 
+    volumeID: vol-0809bda1704220d00
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -24,4 +24,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: mysql-storage
   awsElasticBlockStore:
-    volumeID: 
+    volumeID: vol-03c4831bf77d41794
