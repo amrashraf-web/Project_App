@@ -64,7 +64,15 @@ def setup_database():
             pass
         setup_done = True
 
+@app.route('/healthz')
+def health_check():
+    return "OK", 200
 
+@app.route('/ready')
+def readiness_check():
+    # You can perform additional checks here if needed
+    return "OK", 200
+    
 @app.route("/")
 def main():
     return render_template('index.html')
