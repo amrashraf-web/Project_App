@@ -8,6 +8,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: ebs-sc
+  storageClassName: mysql-storage
   hostPath:
     path: /var/lib/mysql
