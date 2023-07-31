@@ -34,13 +34,13 @@ pipeline {
                     sh "aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name sprints-eks-cluster"
                     // Step 6: Apply the modified Kubernetes files with replaced image tag and repo
                     sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
-                    sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml -n default"
-                    sh "kubectl apply -f Kubernets_Files/mysql-pv.yaml -n default"
-                    sh "kubectl apply -f Kubernets_Files/mysql-pvc.yaml -n default"
-                    sh "kubectl apply -f Kubernets_Files/deployment.yaml -n default"
-                    sh "kubectl apply -f Kubernets_Files/services.yaml -n default"
-                    sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml -n default"
-                    sh "kubectl apply -f Kubernets_Files/ingress.yaml -n default"
+                    sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml"
+                    sh "kubectl apply -f Kubernets_Files/mysql-pv.yaml"
+                    sh "kubectl apply -f Kubernets_Files/mysql-pvc.yaml"
+                    sh "kubectl apply -f Kubernets_Files/deployment.yaml"
+                    sh "kubectl apply -f Kubernets_Files/services.yaml"
+                    sh "kubectl apply -f Kubernets_Files/mysql-statefulset.yaml"
+                    sh "kubectl apply -f Kubernets_Files/ingress.yaml"
                 }
             }
         }
@@ -53,8 +53,7 @@ pipeline {
             script {
                 // Step 9: Get Ingress IP address
                 def serviceName = 'flask-app-service' // Replace 'your-service-name' with the name of your Kubernetes service
-                def namespace = 'default' // Replace 'your-namespace' with the namespace where the service is deployed
-                def url = sh(script: "kubectl get svc ${serviceName} -n ${namespace} -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'", returnStdout: true).trim()
+                def url = sh(script: "kubectl get svc ${serviceName} -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'", returnStdout: true).trim()
                 echo "Website URL: http://${url}"
             }
         }
