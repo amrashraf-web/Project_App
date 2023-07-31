@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mysql-container
-          image: mysql:latest  # Use the official MySQL image
+          image: mysql:latest  # Use the official MySQL image or your docker image as you want
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
