@@ -7,7 +7,7 @@ import traceback
 app = Flask(__name__)
 setup_done = False
 # Set a secret key for the session
-app.secret_key = secrets.token_hex(16)
+app.secret_key = "8a2c07687244ceade6915b407aa6da4c"
 
 # Function to execute SQL scripts from files
 
