@@ -17,13 +17,13 @@ spec:
           image: <ECR_REPO_IMAGE> # Replace <<ECR_REPO_IMAGE>> with the actual repo with tag name
           ports:
             - containerPort: 5000
-          livenessProbe:
+          readinessProbe:
             httpGet:
               path: /health
               port: 5000
-            initialDelaySeconds: 60
-            periodSeconds: 15
-          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
             httpGet:
               path: /health
               port: 5000
