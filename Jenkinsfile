@@ -40,7 +40,8 @@ pipeline {
                         } catch (Exception e) {
                             echo "Error installing Ingress-Nginx: ${e.message}"
                             error "Failed to install Ingress-Nginx"
-                        }                    
+                        }
+                    }
                     // Step 8: Apply the modified Kubernetes files with replaced image tag and repo
                     sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
                     sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml"
