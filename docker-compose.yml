@@ -3,8 +3,8 @@ services:
   db:
     image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: your_root_password
-      MYSQL_DATABASE: BucketList
+      MYSQL_ROOT_PASSWORD: eW91cl9yb290X3Bhc3N3b3Jk
+      MYSQL_DATABASE: QnVja2V0TGlzdA==
       MYSQL_ROOT_HOST: '%'
     volumes:
       - mysql_data:/var/lib/mysql
@@ -21,9 +21,9 @@ services:
     environment:
       DB_HOST: db
       DB_PORT: 3306
-      DB_NAME: BucketList
+      DB_NAME: QnVja2V0TGlzdA==
       DB_USER: root
-      DB_PASSWORD: your_root_password
+      DB_PASSWORD: eW91cl9yb290X3Bhc3N3b3Jk
     ports:
       - "5000:5000"
     restart: on-failure
