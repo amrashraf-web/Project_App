@@ -47,11 +47,29 @@ pipeline {
                 sh "docker rmi $ECR_REPO:$DOCKER_IMAGE_TAG"
             }
         }
-
+        
+        stage('Create .aws directory and credentials file') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
+                    // Step 1: Create the .aws directory
+                    sh 'mkdir -p /home/ubuntu/.aws'
+    
+                    // Step 2: Create the credentials file and populate it with AWS credentials
+                    sh 'echo "[default]" > /home/ubuntu/.aws/credentials'
+                    sh 'echo "aws_access_key_id = $AWS_ACCESS_KEY_ID" >> /home/ubuntu/.aws/credentials'
+                    sh 'echo "aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" >> /home/ubuntu/.aws/credentials'
+    
+                    // Step 3: Set appropriate permissions for the file (optional, depending on your use case)
+                    sh 'chmod 600 /home/ubuntu/.aws/credentials'
+                    // Step 4 : Update Kube Config For Ubuntu user
+                    sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
+                }
+            }
+        }
         stage('Deploy to Kubernetes') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
-                    // Step 1 : Update Kube Config
+                    // Step 1 : Update Kube Config For Jenkins
                     sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
                     // Step 2: Apply the modified Kubernetes files with replaced image tag and repo
                     sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
