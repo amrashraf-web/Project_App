@@ -1,3 +1,0 @@
-eks_cluster_name = 
-jenkins_instance_public_ip = 
-ecr_repository_url = 
