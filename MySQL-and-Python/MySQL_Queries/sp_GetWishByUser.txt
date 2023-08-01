@@ -1,0 +1,8 @@
+DELIMITER //
+CREATE PROCEDURE sp_GetWishByUser(IN userId INT)
+BEGIN
+    SELECT *
+    FROM tbl_wish
+    WHERE wish_user_id = userId;
+END //
+DELIMITER ;
