@@ -20,6 +20,7 @@ pipeline {
                 // Step 1: Build the Docker image and tag it any tag name 
                 sh "docker build -t $DOCKER_IMAGE_NAME ."
                 sh "docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
+                sh "docker-compose up -d"
             }
         }
 
