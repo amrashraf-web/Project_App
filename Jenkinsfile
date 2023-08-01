@@ -65,24 +65,6 @@ pipeline {
                 }
             }
         }
-        stage('Create .aws directory and credentials file') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
-                    // Step 1: Create the .aws directory
-                    sh 'mkdir -p /home/ubuntu/.aws'
-    
-                    // Step 2: Create the credentials file and populate it with AWS credentials
-                    sh 'echo "[default]" > /home/ubuntu/.aws/credentials'
-                    sh 'echo "aws_access_key_id = $AWS_ACCESS_KEY_ID" >> /home/ubuntu/.aws/credentials'
-                    sh 'echo "aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" >> /home/ubuntu/.aws/credentials'
-    
-                    // Step 3: Set appropriate permissions for the file (optional, depending on your use case)
-                    sh 'chmod 600 /home/ubuntu/.aws/credentials'
-                    // Step 4 : Update Kube Config For Ubuntu user
-                    sh "cp -r /var/lib/jenkins/.kube /ubuntu"
-                }
-            }
-        }
     }
 
     post {
