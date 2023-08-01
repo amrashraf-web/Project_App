@@ -26,7 +26,7 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 // Step 1: Log in to your ECR registry
-                sh "aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_REPO"
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REPO"
                 // Step 2: Push the Docker image to ECR
                 sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
             }
@@ -43,7 +43,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 // Step 1 : Update Kube Config
-                sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
+                // sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
                 // Step 2: Apply the modified Kubernetes files with replaced image tag and repo
                 sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
                 sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml"
