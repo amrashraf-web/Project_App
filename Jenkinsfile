@@ -35,7 +35,7 @@ pipeline {
         stage('Remove Local Image') {
             steps {
                 // Step 1: Remove the Docker image from the local system
-                sh "docker rmi $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG"
+                sh "docker rmi $DOCKER_IMAGE_NAME"
                 sh "docker rmi $ECR_REPO:$DOCKER_IMAGE_TAG"
             }
         }
@@ -43,7 +43,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 // Step 1 : Update Kube Config
-                // sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
+                sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
                 // Step 2: Apply the modified Kubernetes files with replaced image tag and repo
                 sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
                 sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml"
