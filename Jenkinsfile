@@ -51,9 +51,11 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
-                    // Step 1 : Update Kube Config For Jenkins
+                    // Step 1 : Update Kube Config For Ubuntu
                     sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster --kubeconfig /home/ubuntu/.kube/config"
-                    // Step 2: Apply the modified Kubernetes files with replaced image tag and repo
+                    // Step 2 : Update Kube Config For Jenkins
+                    sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
+                    // Step 3: Apply the modified Kubernetes files with replaced image tag and repo
                     sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
                     sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml"
                     sh "kubectl apply -f Kubernets_Files/mysql-pv.yaml"
