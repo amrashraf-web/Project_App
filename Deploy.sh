@@ -1,8 +1,4 @@
 #!/bin/bash
-# amrashraf-web
-# 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
-# aws_access_key: AKIA32KEJN5DQYJFXVQN
-# aws_secret_key: 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
 # Define variables for the project paths
 base_path=~/Final_Project
 terraform_path=${base_path}/Terraform_Files
