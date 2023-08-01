@@ -33,6 +33,11 @@
   shell: sudo usermod -aG docker jenkins
   notify: Restart Jenkins Service
 
+- name: Add Jenkins For ubuntu
+  become: true
+  shell: sudo usermod -aG jenkins ubuntu
+  notify: Restart Jenkins Service
+
 - name: Start Jenkins service
   become: true
   service:
