@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: flask-app-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
+    networking.k8s.io/ingress.class: nginx  # Use the new annotation "spec.ingressClassName"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
