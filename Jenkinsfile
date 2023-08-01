@@ -54,7 +54,7 @@ pipeline {
                 sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
                 // Step 2: Apply the modified Kubernetes files with replaced image tag and repo
                 sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
-                sh "kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml"
+                sh "sudo -u jenkins kubectl apply -f Kubernets_Files/configmap-and-secrets.yaml"
                 sh "kubectl apply -f Kubernets_Files/mysql-pv.yaml"
                 sh "kubectl apply -f Kubernets_Files/mysql-pvc.yaml"
                 sh "kubectl apply -f Kubernets_Files/deployment.yaml"
