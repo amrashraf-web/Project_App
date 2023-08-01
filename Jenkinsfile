@@ -79,7 +79,7 @@ pipeline {
                     // Step 3: Set appropriate permissions for the file (optional, depending on your use case)
                     sh 'chmod 600 /home/ubuntu/.aws/credentials'
                     // Step 4 : Update Kube Config For Ubuntu user
-                    sh "sudo cp -r /var/lib/jenkins/.kube /ubuntu"
+                    sh "cp -r /var/lib/jenkins/.kube /ubuntu"
                 }
             }
         }
