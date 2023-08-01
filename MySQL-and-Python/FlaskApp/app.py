@@ -59,6 +59,11 @@ def setup_database():
             pass
         try:
             # Execute sp_addWish.txt script to create the stored procedure
+            execute_sql_file('sp_GetWishByUser.txt')
+        except:
+            pass
+        try:
+            # Execute sp_addWish.txt script to create the stored procedure
             execute_sql_file('sp_addWish.txt')
         except:
             pass
