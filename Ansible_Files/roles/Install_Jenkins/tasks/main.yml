@@ -1,0 +1,52 @@
+- name: Install java
+  become: true
+  apt:
+    name: openjdk-11-jdk
+    state: present
+
+- name: Import jenkins key from url
+  become: true
+  apt_key:
+    state: present
+    url: https://pkg.jenkins.io/debian/jenkins.io-2023.key
+
+- name: Download Long Term Jenkins release
+  become: true
+  apt_repository:
+    repo: "deb https://pkg.jenkins.io/debian-stable binary/"
+    state: present
+
+- name: Install jenkins
+  become: true
+  apt:
+    name: jenkins
+    state: latest
+
+- name: Update Jenkins
+  become: true
+  apt:
+    name: jenkins
+    update_cache: true
+
+- name: Add Docker For Jenkins
+  become: true
+  shell: sudo usermod -aG docker jenkins
+  notify: Restart Jenkins Service
+
+- name: Start Jenkins service
+  become: true
+  service:
+    name: jenkins
+    state: started
+
+- name: Retrieve Jenkins admin password
+  command: "cat /var/lib/jenkins/secrets/initialAdminPassword"
+  register: admin_password
+  changed_when: false
+
+- name: Manually complete Jenkins setup
+  debug:
+    msg: >
+      Please access Jenkins through the web browser and complete the initial setup.
+      URL: http://{{ hostvars['Project_Server']['ansible_host'] }}:8080
+      Admin API Token: {{ admin_password.stdout }}

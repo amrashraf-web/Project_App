@@ -1,0 +1,17 @@
+{
+  "ecr_repository_url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo"
+  },
+  "eks_cluster_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "sprints-eks-cluster"
+  },
+  "jenkins_instance_public_ip": {
+    "sensitive": false,
+    "type": "string",
+    "value": "44.193.219.231"
+  }
+}

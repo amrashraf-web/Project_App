@@ -1,0 +1,11 @@
+- name: Install required packages
+  apt:
+    name:
+      - wget
+      - tar
+      - unzip
+      - ca-certificates
+      - curl
+      - apt-transport-https
+      - gnupg
+    state: present

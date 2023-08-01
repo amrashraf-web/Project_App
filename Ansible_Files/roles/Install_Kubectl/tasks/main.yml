@@ -1,0 +1,11 @@
+- name: Install kubectl
+  command: "{{ item }}"
+  with_items:
+    - "curl -O https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/amd64/kubectl"
+    - "chmod +x ./kubectl"
+    - "mv ./kubectl /usr/local/bin/"
+
+- name: Configure kubectl for the user
+  lineinfile:
+    path: "$HOME/.bashrc"
+    line: "export PATH=$HOME/bin:$PATH"
