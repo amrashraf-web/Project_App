@@ -20,10 +20,9 @@ pipeline {
                 // Step 1: Build the Docker image and tag it any tag name 
                 sh "docker build -t $DOCKER_IMAGE_NAME ."
                 sh "docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
-                sh "docker-compose up -d"
             }
         }
-
+        
         stage('Push to ECR') {
             steps {
                 // Step 1: Log in to your ECR registry
@@ -32,6 +31,14 @@ pipeline {
                 sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
             }
         }
+        
+        stage('Test Local') {
+            steps {
+                // Step 1: Run Docker Compose To Test Local  
+                sh "docker-compose up -d"
+            }
+        }
+
 
         stage('Remove Local Image') {
             steps {
