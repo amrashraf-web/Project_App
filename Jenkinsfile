@@ -9,6 +9,9 @@ pipeline {
 
     stages {
         stage('Checkout') {
+            when {
+                changeset "*/master"
+            }
             steps {
                 script {
                     def gitCredentialsId = 'github_key' // Replace with your actual credentials ID
