@@ -74,7 +74,7 @@ pipeline {
             }
         }
         failure {
-        echo "Build Failed. Please Check The Build Logs To Fix The Error."
+            echo "Build Failed. Please Check The Build Logs To Fix The Error."
         }
     }
 }
