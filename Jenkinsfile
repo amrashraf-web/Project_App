@@ -11,11 +11,14 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    def gitCredentials = credentials('github_key')
+                    def gitCredentialsId = 'github_key' // Replace with your actual credentials ID
                     checkout([
                         $class: 'GitSCM',
                         branches: [[name: '*/master']],
-                        userRemoteConfigs: [[url: 'https://github.com/amrashraf-web/Project_App.git', credentialsId: gitCredentials.id]]
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/amrashraf-web/Project_App.git',
+                            credentialsId: gitCredentialsId
+                        ]]
                     ])
                 }
             }
