@@ -16,7 +16,7 @@ pipeline {
                         $class: 'GitSCM',
                         branches: [[name: '*/master']],
                         userRemoteConfigs: [[
-                            url: 'https://github.com/amrashraf-web/Project_App.git',
+                            url: 'https://github.com/amrashraf-web/Project_App.git', // Replace with your actual project
                             credentialsId: gitCredentialsId
                         ]]
                     ])
