@@ -10,8 +10,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Step 1: Checkout the code from the GitHub repository
-                checkout scm
+                script {
+                    def gitCredentials = credentials('github_key')
+                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/amrashraf-web/Project_App.git', credentialsId: gitCredentials]]])
+                }
             }
         }
 
