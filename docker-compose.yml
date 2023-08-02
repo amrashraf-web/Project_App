@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     environment:
-      DB_HOST: ZGI=
+      DB_HOST: db
       DB_PORT: 3306
       DB_NAME: QnVja2V0TGlzdA==
       DB_USER: cm9vdA==
