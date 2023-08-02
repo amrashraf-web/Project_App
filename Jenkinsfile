@@ -75,7 +75,7 @@ pipeline {
             sh "docker-compose down"
             script {
                 // Step 2: Get Ingress IP address
-                def serviceName = 'flask-app-service' // Replace 'flask-app-service' with the name of your Kubernetes service
+                def serviceName = 'flask-app-service' // Replace 'flask-app-service' with the name of your Kubernetes App service
                 def url = sh(script: "kubectl get svc ${serviceName} -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'", returnStdout: true).trim()
                 echo "Website URL: http://${url}"
             }
