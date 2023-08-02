@@ -1,6 +1,6 @@
 #!/bin/bash
 # Define variables for the project paths
-base_path=~/Final_Project
+base_path=~/Project_App
 terraform_path=${base_path}/Terraform_Files
 ansible_path=${base_path}/Ansible_Files
 inventory_file=${ansible_path}/inventory.ini
