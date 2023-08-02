@@ -40,14 +40,6 @@ pipeline {
                 sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
             }
         }
-        
-        stage('Test Local') {
-            steps {
-                // Step 1: Run Docker Compose To Test Local  
-                sh "docker-compose up -d"
-            }
-        }
-
 
         stage('Remove Local Image') {
             steps {
@@ -73,15 +65,16 @@ pipeline {
     }
 
     post {
-        always {
-            // Step 1: Docker Compose Down
-            sh "docker-compose down"
+        success {
+            // Step 1: Get Ingress IP address
             script {
-                // Step 2: Get Ingress IP address
                 def serviceName = 'flask-app-service' // Replace 'flask-app-service' with the name of your Kubernetes App service
                 def url = sh(script: "kubectl get svc ${serviceName} -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'", returnStdout: true).trim()
                 echo "Website URL: http://${url}"
             }
+        }
+        failure {
+        echo "Build Failed. Please Check The Build Logs To Fix The Error."
         }
     }
 }
