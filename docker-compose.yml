@@ -19,10 +19,10 @@ services:
     depends_on:
       - db
     environment:
-      DB_HOST: db
+      DB_HOST: ZGI=
       DB_PORT: 3306
       DB_NAME: QnVja2V0TGlzdA==
-      DB_USER: root
+      DB_USER: cm9vdA==
       DB_PASSWORD: eW91cl9yb290X3Bhc3N3b3Jk
     ports:
       - "5000:5000"
