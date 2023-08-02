@@ -62,7 +62,7 @@ module "ec2" {
   public_subnet_ids = module.public_subnets.subnet_ids
   security_group = module.security_group.security_group_id
   eks_profile_name = module.eks.eks_profile_name
-  instance_type = "t3.large"
+  instance_type = "t2.small"
   key_pair_name = "amora"
   instance_name = "Project_Server"
 }
