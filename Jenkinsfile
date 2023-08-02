@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     def gitCredentials = credentials('github_key')
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/amrashraf-web/Project_App.git', credentialsId: gitCredentials]]])
+                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/amrashraf-web/Project_App.git', credentialsId: gitCredentials.id]]])
                 }
             }
         }
