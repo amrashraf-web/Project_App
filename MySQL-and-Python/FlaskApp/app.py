@@ -23,14 +23,14 @@ app.secret_key = '8a2c07687244ceade6915b407aa6da4c'
 
 ### Here For Readness and Liveness Deployment
 
-# @app.route('/healthz')
-# def health_check():
-#     return "OK", 200
+@app.route('/healthz')
+def health_check():
+    return "OK", 200
 
 
-# @app.route('/ready')
-# def readiness_check():
-#     return "OK", 200
+@app.route('/ready')
+def readiness_check():
+    return "OK", 200
 
 @app.route("/")
 def main():
