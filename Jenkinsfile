@@ -8,57 +8,56 @@ pipeline {
     }
 
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         script {
-        //             def gitCredentialsId = 'github_key' // Replace with your actual credentials ID
-        //             checkout([
-        //                 $class: 'GitSCM',
-        //                 branches: [[name: '*/master']],
-        //                 userRemoteConfigs: [[
-        //                     url: 'https://github.com/amrashraf-web/Project_App', // Replace with your actual project
-        //                     credentialsId: gitCredentialsId
-        //                 ]]
-        //             ])
-        //         }
-        //     }
-        // }
+        stage('Checkout') {
+            steps {
+                script {
+                    def gitCredentialsId = 'github_key' // Replace with your actual credentials ID
+                    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: '*/master']],
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/amrashraf-web/Project_App', // Replace with your actual project
+                            credentialsId: gitCredentialsId
+                        ]]
+                    ])
+                }
+            }
+        }
 
-        // stage('Build Docker Image') {
-        //     steps {
-        //         // Step 1: Build the Docker image and tag it any tag name 
-        //         sh "docker build -t $DOCKER_IMAGE_NAME ."
-        //         sh "docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
-        //     }
-        // }
+        stage('Build Docker Image') {
+            steps {
+                // Step 1: Build the Docker image and tag it any tag name 
+                sh "docker build -t $DOCKER_IMAGE_NAME ."
+                sh "docker tag $DOCKER_IMAGE_NAME $ECR_REPO:$DOCKER_IMAGE_TAG"
+            }
+        }
         
-        // stage('Push to ECR') {
-        //     steps {
-        //         // Step 1: Log in to your ECR registry
-        //         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REPO"
-        //         // Step 2: Push the Docker image to ECR
-        //         sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
-        //     }
-        // }
+        stage('Push to ECR') {
+            steps {
+                // Step 1: Log in to your ECR registry
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REPO"
+                // Step 2: Push the Docker image to ECR
+                sh "docker push $ECR_REPO:$DOCKER_IMAGE_TAG"
+            }
+        }
 
-        // stage('Remove Local Image') {
-        //     steps {
-        //         // Step 1: Remove the Docker image from the local system
-        //         sh "docker rmi $DOCKER_IMAGE_NAME"
-        //         sh "docker rmi $ECR_REPO:$DOCKER_IMAGE_TAG"
-        //     }
-        // }
+        stage('Remove Local Image') {
+            steps {
+                // Step 1: Remove the Docker image from the local system
+                sh "docker rmi $DOCKER_IMAGE_NAME"
+                sh "docker rmi $ECR_REPO:$DOCKER_IMAGE_TAG"
+            }
+        }
         
         stage('Deploy to Kubernetes') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
-                    // Step 1 : Update Kube Config For Ubuntu
-                    // sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster --kubeconfig /home/ubuntu/.kube/config"
-                    // // Step 2 : Update Kube Config For Jenkins
-                    // sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
-                    // // Step 3: Apply the modified Kubernetes files with replaced image tag and repo
-                    // sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
-                    // sh "kubectl apply -f Kubernets_Files/"
+                    // Step 1 : Update Kube Config For Jenkins
+                    sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
+                    // Step 2: Apply the modified Kubernetes files with replaced image tag and repo
+                    sh "kubectl delete pods mysql-statefulset-0"
+                    sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
+                    sh "kubectl apply -f Kubernets_Files/"
                     sh "kubectl logs mysql-statefulset-0 -c init-sql"
                 }
             }
