@@ -1,3 +1,41 @@
+# apiVersion: apps/v1
+# kind: StatefulSet
+# metadata:
+#   name: mysql-statefulset
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: mysql
+#   serviceName: mysql-service
+#   template:
+#     metadata:
+#       labels:
+#         app: mysql
+#     spec:
+#       containers:
+#         - name: mysql-container
+#           image: mysql:latest  # Use the official MySQL image or your docker image as you want
+#           env:
+#             - name: MYSQL_ROOT_PASSWORD
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: mysql-secret
+#                   key: MYSQL_ROOT_PASSWORD
+#             - name: MYSQL_DATABASE
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: mysql-secret
+#                   key: MYSQL_DATABASE
+#           ports:
+#             - containerPort: 3306  # MySQL port
+#           volumeMounts:
+#             - name: mysql-storage
+#               mountPath: /var/lib/mysql
+#       volumes:
+#         - name: mysql-storage
+#           persistentVolumeClaim:
+#             claimName: mysql-pvc 
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -13,6 +51,11 @@ spec:
       labels:
         app: mysql
     spec:
+      initContainers:
+      - name: init-sql
+        image: busybox # Or any image with file copying utilities
+        command: ["/bin/sh", "-c"]
+        args: ["cp /MySQL-and-Python/MySQL_Queries/BucketList.sql /var/lib/mysql"]
       containers:
         - name: mysql-container
           image: mysql:latest  # Use the official MySQL image or your docker image as you want
