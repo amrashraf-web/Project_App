@@ -78,11 +78,10 @@ spec:
           args:
             - |
               echo "Copying MySQL initialization script..."
-              # cp /MySQL-and-Python/MySQL_Queries/BucketList.sql /docker-entrypoint-initdb.d/BucketList.sql
-              ls
+              cp /MySQL-and-Python/MySQL_Queries/BucketList.sql /docker-entrypoint-initdb.d/BucketList.sql
           volumeMounts:
             - name: init-scripts
-              mountPath: /init-scripts
+              mountPath: /MySQL-and-Python/MySQL_Queries
             - name: mysql-storage
               mountPath: /var/lib/mysql
       volumes:
