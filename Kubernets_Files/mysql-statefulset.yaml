@@ -13,12 +13,6 @@ spec:
       labels:
         app: mysql
     spec:
-      initContainers:
-      - name: init-sql
-        image: busybox # Or any image with file copying utilities
-        command: ["/bin/sh", "-c"]
-        # args: ["cp /Project_App/MySQL-and-Python/MySQL_Queries/BucketList.sql /var/lib/mysql/BucketList.sql"]
-        args: ["ls"]
       containers:
         - name: mysql-container
           image: mysql:latest  # Use the official MySQL image or your docker image as you want
