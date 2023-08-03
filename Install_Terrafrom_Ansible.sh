@@ -9,6 +9,7 @@ function command_exists() {
 function install_terraform() {
     if ! command_exists terraform; then
         echo "Installing Terraform..."
+        sudo apt install unzip
         curl -fsSL https://releases.hashicorp.com/terraform/0.15.5/terraform_0.15.5_linux_amd64.zip -o /tmp/terraform.zip
         sudo unzip /tmp/terraform.zip -d /usr/local/bin/
         rm /tmp/terraform.zip
