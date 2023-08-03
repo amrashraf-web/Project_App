@@ -31,11 +31,18 @@ def execute_sql_file():
         # Read SQL file
         with open('BucketList.sql', 'r') as sql_file:
             sql_commands = sql_file.read()
-
-        # Execute SQL commands
+    
+        # Split script into individual statements
+        commands = sql_commands.split(';')
+    
+        # Execute each statement
         conn = mysql.connect()
         cursor = conn.cursor()
-        cursor.execute(sql_commands)
+        
+        for command in commands:
+            if command.strip() != "":
+                cursor.execute(command)
+        
         conn.commit()
         cursor.close()
         conn.close()
