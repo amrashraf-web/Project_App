@@ -54,7 +54,7 @@ spec:
       initContainers:
         - name: init-sql
           image: busybox
-          command: ["sh", "-c", "cp /tmp/MySQL-and-Python/MySQL_Queries/BucketList.sql /docker-entrypoint-initdb.d/"]
+          command: ["sh", "-c", "cp /app/MySQL-and-Python/MySQL_Queries/BucketList.sql /docker-entrypoint-initdb.d/"]
           volumeMounts:
             - name: data-volume
               mountPath: /docker-entrypoint-initdb.d
