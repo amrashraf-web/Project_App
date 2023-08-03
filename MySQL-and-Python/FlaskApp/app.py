@@ -82,6 +82,8 @@ def validateLogin():
         cursor = con.cursor()
         cursor.callproc('sp_validateLogin', (_username,))
         data = cursor.fetchall()
+        cursor.close()
+        con.close()
         if len(data) > 0:
             if data[0][3] == _password:
                 session['user'] = data[0][0]
@@ -93,9 +95,7 @@ def validateLogin():
 
     except Exception as e:
         return render_template('error.html', error=f'An error occurred: {e}')
-    finally:
-        cursor.close()
-        con.close()
+
 
 
 @app.route('/userHome')
@@ -129,7 +129,8 @@ def addWish():
             cursor = conn.cursor()
             cursor.callproc('sp_addWish', (_title, _description, _user))
             data = cursor.fetchall()
-
+            cursor.close()
+            conn.close()
             if len(data) == 0:
                 conn.commit()
                 return redirect('/userHome')
@@ -140,9 +141,6 @@ def addWish():
             return render_template('error.html', error='Unauthorized Access')
     except Exception as e:
         return render_template('error.html', error=str(e))
-    finally:
-        cursor.close()
-        conn.close()
 
 
 @app.route('/getWish')
