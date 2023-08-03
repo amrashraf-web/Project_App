@@ -1,34 +1,36 @@
-version: '3.7'
+version: '3.9'
 services:
   db:
     image: mysql:latest
+    container_name: docker_file-db-1
     environment:
-      MYSQL_ROOT_PASSWORD: eW91cl9yb290X3Bhc3N3b3Jk
-      MYSQL_DATABASE: QnVja2V0TGlzdA==
+      TZ: "UTC" 
+      MYSQL_ROOT_PASSWORD: MyPassword@123
       MYSQL_ROOT_HOST: '%'
     volumes:
-      - mysql_data:/var/lib/mysql
+      - ./MySQL-and-Python/MySQL_Queries:/docker-entrypoint-initdb.d
     command: --default-authentication-plugin=caching_sha2_password
     ports:
       - "3306:3306"
 
   web:
     networks:
-        - default
+      - default
     build: .
+    container_name: docker_file-web-1
     depends_on:
       - db
     environment:
       DB_HOST: db
       DB_PORT: 3306
-      DB_NAME: QnVja2V0TGlzdA==
+      DB_NAME: BucketList
       DB_USER: root
-      DB_PASSWORD: eW91cl9yb290X3Bhc3N3b3Jk
+      DB_PASSWORD: MyPassword@123
     ports:
-      - "5000:5000"
+      - "5002:5002"
     restart: on-failure
     command: python app.py
-    
 
-volumes:
-  mysql_data:
+networks:
+  default:
+    driver: bridge
