@@ -75,18 +75,18 @@ spec:
         - name: init-mysql
           image: mysql:latest
           command: ["/bin/sh", "-c"]
-          args:
-            - |
-              echo "Copying MySQL initialization script..."
-              cp MySQL-and-Python/MySQL_Queries/BucketList.sql /docker-entrypoint-initdb.d/BucketList.sql
+          env:
+            - name: SCRIPT_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: script-path
           volumeMounts:
-            - name: init-scripts
-              mountPath: /MySQL-and-Python/MySQL_Queries
             - name: mysql-storage
               mountPath: /var/lib/mysql
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:
             claimName: mysql-pvc
-        - name: init-scripts
-          emptyDir: {}  # An emptyDir volume to hold initialization script
+          configMap:
+            name: mysql-config
