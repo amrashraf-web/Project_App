@@ -32,17 +32,17 @@ def setup_database():
     global setup_done
     if not setup_done:
         try:
-            # Execute BucketList.txt script to create the database
+            # Execute BucketList.sql script to create the database
             execute_sql_file('BucketList.sql')
         except:
             pass
         try:
-            # Execute sp_createUser.txt script to create the stored procedure
+            # Execute sp_createUser.sql script to create the stored procedure
             execute_sql_file('sp_createUser.sql')
         except:
             pass
         try:
-            # Execute sp_createUser.txt script to create the stored procedure
+            # Execute sp_validateLogin.sql script to create the stored procedure
             execute_sql_file('sp_validateLogin.sql')
         except:
             pass
@@ -52,8 +52,13 @@ def setup_database():
         except:
             pass
         try:
-            # Execute sp_addWish.txt script to create the stored procedure
+            # Execute sp_addWish.sql script to create the stored procedure
             execute_sql_file('sp_addWish.sql')
+        except:
+            pass
+        try:
+            # Execute sp_GetWishByUser.sql script to create the stored procedure
+            execute_sql_file('sp_GetWishByUser.sql')
         except:
             pass
         setup_done = True
