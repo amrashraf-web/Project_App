@@ -22,28 +22,7 @@ mysql.init_app(app)
 # secret_key = secrets.token_hex(16)
 app.secret_key = '8a2c07687244ceade6915b407aa6da4c'
 
-sql_executed = False
-@app.route('/')
-def execute_sql_file():
-    global sql_executed
 
-    if not sql_executed:
-        # Read SQL file
-        with open('BucketList.sql', 'r') as sql_file:
-            sql_commands = sql_file.read()
-
-        # Execute SQL commands
-        conn = mysql.connect()
-        cursor = conn.cursor()
-        cursor.execute(sql_commands)
-        conn.commit()
-        cursor.close()
-        conn.close()
-
-        sql_executed = True
-        return render_template('index.html')
-    else:
-        return render_template('index.html')
 ### Here For Readness and Liveness Deployment
 
 @app.route('/healthz')
@@ -55,9 +34,9 @@ def health_check():
 def readiness_check():
     return "OK", 200
 
-# @app.route("/")
-# def main():
-#     return render_template('index.html')
+@app.route("/")
+def main():
+    return render_template('index.html')
 
 
 @app.route('/showSignUp')
