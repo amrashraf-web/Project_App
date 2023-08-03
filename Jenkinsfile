@@ -58,7 +58,6 @@ pipeline {
                     sh "kubectl delete pods mysql-statefulset-0"
                     sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
                     sh "kubectl apply -f Kubernets_Files/"
-                    sh "kubectl logs mysql-statefulset-0 -c init-sql"
                 }
             }
         }
