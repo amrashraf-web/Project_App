@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the Flask app files from the host into the container at /app
 COPY MySQL-and-Python/FlaskApp /app
 
+# Copy the SQL files into the container for initialization
+COPY MySQL-and-Python/MySQL_Queries /docker-entrypoint-initdb.d
+
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
