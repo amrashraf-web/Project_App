@@ -76,8 +76,6 @@ spec:
           image: mysql:latest
           command: ["/bin/sh", "-c"]
           args:
-            - /bin/sh
-            - -c
             - "mysql -h localhost -u root -p$MYSQL_ROOT_PASSWORD -e 'source /scripts/BucketList.sql'"
           volumeMounts:
             - name: script-volume
