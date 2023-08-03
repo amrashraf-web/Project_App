@@ -74,9 +74,11 @@ spec:
       initContainers:
         - name: init-mysql
           image: mysql:latest
-          command: ["/bin/sh", "-c"]
           args:
-            - sleep 30 && mysql -h localhost -u root -p$MYSQL_ROOT_PASSWORD -e "source /scripts/BucketList.sql"
+            - /bin/sh
+            - -c
+            - mysql -h mysql-service -u root -p$MYSQL_ROOT_PASSWORD -e "source /scripts/BucketList.sql"
+
           volumeMounts:
             - name: script-volume
               mountPath: /scripts
