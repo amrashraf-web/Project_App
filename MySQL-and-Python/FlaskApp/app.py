@@ -20,7 +20,7 @@ setup_done = False
 def execute_sql_file(file_path):
     with open(file_path, 'r') as file:
         sql_commands = file.read()
-        conn = get_mysql_connection()
+        conn = mysql.connect()
         cursor = conn.cursor()
         cursor.execute(sql_commands, multi=True)
         conn.commit()
