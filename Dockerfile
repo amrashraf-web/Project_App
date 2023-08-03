@@ -8,7 +8,7 @@ WORKDIR /app
 COPY MySQL-and-Python/FlaskApp /app
 
 # Copy the SQL files into the container for initialization
-COPY MySQL-and-Python/MySQL_Queries /app
+COPY MySQL-and-Python/MySQL_Queries /var/lib/mysql
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
