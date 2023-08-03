@@ -41,25 +41,6 @@
     group: jenkins
     mode: "0755"
   tags: set_permissions
-
-- name: Add ubuntu user to jenkins group
-  become: yes
-  become_user: root
-  user:
-    name: ubuntu
-    groups: jenkins
-    append: yes
-  tags: add_user_to_group
-
-- name: Add jenkins user to Ubuntu group
-  become: yes
-  become_user: root
-  user:
-    name: jenkins
-    groups: ubuntu
-    append: yes
-  tags: add_user_to_group
-
   notify: Restart Jenkins Service
 
 - name: Start Jenkins service
