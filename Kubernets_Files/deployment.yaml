@@ -16,17 +16,17 @@ spec:
         - name: flask-app
           image: <ECR_REPO_IMAGE> # Replace <<ECR_REPO_IMAGE>> with the actual repo with tag name
           ports:
-            - containerPort: 5000
+            - containerPort: 5002
           livenessProbe:
             httpGet:
               path: /healthz
-              port: 5000
+              port: 5002
             initialDelaySeconds: 30
             periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /ready
-              port: 5000
+              port: 5002
             initialDelaySeconds: 5
             periodSeconds: 5
           env:
