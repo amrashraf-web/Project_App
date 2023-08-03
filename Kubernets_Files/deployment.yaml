@@ -70,7 +70,7 @@ spec:
       volumes:
         - name: sql-volume
           configMap:
-            name: sql-configmap
+            name: mysql-configmap
       containers:
         - name: flask-app
           image: <ECR_REPO_IMAGE>
