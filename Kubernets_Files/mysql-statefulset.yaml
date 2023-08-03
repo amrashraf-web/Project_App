@@ -53,36 +53,21 @@ spec:
     spec:
       initContainers:
         - name: init-sql
-          image: busybox
-          command: ["sh", "-c", "cp /app/MySQL-and-Python/MySQL_Queries/BucketList.sql /docker-entrypoint-initdb.d/"]
-          volumeMounts:
-            - name: data-volume
-              mountPath: /docker-entrypoint-initdb.d
-          resources:
-            requests:
-              memory: "64Mi"
-            limits:
-              memory: "128Mi"
+          # ... other configurations ...
       containers:
         - name: mysql-container
-          image: mysql:latest
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: MYSQL_ROOT_PASSWORD
-            - name: MYSQL_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: MYSQL_DATABASE
-          ports:
-            - containerPort: 3306
+          # ... other configurations ...
           volumeMounts:
             - name: data-volume
               mountPath: /var/lib/mysql
       volumes:
         - name: data-volume
           emptyDir: {}
+        - name: sql-volume
+          configMap:
+            name: sql-configmap  # Use the name of your ConfigMap here
+        # Add the volume for Flask app
+        - name: flask-app-sql-volume
+          configMap:
+            name: sql-configmap  # Use the name of your ConfigMap here
 
