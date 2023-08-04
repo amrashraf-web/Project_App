@@ -8,18 +8,16 @@ spec:
       containers:
         - name: mysql-client
           image: mysql:latest
-          volumeMounts:
-            - name: sql-config-volume
-              mountPath: /sql-scripts
+          env:
+            - name: SQL_FILE_PATH
+              valueFrom:
+                secretKeyRef:
+                  name: sql-secret
+                  key: sqlFilePath
           command:
             - "sh"
             - "-c"
             - >
-              sql_file_path=$(cat /sql-scripts/sqlFilePath)
               mysql -h mysql-service -u root -pyour_root_password BucketList
-              < "$sql_file_path"
+              < "$SQL_FILE_PATH"
       restartPolicy: Never
-      volumes:
-        - name: sql-config-volume
-          configMap:
-            name: mysql-configmap
