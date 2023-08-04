@@ -4,8 +4,10 @@ metadata:
   name: sql-import-job
 spec:
   template:
-    metadata:  # Remove or modify the generateName field here
-      name: sql-import-pod  # Give your pod a name
+    metadata:
+      name: sql-import-pod
+      labels:  # Set your labels here before creating the Job
+        app: sql-import
     spec:
       containers:
       - name: mysql-client
