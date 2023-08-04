@@ -16,52 +16,7 @@ app.config['MYSQL_DATABASE_PORT'] = int(os.environ['DB_PORT'])
 
 mysql.init_app(app)
 
-setup_done = False
-def execute_sql_file(file_path):
-    with open(file_path, 'r') as file:
-        sql_commands = file.read()
-        conn = mysql.connect()
-        cursor = conn.cursor()
-        cursor.execute(sql_commands, multi=True)
-        conn.commit()
-        cursor.close()
-        conn.close()
         
-@app.before_request
-def setup_database():
-    global setup_done
-    if not setup_done:
-        try:
-            # Execute BucketList.sql script to create the database
-            execute_sql_file('BucketList.sql')
-        except:
-            pass
-        try:
-            # Execute sp_createUser.sql script to create the stored procedure
-            execute_sql_file('sp_createUser.sql')
-        except:
-            pass
-        try:
-            # Execute sp_validateLogin.sql script to create the stored procedure
-            execute_sql_file('sp_validateLogin.sql')
-        except:
-            pass
-        try:
-            # Execute tbl_wish.sql script to create the tbl_wish table
-            execute_sql_file('tbl_wish.sql')
-        except:
-            pass
-        try:
-            # Execute sp_addWish.sql script to create the stored procedure
-            execute_sql_file('sp_addWish.sql')
-        except:
-            pass
-        try:
-            # Execute sp_GetWishByUser.sql script to create the stored procedure
-            execute_sql_file('sp_GetWishByUser.sql')
-        except:
-            pass
-        setup_done = True
 # set a secret key for the session
 # import secrets
 # secret_key = secrets.token_hex(16)
