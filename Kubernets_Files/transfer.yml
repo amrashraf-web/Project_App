@@ -5,7 +5,7 @@ metadata:
 spec:
   template:
     metadata:
-      name: sql-import-pod
+      name: mysql-statefulset
       labels:
         app: sql-import
     spec:
