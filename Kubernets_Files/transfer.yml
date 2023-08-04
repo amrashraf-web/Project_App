@@ -8,16 +8,17 @@ spec:
       containers:
         - name: mysql-client
           image: mysql:latest
-          env:
-            - name: SQL_FILE_PATH
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: sqlFilePath
-          command:
-            - "sh"
-            - "-c"
-            - >
-              mysql -h mysql-service -u root -pyour_root_password BucketList
-              < "$SQL_FILE_PATH"
+          volumeMounts:
+            - name: sql-scripts
+              mountPath: /sql-scripts
+      volumes:
+        - name: sql-scripts
+          emptyDir: {}
       restartPolicy: Never
+      initContainers:
+        - name: copy-sql-file
+          image: busybox
+          command: ["sh", "-c", "cp /workspace/MySQL-and-Python/MySQL_Queries/BucketList.sql /sql-scripts"]
+          volumeMounts:
+            - name: sql-scripts
+              mountPath: /sql-scripts
