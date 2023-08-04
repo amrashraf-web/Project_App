@@ -17,5 +17,5 @@ spec:
             - "-c"
             - >
               mysql -h mysql-service -u root -pyour_root_password BucketList
-              < /MySQL-and-Python/MySQL_Queries/BucketList.sql
+              < /var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries/BucketList.sql
       restartPolicy: Never
