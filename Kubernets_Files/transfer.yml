@@ -6,11 +6,16 @@ spec:
   template:
     metadata:
       name: sql-import-pod
-      labels:  # Set your labels here before creating the Job
+      labels:
         app: sql-import
     spec:
       containers:
-      - name: mysql-client
-        image: mysql:latest
-        command: ["mysql", "-h", "mysql-service", "-u", "root", "your_root_password", "BucketList", "-e", "$(cat MySQL-and-Python/MySQL_Queries/BucketList.sql)"]
+        - name: mysql-client
+          image: mysql:latest
+          command:
+            - "sh"
+            - "-c"
+            - >
+              mysql -h mysql-service -u root -pyour_root_password BucketList
+              < MySQL-and-Python/MySQL_Queries/BucketList.sql
       restartPolicy: Never
