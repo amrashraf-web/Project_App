@@ -23,7 +23,14 @@ pipeline {
                 }
             }
         }
-
+        stage('Print Workspace Path') {
+            steps {
+                script {
+                    def workspacePath = pwd()
+                    echo "Workspace Path: ${workspacePath}"
+                }
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 // Step 1: Build the Docker image and tag it any tag name 
