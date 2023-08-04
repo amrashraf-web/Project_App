@@ -12,7 +12,7 @@ spec:
             - name: SQL_FILE_PATH
               valueFrom:
                 secretKeyRef:
-                  name: sql-secret
+                  name: mysql-secret
                   key: sqlFilePath
           command:
             - "sh"
