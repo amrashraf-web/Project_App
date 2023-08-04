@@ -11,6 +11,13 @@ spec:
           volumeMounts:
             - name: sql-config-volume
               mountPath: /sql-scripts
+          command:
+            - "sh"
+            - "-c"
+            - >
+              sql_file_path=$(cat /sql-scripts/sqlFilePath)
+              mysql -h mysql-service -u root -pyour_root_password BucketList
+              < "$sql_file_path"
       restartPolicy: Never
       volumes:
         - name: sql-config-volume
