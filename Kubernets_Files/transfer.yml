@@ -16,9 +16,9 @@ spec:
             - "-c"
             - >
               mysql -h mysql-service -u root -pyour_root_password BucketList
-              < /sql-scripts/BucketList.sql
+              < /sql-scripts/MySQL-and-Python/MySQL_Queries/BucketList.sql
       restartPolicy: Never
       volumes:
         - name: sql-scripts
           hostPath:
-            path: /var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries
+            path: /var/lib/jenkins/workspace/MyProject
