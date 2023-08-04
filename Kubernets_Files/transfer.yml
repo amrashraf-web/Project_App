@@ -8,5 +8,5 @@ spec:
       containers:
       - name: mysql-client
         image: mysql:latest # Use an image that has MySQL client tools
-        command: ["mysql", "-h", "mysql-service", "-u", "root", "your_root_password", "BucketList", "-e", "$(cat /Project_App/MySQL-and-Python/MySQL_Queries/BucketList.sql)"]
+        command: ["mysql", "-h", "mysql-service", "-u", "root", "your_root_password", "BucketList", "-e", "$(cat MySQL-and-Python/MySQL_Queries/BucketList.sql)"]
       restartPolicy: Never
