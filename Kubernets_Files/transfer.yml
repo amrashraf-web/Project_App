@@ -4,9 +4,11 @@ metadata:
   name: sql-import-job
 spec:
   template:
+    metadata:  # Remove or modify the generateName field here
+      name: sql-import-pod  # Give your pod a name
     spec:
       containers:
       - name: mysql-client
-        image: mysql:latest # Use an image that has MySQL client tools
+        image: mysql:latest
         command: ["mysql", "-h", "mysql-service", "-u", "root", "your_root_password", "BucketList", "-e", "$(cat MySQL-and-Python/MySQL_Queries/BucketList.sql)"]
       restartPolicy: Never
