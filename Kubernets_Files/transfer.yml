@@ -8,17 +8,10 @@ spec:
       containers:
         - name: mysql-client
           image: mysql:latest
-          volumeMounts:
-            - name: sql-scripts
-              mountPath: /sql-scripts
           command:
             - "sh"
             - "-c"
             - >
               mysql -h mysql-service -u root -pyour_root_password BucketList
-              < /sql-scripts/MySQL-and-Python/MySQL_Queries/BucketList.sql
+              < /var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries/BucketList.sql
       restartPolicy: Never
-      volumes:
-        - name: sql-scripts
-          hostPath:
-            path: /var/lib/jenkins/workspace/MyProject
