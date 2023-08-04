@@ -11,14 +11,14 @@ spec:
           volumeMounts:
             - name: sql-scripts
               mountPath: /sql-scripts
+          command:
+            - "sh"
+            - "-c"
+            - >
+              mysql -h mysql-service -u root -pyour_root_password BucketList
+              < /sql-scripts/BucketList.sql
+      restartPolicy: Never
       volumes:
         - name: sql-scripts
-          emptyDir: {}
-      restartPolicy: Never
-      initContainers:
-        - name: copy-sql-file
-          image: busybox
-          command: ["sh", "-c", "cp /workspace/MySQL-and-Python/MySQL_Queries/BucketList.sql /sql-scripts"]
-          volumeMounts:
-            - name: sql-scripts
-              mountPath: /sql-scripts
+          hostPath:
+            path: /var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries
