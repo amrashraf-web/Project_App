@@ -55,7 +55,6 @@ pipeline {
                     // Step 1 : Update Kube Config For Jenkins
                     sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
                     // Step 2: Apply the modified Kubernetes files with replaced image tag and repo
-                    sh "kubectl delete pods mysql-statefulset-0"
                     sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
                     sh "kubectl apply -f Kubernets_Files/"
                 }
