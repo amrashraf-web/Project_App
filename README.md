@@ -58,4 +58,12 @@ Follow these steps to install dependencies and prepare your project infrastructu
    git clone https://github.com/amrashraf-web/Project_App
    
 ### Install Terraform and Ansible
-1 - Navigate to the project folder:
+1. Navigate to the project folder:
+    ```sh
+    cd ~/Project_App
+2. Make the installation script executable:
+    ```sh
+    chmod +x Install_Terrafrom_Ansible.sh
+3. Run the installation script:
+    ```sh
+    ./Install_Terrafrom_Ansible.sh
