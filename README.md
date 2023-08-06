@@ -67,3 +67,13 @@ Follow these steps to install dependencies and prepare your project infrastructu
 3. Run the installation script:
     ```sh
     ./Install_Terrafrom_Ansible.sh
+### Prepare Infrastructure
+1. Put your AWS access-secret key in values.auto.tfvars under Terraform_Files.
+2. Update main.tf under Terraform_Files with your dependencies (key_pair_name)
+## Automate Infrastructure with Dependencies
+1. Update ansible_ssh_private_key_file in inventory.ini With Your Private Key
+2. Run the deployment script:
+    ```sh
+    cd ~/Project_App
+    chmod +x Deploy.sh
+    ./Deploy.sh
