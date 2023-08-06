@@ -70,6 +70,7 @@ Follow these steps to install dependencies and prepare your project infrastructu
 ### Prepare Infrastructure
 1. Put your AWS access-secret key in values.auto.tfvars under Terraform_Files.
 2. Update main.tf under Terraform_Files with your dependencies (key_pair_name)
+   
 ## Automate Infrastructure with Dependencies
 1. Update ansible_ssh_private_key_file in inventory.ini With Your Private Key
 2. Run the deployment script:
@@ -77,3 +78,23 @@ Follow these steps to install dependencies and prepare your project infrastructu
     cd ~/Project_App
     chmod +x Deploy.sh
     ./Deploy.sh
+
+## Update Jenkins and Configure Credentials
+1. Access the URL obtained from Ansible output and log in.
+2. Install suggested plugins and create your admin user.
+3. Start Jenkins.
+4.Now Will Add Your Gihub Key and Aws Key To Jenkins
+   1 -  Go To Manage Jenkins > credentials > system > Global credentials (unrestricted) > Add credentials
+        A - Use Username with password
+        B - Scope Global
+        C - in username Field put your github username
+        D - in password Field put your key token of github
+        E - in ID Field Put github_key
+        F - Click Create
+   2 - Go To Manage Jenkins > credentials > system > Global credentials (unrestricted) > Add credentials
+        A - Use Username with password
+        B - Scope Global
+        C - in username Field put your Aws Access Key
+        D - in password Field put your Aws Secret Key
+        E - in ID Field Put aws_key
+        F - Click Create
