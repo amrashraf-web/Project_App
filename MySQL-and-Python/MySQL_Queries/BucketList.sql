@@ -5,7 +5,6 @@ CREATE TABLE `BucketList`.`tbl_user` (
   `user_password` VARCHAR(100) NULL,  -- Update the length to 100 characters
   PRIMARY KEY (`user_id`)
 );
-DROP procedure IF EXISTS `BucketList`.`sp_createUser`;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_createUser`(
     IN p_name VARCHAR(50),
     IN p_username VARCHAR(100),
@@ -26,7 +25,6 @@ BEGIN
         );
     END IF;
 END;
-DROP procedure IF EXISTS `BucketList`.`sp_validateLogin`;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_validateLogin`(IN p_username VARCHAR(100))  -- Update the length to 100 characters to match the column in tbl_user table
 BEGIN
     SELECT user_id, user_name, user_username, user_password  -- Return the user_id, user_name, user_username, and user_password columns
@@ -41,7 +39,6 @@ CREATE TABLE `tbl_wish` (
   `wish_date` datetime DEFAULT NULL,
   PRIMARY KEY (`wish_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-DROP procedure IF EXISTS `BucketList`.`sp_addWish`;
 CREATE DEFINER=root@localhost PROCEDURE sp_addWish(
     IN p_title VARCHAR(255),
     IN p_description TEXT,
@@ -51,7 +48,6 @@ BEGIN
     INSERT INTO tbl_wish (wish_title, wish_description, user_id, wish_date)
     VALUES (p_title, p_description, p_user_id, NOW());
 END;
-DROP procedure IF EXISTS `BucketList`.`sp_GetWishByUser`;
 CREATE DEFINER=root@localhost PROCEDURE sp_GetWishByUser(
     IN p_user_id bigint)
 BEGIN
