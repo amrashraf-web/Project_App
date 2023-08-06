@@ -5,6 +5,16 @@ CREATE TABLE `BucketList`.`tbl_user` (
   `user_password` VARCHAR(200) NULL,
   PRIMARY KEY (`user_id`));
 
+CREATE TABLE `BucketList`.`tbl_wish` (
+  `wish_id` int(11) NOT NULL AUTO_INCREMENT,
+  `wish_title` varchar(45) DEFAULT NULL,
+  `wish_description` varchar(5000) DEFAULT NULL,
+  `wish_user_id` int(11) DEFAULT NULL,
+  `wish_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`wish_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+
 USE BucketList;
 
 INSERT INTO tbl_user
@@ -52,16 +62,6 @@ END$$
 DELIMITER ;
 
 
-CREATE TABLE `BucketList`.`tbl_wish` (
-  `wish_id` int(11) NOT NULL AUTO_INCREMENT,
-  `wish_title` varchar(45) DEFAULT NULL,
-  `wish_description` varchar(5000) DEFAULT NULL,
-  `wish_user_id` int(11) DEFAULT NULL,
-  `wish_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`wish_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
-
 USE `BucketList`;
 DROP procedure IF EXISTS `BucketList`.`sp_addWish`;
 DELIMITER $$
@@ -87,7 +87,6 @@ BEGIN
 	);
 END$$
 DELIMITER ;
-;
 
 USE `BucketList`;
 DROP procedure IF EXISTS `sp_GetWishByUser`;
