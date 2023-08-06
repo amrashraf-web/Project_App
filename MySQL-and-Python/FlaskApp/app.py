@@ -22,7 +22,41 @@ mysql.init_app(app)
 # secret_key = secrets.token_hex(16)
 app.secret_key = '8a2c07687244ceade6915b407aa6da4c'
 
+sql_executed = False
 
+
+def execute_sql():
+    global sql_executed
+    if not sql_executed:
+        try:
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            # Read the SQL file
+            with open('BucketList.sql', 'r') as file:
+                sql_commands = file.read()
+
+            # Split SQL commands using the delimiter
+            commands = sql_commands.split(';')
+
+            # Execute each SQL command
+            for command in commands:
+                try:
+                    if command.strip():
+                        cursor.execute(command)
+                        conn.commit()
+                        print("Command executed successfully.")
+
+                except Exception as e:
+                    print("Error executing command:", e)
+
+        except Exception as e:
+            return "An error occurred: " + str(e)
+
+
+@app.route("/")
+def main():
+    execute_sql()
+    return render_template('index.html')
 ### Here For Readness and Liveness Deployment
 
 @app.route('/healthz')
@@ -33,11 +67,6 @@ def health_check():
 @app.route('/ready')
 def readiness_check():
     return "OK", 200
-
-@app.route("/")
-def main():
-    return render_template('index.html')
-
 
 @app.route('/showSignUp')
 def showSignUp():
