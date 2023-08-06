@@ -29,25 +29,26 @@ def execute_sql():
     global sql_executed
     if not sql_executed:
         try:
-            conn = mysql.connect()
-            cursor = conn.cursor()
-            # Read the SQL file
+            connection = mysql.connect()
+            cursor = connection.cursor()
+        
+            # Read SQL code from the file
             with open('BucketList.sql', 'r') as file:
-                sql_commands = file.read()
-
-            # Split SQL commands using the delimiter
-            commands = sql_commands.split(';')
-
-            # Execute each SQL command
-            for command in commands:
-                try:
-                    if command.strip():
-                        cursor.execute(command)
-                        conn.commit()
-                        print("Command executed successfully.")
-
-                except Exception as e:
-                    print("Error executing command:", e)
+                sql_statements = file.read()
+        
+            # Split SQL statements using delimiter
+            delimiter = "DELIMITER $$"
+            statements = sql_statements.split(delimiter)
+        
+            # Execute each SQL statement
+            for statement in statements:
+                if statement.strip():  # Skip empty statements
+                    cursor.execute(statement)
+                    connection.commit()
+        
+            # Close cursor and connection
+            cursor.close()
+            connection.close()
 
         except Exception as e:
             return "An error occurred: " + str(e)
