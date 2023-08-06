@@ -31,7 +31,6 @@ def execute_sql():
         try:
             conn = mysql.connect()
             cursor = conn.cursor()
-            print("Ok")
             # Read the SQL file
             with open('BucketList.sql', 'r') as file:
                 sql_commands = file.read()
@@ -52,8 +51,6 @@ def execute_sql():
 
         except Exception as e:
             return "An error occurred: " + str(e)
-    else:
-        print("Sorry")
 
 
 
