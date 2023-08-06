@@ -1,74 +1,61 @@
-# Project Installation Guide
+# Project Setup Guide
 
-This guide will walk you through the installation process for setting up an EKS cluster, Jenkins, Docker, Kubernetes, and related components for your project. Follow the steps below to get started.
-
-## Prerequisites
-
-Before you begin, ensure you have the following prerequisites installed and configured:
-
-- [GitHub Repository](https://github.com/uym2/MySQL-and-Python)
-- AWS Account with necessary permissions
-- Docker
-- Terraform
-- Ansible
+Welcome to the project setup guide! This guide will walk you through the necessary steps to set up your project environment, including GitHub, AWS, Terraform, Ansible, Jenkins, and Kubernetes.
 
 ## Table of Contents
 
-1. [Terraform Setup](#terraform-setup)
-2. [Jenkins Installation](#jenkins-installation)
-3. [AWS and Kubernetes Configuration](#aws-and-kubernetes-configuration)
-4. [Docker Image and Compose](#docker-image-and-compose)
-5. [Kubernetes Deployment](#kubernetes-deployment)
-6. [Jenkins Configuration](#jenkins-configuration)
-7. [Project Scripts](#project-scripts)
-8. [Expected Deliverables](#expected-deliverables)
+1. [Prerequisites](#prerequisites)
+    - [GitHub Account and Token](#github-account-and-token)
+    - [AWS Account and Access-Secret Key](#aws-account-and-access-secret-key)
+    - [AWS Key Pair](#aws-key-pair)
+    - [Ubuntu Machine](#ubuntu-machine)
+2. [Install Dependencies and Prepare Infrastructure](#install-dependencies-and-prepare-infrastructure)
+    - [Clone Project Repository](#clone-project-repository)
+    - [Install Terraform and Ansible](#install-terraform-and-ansible)
+    - [Prepare Infrastructure](#prepare-infrastructure)
+3. [Automate Infrastructure with Dependencies](#automate-infrastructure-with-dependencies)
+4. [Update Jenkins and Configure Credentials](#update-jenkins-and-configure-credentials)
+5. [Create Deployment Pipeline](#create-deployment-pipeline)
+6. [Check Pods and Nodes](#check-pods-and-nodes)
 
-## 1. Terraform Setup
+## Prerequisites
 
-Follow the instructions in the [Terraform Scripts Repository](https://github.com/uym2/MySQL-and-Python) to create an EKS cluster, an EC2 instance for Jenkins, and an ECR repository.
+Before you begin, ensure you have the following prerequisites in place:
 
-## 2. Jenkins Installation
+### GitHub Account and Token
 
-Use Ansible to install and configure Jenkins on the EC2 instance:
+1. Log in to GitHub and access your settings.
+2. Under "Developer settings," select "Personal access tokens."
+3. Generate a new token, choosing the necessary permissions.
+4. Copy the generated token securely.
 
-- Install Jenkins
-- Configure Jenkins access
-- Install necessary plugins
+### AWS Account and Access-Secret Key
 
-## 3. AWS and Kubernetes Configuration
+1. Log in to the AWS Management Console.
+2. Access IAM and create a new user with programmatic access.
+3. Assign permissions to the user, either through a group or policies.
+4. Create an access-secret key for the user and store it securely.
 
-- Add AWS credentials to Jenkins
-- Configure Kubernetes access (kubeconfig)
+### AWS Key Pair
 
-## 4. Docker Image and Compose
+1. Log in to the AWS Management Console.
+2. Access the EC2 Dashboard and create a new key pair.
+3. Choose the "pem" format and download the private key.
 
-- Fork the provided GitHub repository
-- Create a Docker image for your code
-- Create a Docker compose file for your code and database
+### Ubuntu Machine
 
-## 5. Kubernetes Deployment
+You'll need access to an Ubuntu machine for this setup.
 
-Create Kubernetes files for:
+## Install Dependencies and Prepare Infrastructure
 
-- Deployment of the Python code
-- StatefulSet for MySQL with PVs and PVCs
-- Services for both the database and code
-- ConfigMap and Secrets for the code
-- Ingress using NGINX Controller
+Follow these steps to install dependencies and prepare your project infrastructure:
 
-## 6. Jenkins Configuration
+### Clone Project Repository
 
-- Install NGINX Controller to the EKS cluster
-- Configure Jenkins pipeline-as-code to build from GitHub on every push
-- Configure GitHub webhooks to integrate with Jenkins
-- Set up the pipeline to:
-  - Build new Docker images
-  - Push images to ECR
-  - Deploy images to Kubernetes
+1. Clone the project repository to your home directory:
 
-## 7. Project Scripts
-
-Use the provided bash script to run Terraform and Ansible files for setup.
-
-```bash
-./setup.sh
+   ```sh
+   git clone https://github.com/amrashraf-web/Project_App
+   
+### Install Terraform and Ansible
+1 - Navigate to the project folder:
