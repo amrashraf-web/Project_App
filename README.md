@@ -107,11 +107,14 @@
 
 ## 4. Update Jenkins with Dependencies
 
-1. **Access Jenkins**: Access the URL provided in the Ansible output and log in with your admin API token.
+### 4.1 Access Jenkins
+1. **Access Jenkins**: Access Jenkins using the provided URL in Last Image Mentioned Above and login with The Admin API token.
 2. **Install Plugins**: Click "Install suggested plugins" and wait for the installation to finish.
 3. **Create User**: Create a user with necessary information.
 4. **Start Jenkins**: Click "Start Jenkins".
-5. **Add GitHub and AWS Keys**:
+
+### 4.2 Add GitHub and AWS Keys
+1. **Add GitHub and AWS Keys**:
 
    - GitHub Key:
      - Go to Manage Jenkins > Credentials > System > Global credentials (unrestricted) > Add credentials.
@@ -125,11 +128,6 @@
      - Provide your AWS Access Key and Secret Key.
      - ID: aws_key
 
-### 4.1 Access Jenkins
-Access Jenkins using the provided URL and login with your admin API token.
-
-### 4.2 Add GitHub and AWS Keys
-Add your GitHub and AWS keys to Jenkins for authentication.
 
 ## 5. Create Deployment Pipeline
 
