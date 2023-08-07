@@ -153,7 +153,7 @@
 
 2. Configure the Webhook:
 
-  - Payload URL: This is the URL of your Jenkins server's webhook endpoint. It usually looks like https://your-jenkins-server/github-webhook/.
+  - Payload URL: This is the URL of your Jenkins server's webhook endpoint. It usually looks like http://ip_server:8080/github-webhook/.
   - Content type: Set it to application/json.
   - Which events would you like to trigger this webhook?: Choose the events that should trigger the Jenkins build. Typically, you might select "Push events" for any code pushes to the repository.
 
