@@ -1,7 +1,9 @@
 <div align="center">
   <h1 style="color: red;"> Sprints Graduation Project</h1>
 </div>
-
+```
+git clone
+```
 # :star_struck: Project Setup Guide :star_struck:
 
 Welcome to the project setup guide! This guide will walk you through the necessary steps to set up your project environment, including GitHub, AWS, Terraform, Ansible, Jenkins, and Kubernetes.
