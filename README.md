@@ -7,12 +7,12 @@
 </div>
 
 <div align="center">
-  <h1 style="color: yellow;">Introduction</h1>
+  <h1 style="color: yellow;"> :cowboy_hat_face: Introduction</h1>
   <h2>Welcome to the comprehensive guide on deploying a Flask application using Kubernetes (K8s) and Jenkins. This guide is designed to take you through every step necessary to successfully set up, automate, and deploy your Flask application, streamlining your development workflow and ensuring a smooth deployment process. Whether you're new to the world of deployment or looking to enhance your existing knowledge, this guide has got you covered.</h2>
 </div>
 
 <div align="center">
-  <h1 style="color: green;">Explanation</h1>
+  <h1 style="color: green;"> :sunglasses: Explanation</h1>
   <h2>In this guide, we've outlined a detailed roadmap to guide you through each stage of deploying a Flask application using Kubernetes and Jenkins. We've broken down the process into several key sections</h2>
 </div>
 
@@ -211,6 +211,6 @@
 
 
 <div align="center">
-  <h1 style="color: yellow;">Conclusion</h1>
+  <h1 style="color: yellow;"> :100: Conclusion</h1>
   <h2>Deploying a Flask application using Kubernetes and Jenkins can seem complex, but with this guide, you now have a clear roadmap to follow. By carefully following each step, you'll establish a robust deployment process that streamlines your workflow and ensures the successful deployment of your projects. Remember, practice makes perfect, so don't hesitate to experiment and adapt the process to your specific needs. Congratulations on taking this significant step toward enhancing your development and deployment skills!</h2>
 </div>
