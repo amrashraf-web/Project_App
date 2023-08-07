@@ -26,21 +26,29 @@ sql_executed = False
 def execute_sql():
     global sql_executed
     if not sql_executed:
-        try:
-            sql_file = 'BucketList.sql'
-            command = [
-                'mysql',
-                '-u', app.config['MYSQL_DATABASE_USER'],
-                '-p' + app.config['MYSQL_DATABASE_PASSWORD'],
-                '-h', app.config['MYSQL_DATABASE_HOST'],
-                '-P', str(app.config['MYSQL_DATABASE_PORT']),
-                app.config['MYSQL_DATABASE_DB'],
-                '<', sql_file
-            ]
-            subprocess.run(command, shell=True, check=True)
-            sql_executed = True
-        except subprocess.CalledProcessError as e:
-            return "An error occurred: " + str(e)
+        connection = mysql.connect()
+        cursor = connection.cursor()
+    
+        # Read SQL code from the file
+        with open('BucketList.sql', 'r') as file:
+            sql_statements = file.read()
+    
+        # Execute each SQL statement
+        statements = sql_statements.split(';')
+        # Remove any empty statements
+        statements = [stmt.strip() for stmt in statements if stmt.strip()]
+        # Execute each statement
+        for statement in statements:
+            try:
+                cursor.execute(statement)
+            except Exception as e:
+                print(f"Error: {e}")
+        connection.commit()
+    
+        # Close cursor and connection
+        cursor.close()
+        connection.close()
+        sql_executed = True
 
 
 @app.route("/")
