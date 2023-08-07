@@ -113,11 +113,12 @@
 ### 3.4 **OutPut Terraform Ansible Image**
   - Here Output Of Terraform Image
    
-    ![1](https://github.com/amrashraf-web/Project_App/assets/82893114/456638cc-d6f6-4269-ae45-2d02a626afb7)
-    
+    ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/6e762903-e52d-418b-8403-b4acb4d41fa1)
+
   - Here Output Of Ansible Image
    
-    ![2](https://github.com/amrashraf-web/Project_App/assets/82893114/2a830cfe-ba7f-4193-87cb-f75d8f76b5d0)
+    ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/ad14539a-49d6-4d2d-87de-294942164a75)
+
 
 
 ## 4. Update Jenkins with Dependencies
