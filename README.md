@@ -20,8 +20,9 @@
 - [5. Create Deployment Pipeline](#5-create-deployment-pipeline)
   - [5.1 Configure Jenkins Job](#51-configure-jenkins-job)
 - [6. Check Pods and Nodes](#6-check-pods-and-nodes)
-- [7. Test Locally with Docker-compose](#7-test-locally-with-docker-compose)
-- [8. Test Project and Database](#8-test-project-and-database)
+- [7. Test Project and Database](#7-test-project-and-database)
+- [8. Test Locally with Docker-compose](#8-test-locally-with-docker-compose)
+
 
 ## 1. Prerequisites
 
@@ -141,9 +142,11 @@
   4. - Click Ok
   5. - in The Configure Page 
       - Check True For This Option : GitHub hook trigger for GITScm polling In Build Triggers
-      - In Pipeline Choose Pipeline Script And Put Your Jenkins Code 
+      - In Pipeline Choose Pipeline Script And Put Your Jenkins Code
+        
          > [!IMPORTANT]
          > Make Sure That You Replaced My ECR repository with your ECR repository in JenkinsFile Code Line 5 [jenkinsfile](https://github.com/amrashraf-web/Project_App/blob/master/Jenkinsfile)
+         
       - Click Save 
       - Now Click Build
 
@@ -151,11 +154,12 @@
 
 Check your Kubernetes cluster's nodes and pods.
 
-## 7. Test Locally with Docker-compose
+## 7. Test Project and Database
+
+Test your project functionality and check if the database is working.
+
+## 8. Test Locally with Docker-compose
 
 Test your project locally using Docker-compose.
 
-## 8. Test Project and Database
-
-Test your project functionality and check if the database is working.
 
