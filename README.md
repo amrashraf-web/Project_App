@@ -1,4 +1,11 @@
-# Flask App Project Setup Guide
+<div align="center">
+  <h1 style="color: red;"> Sprints Graduation Project</h1>
+</div>
+
+<div align="center">
+  <h1 style="color: green;">Deploying Flask Application Using ( K8s - Jenkins )</h1>
+</div>
+
 
 ## Table of Contents
 - [1. Prerequisites](#1-prerequisites)
