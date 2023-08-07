@@ -100,8 +100,12 @@
      - ### Put Your Aws Key Pair File (.pem) In This Folder [Ansible_Files](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files)
        
      - ### Replace You Aws Key Pair in ansible_ssh_private_key_file in this file [inventory.ini](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/inventory.ini)
-   
-### 3.3 **Run Deployment Script**
+
+### 3.3 Replace Private Key in Ansible
+1. **Replace Aws Access-Secret Key in Ansible**: Replace Your Access-Secret key in Ansible configuration.
+     - ### Put Your Your Access-Secret key In This File [main.yml](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/roles/Install_Aws/vars/main.yml)
+       
+### 3.4 **Run Deployment Script**
 1. Navigate to the project folder and run the deployment script.
    ```
    cd ~/Project_App
