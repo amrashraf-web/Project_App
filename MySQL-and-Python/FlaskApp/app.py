@@ -36,15 +36,9 @@ def execute_sql():
             with open('BucketList.sql', 'r') as file:
                 sql_statements = file.read()
         
-            # Split SQL statements using delimiter
-            delimiter = "DELIMITER $$"
-            statements = sql_statements.split(delimiter)
-        
             # Execute each SQL statement
-            for statement in statements:
-                if statement.strip():  # Skip empty statements
-                    cursor.execute(statement)
-                    connection.commit()
+            cursor.execute(sql_statements)
+            connection.commit()
         
             # Close cursor and connection
             cursor.close()
