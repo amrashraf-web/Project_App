@@ -145,7 +145,7 @@
       - In Pipeline Choose Pipeline Script And Put Your Jenkins Code
         
          > [!IMPORTANT]
-         
+         > 
          > Make Sure That You Replaced My ECR repository with your ECR repository in JenkinsFile Code Line 5 [jenkinsfile](https://github.com/amrashraf-web/Project_App/blob/master/Jenkinsfile)
          
       - Click Save 
