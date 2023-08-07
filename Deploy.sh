@@ -45,11 +45,8 @@ echo "Starting script..."
 
 # Call the functions to run Terraform and Ansible
 run_terraform
-echo "Done Finished Terraform Successfully"
 update_inventory
-echo "Done Updated Inventory Successfully"
 echo "Please Wait 10 Sec Until The Server Initializes"
 sleep 10
 run_ansible
-echo "Done Finished Ansible Successfully"
 echo "Script execution finished."
