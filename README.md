@@ -65,6 +65,7 @@
 ### 2.1 Clone the Project
   1. **Clone Project**: Clone this project into your home directory with the provided command.
      ```
+     cd ~
      git clone https://github.com/amrashraf-web/Project_App
      ```
 
