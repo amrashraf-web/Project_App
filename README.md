@@ -9,10 +9,11 @@
 - [2. Install Dependencies and Prepare Infrastructure](#2-install-dependencies-and-prepare-infrastructure)
   - [2.1 Clone the Project](#21-clone-the-project)
   - [2.2 Install Terraform and Ansible](#22-install-terraform-and-ansible)
-  - [2.3 Prepare Infrastructure](#23-prepare-infrastructure)
 - [3. Automate Infrastructure and Dependencies](#3-automate-infrastructure-and-dependencies)
-  - [3.1 Replace Private Key in Ansible](#31-replace-private-key-in-ansible)
-  - [3.2 Run Deployment Script](#32-run-deployment-script)
+  - [3.1 Prepare Infrastructure](#31-prepare-infrastructure)
+  - [3.2 Replace Private Key in Ansible](#32-replace-private-key-in-ansible)
+  - [3.3 Run Deployment Script](#33-run-deployment-script)
+  - [3.4 OutPut Terraform Ansible Image](#34-OutPut-Terraform-Ansible-Image)
 - [4. Update Jenkins with Dependencies](#4-update-jenkins-with-dependencies)
   - [4.1 Access Jenkins](#41-access-jenkins)
   - [4.2 Add GitHub and AWS Keys](#42-add-github-and-aws-keys)
@@ -78,22 +79,25 @@
      ./Install_Terrafrom_Ansible.sh
      ```
 
-### 2.3 Prepare Infrastructure
-  1. Configure Your Access-Secret key And Key Pair Name in Terraform and update necessary information.
-     ### Put Your Aws Access - Secret Key - Key Pair Name in file [values.auto.tfvars](https://github.com/amrashraf-web/Project_App/blob/master/Terraform_Files/values.auto.tfvars)
+
 
 ## 3. Automate Infrastructure and Dependencies
-   
-### 3.1 Replace Private Key in Ansible
+
+### 3.1 Prepare Infrastructure
+  1. Configure Your Access-Secret key And Key Pair Name in Terraform and update necessary information.
+     ### Put Your Aws Access - Secret Key - Key Pair Name in file [values.auto.tfvars](https://github.com/amrashraf-web/Project_App/blob/master/Terraform_Files/values.auto.tfvars)
+     
+### 3.2 Replace Private Key in Ansible
 1. **Replace Private Key**: Replace your private key pair in Ansible configuration.
      ### Replace You Aws Key Paid in ansible_ssh_private_key_file in this file [inventory.ini](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/inventory.ini)
    
-### 3.2 **Run Deployment Script**: Navigate to the project folder and run the deployment script.
+### 3.3 **Run Deployment Script**: Navigate to the project folder and run the deployment script.
    ```
    cd ~/Project_App
    chmod +x Deploy.sh
    ./Deploy.sh
    ```
+### 3.4 **OutPut Terraform Ansible Image**: Here Output Of Terraform - Ansible Image
    
 
 ## 4. Update Jenkins with Dependencies
