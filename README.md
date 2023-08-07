@@ -5,6 +5,7 @@
 ```
 git clone
 ```
+- [x] Github
 > [!NOTE]
 > hi amr
 # :star_struck: Project Setup Guide :star_struck:
