@@ -5,10 +5,10 @@ Welcome to the project setup guide! This guide will walk you through the necessa
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)
-    - [GitHub Account and Token](#github-account-and-token)
-    - [AWS Account and Access-Secret Key](#aws-account-and-access-secret-key)
-    - [AWS Key Pair](#aws-key-pair)
-    - [Ubuntu Machine](#ubuntu-machine)
+- [GitHub Account and Token](#github-account-and-token)
+- [AWS Account and Access-Secret Key](#aws-account-and-access-secret-key)
+- [AWS Key Pair](#aws-key-pair)
+- [Ubuntu Machine](#ubuntu-machine)
 2. [Install Dependencies and Prepare Infrastructure](#install-dependencies-and-prepare-infrastructure)
     - [Clone Project Repository](#clone-project-repository)
     - [Install Terraform and Ansible](#install-terraform-and-ansible)
