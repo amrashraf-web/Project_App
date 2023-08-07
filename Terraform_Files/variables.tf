@@ -9,3 +9,8 @@ variable "aws_access_key" {
 variable "aws_secret_key" {
   description = "The Aws Secret Key ID."
 }
+
+variable "key_pair_name" {
+  description = "The Aws Key Paid Name."
+}
+ 
