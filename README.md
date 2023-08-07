@@ -41,10 +41,18 @@
 ### 1. Clone This Project
 
 1. **Clone Project**: Clone this project into your home directory with the provided command.
+   ```
+   git clone https://github.com/amrashraf-web/Project_App
+   ```
 
 ### 2. Install Terraform And Ansible
 
 1. **Install Dependencies**: Navigate to the project folder and install Terraform and Ansible.
+   ```
+   cd ~/Project_App
+   chmod +x Install_Terrafrom_Ansible.sh
+   ./Install_Terrafrom_Ansible.sh
+   ```
 
 ### 3. Prepare Infrastructure
 
@@ -54,7 +62,11 @@
 
 1. **Replace Private Key**: Replace your private key pair in Ansible configuration.
 2. **Run Deployment Script**: Navigate to the project folder and run the deployment script.
-
+   ```
+   cd ~/Project_App
+   chmod +x Deploy.sh
+   ./Deploy.sh
+   ```
 ## Update Jenkins With Credentials And Create Pipeline
 
 1. **Access Jenkins**: Access the URL provided in the Ansible output and log in with your admin API token.
