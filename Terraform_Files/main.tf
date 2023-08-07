@@ -65,7 +65,7 @@ module "ec2" {
   security_group = module.security_group.security_group_id
   eks_profile_name = module.eks.eks_profile_name
   instance_type = "t2.small"
-  key_pair_name = "amora"
+  key_pair_name = var.key_pair_name
   instance_name = "Project_Server"
 }
 
