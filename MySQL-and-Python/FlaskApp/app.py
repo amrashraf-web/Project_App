@@ -1,7 +1,6 @@
 from flask import Flask, render_template, json, request, redirect, session
 from flaskext.mysql import MySQL
 import os
-import subprocess
 app = Flask(__name__)
 
 mysql = MySQL()
@@ -22,38 +21,9 @@ mysql.init_app(app)
 # secret_key = secrets.token_hex(16)
 app.secret_key = '8a2c07687244ceade6915b407aa6da4c'
 
-sql_executed = False
-def execute_sql():
-    global sql_executed
-    if not sql_executed:
-        connection = mysql.connect()
-        cursor = connection.cursor()
-    
-        # Read SQL code from the file
-        with open('BucketList.sql', 'r') as file:
-            sql_statements = file.read()
-    
-        # Execute each SQL statement
-        statements = sql_statements.split(';')
-        # Remove any empty statements
-        statements = [stmt.strip() for stmt in statements if stmt.strip()]
-        # Execute each statement
-        for statement in statements:
-            try:
-                cursor.execute(statement)
-            except Exception as e:
-                print(f"Error: {e}")
-        connection.commit()
-    
-        # Close cursor and connection
-        cursor.close()
-        connection.close()
-        sql_executed = True
-
 
 @app.route("/")
 def main():
-    execute_sql()
     return render_template('index.html')
 ### Here For Readness and Liveness Deployment
 
