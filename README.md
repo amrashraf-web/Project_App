@@ -25,7 +25,8 @@
   - [4.1 Access Jenkins](#41-access-jenkins)
   - [4.2 Add GitHub and AWS Keys](#42-add-github-and-aws-keys)
 - [5. Create Deployment Pipeline](#5-create-deployment-pipeline)
-  - [5.1 Configure Jenkins Job](#51-configure-jenkins-job)
+  - [5.1 Create a Webhook in Github](#51-Create-a-Webhook-in-Github)
+  - [5.2 Configure Jenkins Job](#52-configure-jenkins-job)
 - [6. Check Pods and Nodes](#6-check-pods-and-nodes)
 - [7. Test Project and Database](#7-test-project-and-database)
 - [8. Test Locally with Docker-compose](#8-test-locally-with-docker-compose)
@@ -142,7 +143,23 @@
 
 ## 5. Create Deployment Pipeline
 
-### 5.1 Configure Jenkins Job
+### 5.1 Create a Webhook in Github
+1. Create a Webhook:
+   
+ - Go to your GitHub repository.
+ - Click on "Settings" tab.
+ - Click on "Webhooks" in the left sidebar.
+ - Click the "Add webhook" button.
+
+2. Configure the Webhook:
+
+  - Payload URL: This is the URL of your Jenkins server's webhook endpoint. It usually looks like https://your-jenkins-server/github-webhook/.
+  - Content type: Set it to application/json.
+  - Which events would you like to trigger this webhook?: Choose the events that should trigger the Jenkins build. Typically, you might select "Push events" for any code pushes to the repository.
+
+  - Click the "Add webhook" button to save your webhook configuration.
+
+### 5.2 Configure Jenkins Job
   1. - Click Create Job 
   2. - In Enter an item name Field Put Any Name For Pipeline
   3. - Choose Pipeline
