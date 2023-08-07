@@ -123,13 +123,13 @@
    - GitHub Key:
      - Go to Manage Jenkins > Credentials > System > Global credentials (unrestricted) > Add credentials.
      - Use Username with password, scope Global.
-     - Provide your GitHub username and token.
+     - Provide your GitHub username in username field and token in password field.
      - ID: github_key
 
    - AWS Key:
      - Go to Manage Jenkins > Credentials > System > Global credentials (unrestricted) > Add credentials.
      - Use Username with password, scope Global.
-     - Provide your AWS Access Key and Secret Key.
+     - Provide your AWS Access Key in username field and Secret Key in password field.
      - ID: aws_key
 
 
@@ -145,6 +145,7 @@
       - In Pipeline Choose Pipeline Script And Put Your Jenkins Code
         
          > [!IMPORTANT]
+         
          > Make Sure That You Replaced My ECR repository with your ECR repository in JenkinsFile Code Line 5 [jenkinsfile](https://github.com/amrashraf-web/Project_App/blob/master/Jenkinsfile)
          
       - Click Save 
