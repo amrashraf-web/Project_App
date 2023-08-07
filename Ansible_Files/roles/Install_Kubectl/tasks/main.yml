@@ -9,8 +9,9 @@
   lineinfile:
     path: "$HOME/.bashrc"
     line: "export PATH=$HOME/bin:$PATH"
+    
 - name: Fetch EKS Cluster status
-  command: "aws eks --region {{ aws_region }} describe-cluster --name sprints-eks-cluster --query cluster.status"
+  command: "aws eks --region us-east-1 describe-cluster --name sprints-eks-cluster --query cluster.status"
   register: eks_cluster_status
 
 - name: Print EKS Cluster status
