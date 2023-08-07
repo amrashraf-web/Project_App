@@ -54,10 +54,10 @@ spec:
       initContainers:
         - name: copy-sql-file
           image: busybox:latest  # You can use any lightweight image with basic file utilities
-          command: ["cp", "/var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries/BucketList.sql", "/docker-entrypoint-initdb.d"]
+          command: ["sh","-c","cp /var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries/BucketList.sql /mnt/BucketList.sql"]
           volumeMounts:
             - name: sql-file
-              mountPath: /docker-entrypoint-initdb.d
+              mountPath: /mnt
       containers:
         - name: mysql-container
           image: mysql:latest
