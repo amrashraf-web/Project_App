@@ -15,7 +15,6 @@ CREATE TABLE `tbl_wish` (
   PRIMARY KEY (`wish_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
-USE BucketList;
 
 INSERT INTO tbl_user
 VALUES
@@ -42,8 +41,6 @@ BEGIN
     SELECT * FROM tbl_user WHERE user_username = p_username;
 END;
 
-USE BucketList;
-
 DROP PROCEDURE IF EXISTS sp_addWish;
 
 CREATE PROCEDURE sp_addWish (
@@ -56,7 +53,6 @@ BEGIN
     VALUES (p_title, p_description, p_user_id, NOW());
 END;
 
-USE BucketList;
 
 DROP PROCEDURE IF EXISTS sp_GetWishByUser;
 
