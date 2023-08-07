@@ -1,112 +1,94 @@
-<div align="center">
-  <h1 style="color: red;"> Sprints Graduation Project</h1>
-</div>
-
-```
-git clone
-```
-- [x] Github
-> [!NOTE]
-> hi amr
-# :star_struck: Project Setup Guide :star_struck:
-
-Welcome to the project setup guide! This guide will walk you through the necessary steps to set up your project environment, including GitHub, AWS, Terraform, Ansible, Jenkins, and Kubernetes.
-
-## Table of Contents
-### this is [jenkinsfile](https://github.com/amrashraf-web/Project_App/blob/master/Jenkinsfile)
-1. [Prerequisites](#prerequisites)
-- [GitHub Account and Token](#github-account-and-token)
-- [AWS Account and Access-Secret Key](#aws-account-and-access-secret-key)
-- [AWS Key Pair](#aws-key-pair)
-- [Ubuntu Machine](#ubuntu-machine)
-![Screenshot from 2023-05-16 01-01-59](https://github.com/amrashraf-web/Project_App/assets/128842547/95237572-33ca-4aff-9318-2631baed9a8d)
-
-2. [Install Dependencies and Prepare Infrastructure](#install-dependencies-and-prepare-infrastructure)
-    - [Clone Project Repository](#clone-project-repository)
-    - [Install Terraform and Ansible](#install-terraform-and-ansible)
-    - [Prepare Infrastructure](#prepare-infrastructure)
-3. [Automate Infrastructure with Dependencies](#automate-infrastructure-with-dependencies)
-4. [Update Jenkins and Configure Credentials](#update-jenkins-and-configure-credentials)
-5. [Create Deployment Pipeline](#create-deployment-pipeline)
-6. [Check Pods and Nodes](#check-pods-and-nodes)
+# Flask App Project
 
 ## Prerequisites
 
-Before you begin, ensure you have the following prerequisites in place:
+### 1. You Must Have A Github Account And Generate Token
 
-### GitHub Account and Token
+1. **Login to GitHub**: Log in to your GitHub account.
+2. **Access Personal Access Tokens**: Go to your GitHub settings. Click on your profile picture in the top right corner, then select "Settings".
+3. **Access Developer Settings**: In the left sidebar, under "Developer settings", click on "Personal access tokens".
+4. **Generate New Token**: Click the "Generate new token Classic" button.
+5. **Configure Token Permissions**: Give your token a meaningful name and select the necessary permissions. Be cautious not to grant more permissions than necessary.
+6. **Select Scopes**: GitHub offers various scopes for different permissions. Choose the ones that align with your requirements.
+7. **Generate Token**: After configuring permissions, click the "Generate token" button at the bottom of the page.
+8. **Copy Token**: GitHub will generate a token for you. Copy this token and store it securely.
 
-1. Log in to GitHub and access your settings.
-2. Under "Developer settings," select "Personal access tokens."
-3. Generate a new token, choosing the necessary permissions.
-4. Copy the generated token securely.
+### 2. You Must Have An AWS Account (Generate Access-Secret Key With Admin Permission)
 
-### AWS Account and Access-Secret Key
+1. **Login to AWS Console**: Log in to your AWS Management Console.
+2. **Access IAM**: Go to the "Identity and Access Management (IAM)" service.
+3. **Access Users**: In the IAM dashboard, select "Users" from the left sidebar.
+4. **Add User**: Click the "Add user" button.
+5. **User Details**: Provide a username for the new user. Select "Programmatic access" to generate access keys for API interactions.
+6. **Set Permissions**: Choose between adding the user to a group with necessary permissions or attaching policies directly to the user.
+7. **Generate Access Key**: After creating the user, generate an access key.
+8. **Copy Token**: AWS will generate an access-secret key pair. Copy these keys and store them securely.
 
-1. Log in to the AWS Management Console.
-2. Access IAM and create a new user with programmatic access.
-3. Assign permissions to the user, either through a group or policies.
-4. Create an access-secret key for the user and store it securely.
+### 3. You Must Have AWS Key Pair
 
-### AWS Key Pair
+1. **Login to AWS Console**: Log in to your AWS Management Console.
+2. **Access EC2 Dashboard**: Go to the "EC2 Dashboard" from the services menu.
+3. **Key Pairs**: In the EC2 dashboard, select "Key Pairs" from the left sidebar under the "Network & Security" section.
+4. **Create Key Pair**: Click the "Create Key Pair" button.
+5. **Key Pair Name**: Give your key pair a name. Choose "pem" format to generate a .pem file containing your private key.
+6. **Create Key Pair**: Click the "Create Key Pair" button.
+7. **Download Key Pair**: After creating the key pair, the private key will be automatically downloaded.
 
-1. Log in to the AWS Management Console.
-2. Access the EC2 Dashboard and create a new key pair.
-3. Choose the "pem" format and download the private key.
+### 4. Set Up an Ubuntu Machine
 
-### Ubuntu Machine
+## Install All Dependencies And Prepare Our Infrastructure
 
-You'll need access to an Ubuntu machine for this setup.
+### 1. Clone This Project
 
-## Install Dependencies and Prepare Infrastructure
+1. **Clone Project**: Clone this project into your home directory with the provided command.
 
-Follow these steps to install dependencies and prepare your project infrastructure:
+### 2. Install Terraform And Ansible
 
-### Clone Project Repository
+1. **Install Dependencies**: Navigate to the project folder and install Terraform and Ansible.
 
-1. Clone the project repository to your home directory:
+### 3. Prepare Infrastructure
 
-   ```sh
-   git clone https://github.com/amrashraf-web/Project_App
-   
-### Install Terraform and Ansible
-1. Navigate to the project folder:
-    ```sh
-    cd ~/Project_App
-2. Make the installation script executable:
-    ```sh
-    chmod +x Install_Terrafrom_Ansible.sh
-3. Run the installation script:
-    ```sh
-    ./Install_Terrafrom_Ansible.sh
-### Prepare Infrastructure
-1. Put your AWS access-secret key in values.auto.tfvars under Terraform_Files.
-2. Update main.tf under Terraform_Files with your dependencies (key_pair_name)
-   
-## Automate Infrastructure with Dependencies
-1. Update ansible_ssh_private_key_file in inventory.ini With Your Private Key
-2. Run the deployment script:
-    ```sh
-    cd ~/Project_App
-    chmod +x Deploy.sh
-    ./Deploy.sh
+1. **Configure Access-Secret Key**: Put your Access-Secret Key in Terraform files and update the dependencies.
 
-## Update Jenkins and Configure Credentials
-1. Access the URL obtained from Ansible output and log in.
-2. Install suggested plugins and create your admin user.
-3. Start Jenkins.
-4.Now Will Add Your Gihub Key and Aws Key To Jenkins
-   # 1 -  Go To Manage Jenkins > credentials > system > Global credentials (unrestricted) > Add credentials
-        A - Use Username with password
-        B - Scope Global
-        C - in username Field put your github username
-        D - in password Field put your key token of github
-        E - in ID Field Put github_key
-        F - Click Create
-   # 2 - Go To Manage Jenkins > credentials > system > Global credentials (unrestricted) > Add credentials
-        A - Use Username with password
-        B - Scope Global
-        C - in username Field put your Aws Access Key
-        D - in password Field put your Aws Secret Key
-        E - in ID Field Put aws_key
-        F - Click Create
+## Let's Automate Our Infrastructure And Install Dependencies
+
+1. **Replace Private Key**: Replace your private key pair in Ansible configuration.
+2. **Run Deployment Script**: Navigate to the project folder and run the deployment script.
+
+## Update Jenkins With Credentials And Create Pipeline
+
+1. **Access Jenkins**: Access the URL provided in the Ansible output and log in with your admin API token.
+2. **Install Plugins**: Click "Install suggested plugins" and wait for the installation to finish.
+3. **Create User**: Create a user with necessary information.
+4. **Start Jenkins**: Click "Start Jenkins".
+5. **Add GitHub and AWS Keys**:
+
+   - GitHub Key:
+     - Go to Manage Jenkins > Credentials > System > Global credentials (unrestricted) > Add credentials.
+     - Use Username with password, scope Global.
+     - Provide your GitHub username and token.
+
+   - AWS Key:
+     - Go to Manage Jenkins > Credentials > System > Global credentials (unrestricted) > Add credentials.
+     - Use Username with password, scope Global.
+     - Provide your AWS Access Key and Secret Key.
+
+## Create The Pipeline To Deploy The Project
+
+1. **Create Pipeline**: Create a pipeline job and configure it.
+
+## Check Pods And Nodes
+
+1. **Connect To Server**: Connect to the server with Jenkins.
+2. **Configure AWS**: Configure AWS credentials.
+3. **Update eks Configuration**: Update eks configuration for kubectl.
+4. **Check Nodes**: Check cluster nodes.
+5. **Check Pods**: Check all pods, stateful sets, and configurations.
+
+## Test Docker-compose Locally
+
+![Docker-compose Test](screenshot_number_7.png)
+
+## Testing The Project And Database
+
+![Project Testing](screenshot_number_8.png)
