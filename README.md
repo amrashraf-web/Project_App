@@ -145,17 +145,17 @@
 
 ### 5.1 Create a Webhook in Github
 1. Create a Webhook:
-   
- - Go to your GitHub repository.
- - Click on "Settings" tab.
- - Click on "Webhooks" in the left sidebar.
- - Click the "Add webhook" button.
 
-2. Configure the Webhook:
+   1. - Go to your GitHub repository.
+   2. - Click on "Settings" tab.
+   3. - Click on "Webhooks" in the left sidebar.
+   4. - Click the "Add webhook" button.
 
-  - Payload URL: This is the URL of your Jenkins server's webhook endpoint. It usually looks like http://ip_server:8080/github-webhook/.
-  - Content type: Set it to application/json.
-  - Which events would you like to trigger this webhook?: Choose the events that should trigger the Jenkins build. Typically, you might select "Push events" for any code pushes to the repository.
+3. Configure the Webhook:
+
+  1. - Payload URL: This is the URL of your Jenkins server's webhook endpoint. It usually looks like http://ip_server:8080/github-webhook/.
+  2. - Content type: Set it to application/json.
+  3. - Which events would you like to trigger this webhook?: Choose the events that should trigger the Jenkins build. Typically, you might select "Push events" for any code pushes to the repository.
 
   - Click the "Add webhook" button to save your webhook configuration.
 
