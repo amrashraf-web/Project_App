@@ -32,16 +32,6 @@
   become: true
   shell: sudo usermod -aG docker jenkins
 
-- name: Set ownership and permissions for the directory
-  become: yes
-  become_user: root
-  file:
-    path: /home/ubuntu
-    owner: jenkins
-    group: jenkins
-    mode: "0755"
-  tags: set_permissions
-  notify: Restart Jenkins Service
 
 - name: Start Jenkins service
   become: true
@@ -56,7 +46,6 @@
 
 - name: Manually complete Jenkins setup
   debug:
-    msg: |
-      Please access Jenkins through the web browser and complete the initial setup.
-      URL: http://{{ hostvars['Project_Server']['ansible_host'] }}:8080
-      Admin API Token: {{ admin_password.stdout }}
+- name: Manually complete Jenkins setup
+  debug:
+    msg: "Please access Jenkins through the web browser and complete the initial setup.\nURL: http://{{ hostvars['Project_Server']['ansible_host'] }}:8080\nAdmin API Token: {{ admin_password.stdout }}"
