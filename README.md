@@ -152,7 +152,7 @@
   - Click on "Webhooks" in the left sidebar.
   - Click the "Add webhook" button.
 
-3. Configure the Webhook:
+2. Configure the Webhook:
 
   - Payload URL: This is the URL of your Jenkins server's webhook endpoint. It usually looks like http://ip_server:8080/github-webhook/.
   - Content type: Set it to application/json.
@@ -161,7 +161,7 @@
   - Click the "Add webhook" button to save your webhook configuration.
 
 ### 5.2 Configure Jenkins Job
-  1. - Click Create Job 
+  1. - In Jenkins Page Click Create Job 
   2. - In Enter an item name Field Put Any Name For Pipeline
   3. - Choose Pipeline
   4. - Click Ok
