@@ -9,3 +9,16 @@
     unzip awscliv2.zip &&
     ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
   when: not aws_cli_installed.stat.exists
+
+- name: Create .aws directory
+  file:
+    path: "/home/ubuntu/.aws"
+    state: directory
+
+- name: Create credentials file with AWS access keys
+  copy:
+    content: |
+      [default]
+      aws_access_key_id = "{{ aws_access_key }}"
+      aws_secret_access_key = "{{ aws_secret_key }}"
+    dest: "/home/ubuntu/.aws/credentials"
