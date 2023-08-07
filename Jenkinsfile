@@ -63,9 +63,10 @@ pipeline {
 
     post {
         success {
-            // Step 1: Get Ingress IP address
             script {
-                sleep 10
+                // Step 1: Sleep 15 Sec Till All Pods Be Runnig
+                sleep 15
+                // Step 2: Get Ingress IP address
                 def serviceName = 'flask-app-service' // Replace 'flask-app-service' with the name of your Kubernetes App service
                 def url = sh(script: "kubectl get svc ${serviceName} -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'", returnStdout: true).trim()
                 echo "Website URL: http://${url}"
