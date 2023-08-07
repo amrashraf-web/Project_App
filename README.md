@@ -117,11 +117,13 @@
      - Go to Manage Jenkins > Credentials > System > Global credentials (unrestricted) > Add credentials.
      - Use Username with password, scope Global.
      - Provide your GitHub username and token.
+     - ID: github_key
 
    - AWS Key:
      - Go to Manage Jenkins > Credentials > System > Global credentials (unrestricted) > Add credentials.
      - Use Username with password, scope Global.
      - Provide your AWS Access Key and Secret Key.
+     - ID: aws_key
      - 
 ### 4.1 Access Jenkins
 Access Jenkins using the provided URL and login with your admin API token.
