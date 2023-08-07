@@ -5,6 +5,8 @@ pipeline {
         ECR_REPO = '812428914503.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo' // Use the ECR repository
         DOCKER_IMAGE_NAME = 'project' // Docker image tag name (must be lower case)
         DOCKER_IMAGE_TAG = "v${BUILD_NUMBER}" // Use the build number as the Docker image tag
+        CONFIGMAP_NAME = 'mysql-init-scripts'
+        NAMESPACE = 'default'
     }
 
     stages {
@@ -50,12 +52,34 @@ pipeline {
         
         stage('Deploy to Kubernetes') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
-                    // Step 1 : Update Kube Config For Jenkins
-                    sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
-                    // Step 2: Apply the modified Kubernetes files with replaced image tag and repo
-                    sh "sed -i 's|<ECR_REPO_IMAGE>|$ECR_REPO:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
-                    sh "kubectl apply -f Kubernets_Files/"
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'aws_key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]){
+                        // Step 1 : Update Kube Config For Jenkins
+                        sh "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
+                        // Step 2: Apply the modified Kubernetes files with replaced image tag and repo
+                        sh "sed -i 's|<ECR_REPO_IMAGE>|${ECR_REPO}:${DOCKER_IMAGE_TAG}|g' Kubernets_Files/deployment.yaml"
+                        
+                        // Check if the ConfigMap exists
+                        def configmapStatus = sh(
+                            script: "kubectl get configmap $CONFIGMAP_NAME -n $NAMESPACE",
+                            returnStdout: true
+                        ).trim()
+        
+                        if (configmapStatus.contains('NotFound')) {
+                            // ConfigMap does not exist
+                            echo "ConfigMap $CONFIGMAP_NAME does not exist."
+                        } else {
+                            // ConfigMap exists, so delete it
+                            sh "kubectl delete configmap $CONFIGMAP_NAME -n $NAMESPACE"
+                            echo "Deleted existing ConfigMap: $CONFIGMAP_NAME"
+                        }
+        
+                        // Create the new ConfigMap
+                        sh "kubectl create configmap $CONFIGMAP_NAME --from-file=BucketList.sql=/var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries/BucketList.sql -n $NAMESPACE"
+                        echo "Created new ConfigMap: $CONFIGMAP_NAME"
+        
+                        sh "kubectl apply -f Kubernets_Files/"
+                    }
                 }
             }
         }
