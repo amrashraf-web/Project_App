@@ -9,7 +9,8 @@ Welcome to the project setup guide! This guide will walk you through the necessa
 - [AWS Account and Access-Secret Key](#aws-account-and-access-secret-key)
 - [AWS Key Pair](#aws-key-pair)
 - [Ubuntu Machine](#ubuntu-machine)
-  - First
+![Screenshot from 2023-05-16 01-01-59](https://github.com/amrashraf-web/Project_App/assets/128842547/95237572-33ca-4aff-9318-2631baed9a8d)
+
 2. [Install Dependencies and Prepare Infrastructure](#install-dependencies-and-prepare-infrastructure)
     - [Clone Project Repository](#clone-project-repository)
     - [Install Terraform and Ansible](#install-terraform-and-ansible)
