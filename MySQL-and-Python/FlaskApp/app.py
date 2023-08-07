@@ -1,7 +1,7 @@
 from flask import Flask, render_template, json, request, redirect, session
 from flaskext.mysql import MySQL
 import os
-
+import subprocess
 app = Flask(__name__)
 
 mysql = MySQL()
@@ -23,30 +23,24 @@ mysql.init_app(app)
 app.secret_key = '8a2c07687244ceade6915b407aa6da4c'
 
 sql_executed = False
-
-
 def execute_sql():
     global sql_executed
     if not sql_executed:
         try:
-            connection = mysql.connect()
-            cursor = connection.cursor()
-        
-            # Read SQL code from the file
-            with open('BucketList.sql', 'r') as file:
-                sql_statements = file.read()
-        
-            # Execute each SQL statement
-            cursor.execute(sql_statements)
-            connection.commit()
-        
-            # Close cursor and connection
-            cursor.close()
-            connection.close()
-
-        except Exception as e:
+            sql_file = 'BucketList.sql'
+            command = [
+                'mysql',
+                '-u', app.config['MYSQL_DATABASE_USER'],
+                '-p' + app.config['MYSQL_DATABASE_PASSWORD'],
+                '-h', app.config['MYSQL_DATABASE_HOST'],
+                '-P', str(app.config['MYSQL_DATABASE_PORT']),
+                app.config['MYSQL_DATABASE_DB'],
+                '<', sql_file
+            ]
+            subprocess.run(command, shell=True, check=True)
+            sql_executed = True
+        except subprocess.CalledProcessError as e:
             return "An error occurred: " + str(e)
-
 
 
 @app.route("/")
