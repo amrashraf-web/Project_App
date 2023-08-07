@@ -9,3 +9,22 @@
   lineinfile:
     path: "$HOME/.bashrc"
     line: "export PATH=$HOME/bin:$PATH"
+- name: Fetch EKS Cluster status
+  command: "aws eks --region {{ aws_region }} describe-cluster --name sprints-eks-cluster --query cluster.status"
+  register: eks_cluster_status
+
+- name: Print EKS Cluster status
+  debug:
+    var: eks_cluster_status.stdout
+
+- name: Update kubeconfig
+  command: "aws eks --region us-east-1 update-kubeconfig --name sprints-eks-cluster"
+
+- name: Get nodes
+  command: "kubectl get nodes"
+  register: nodes_server
+  changed_when: false
+
+- name: Display nodes
+  debug:
+    var: nodes_server.stdout
