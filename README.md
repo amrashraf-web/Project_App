@@ -163,6 +163,8 @@
 
   - Click the "Add webhook" button to save your webhook configuration.
 
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/1f37f386-6247-4e92-9224-34519dbf1dd9)
+
 ### 5.2 Configure Jenkins Job
   1. - In Jenkins Page Click Create Job 
   2. - In Enter an item name Field Put Any Name For Pipeline
@@ -181,14 +183,19 @@
 
 ## 6. Check Pods and Nodes
 
-Check your Kubernetes cluster's nodes and pods.
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/27be02d4-2874-495a-95a7-733afd2bb70c)
+
 
 ## 7. Test Project and Database
 
-Test your project functionality and check if the database is working.
+1. ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/37a88674-401f-455d-a502-d483f51c5d20)
+
+2. ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/0cef5dc9-693d-4fb0-959a-f075211a3b90)
+
+3. 
 
 ## 8. Test Locally with Docker-compose
 
-Test your project locally using Docker-compose.
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/be6ff9ae-bd3f-4214-b882-00679a5f9db4)
 
 
