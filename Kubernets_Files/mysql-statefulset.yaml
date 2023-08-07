@@ -57,7 +57,7 @@ spec:
           command: ["cp", "/var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries/BucketLost.sql", "/docker-entrypoint-initdb.d"]
           volumeMounts:
             - name: sql-file
-              mountPath: /sqlfile.sql
+              mountPath: /docker-entrypoint-initdb.d
       containers:
         - name: mysql-container
           image: mysql:latest
