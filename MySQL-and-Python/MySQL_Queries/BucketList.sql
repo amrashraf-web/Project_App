@@ -1,11 +1,12 @@
-CREATE TABLE `BucketList`.`tbl_user` (
+CREATE TABLE `tbl_user` (
   `user_id` BIGINT NOT NULL AUTO_INCREMENT,
   `user_name` VARCHAR(200) NULL,
   `user_username` VARCHAR(200) NULL,
   `user_password` VARCHAR(200) NULL,
-  PRIMARY KEY (`user_id`));
+  PRIMARY KEY (`user_id`)
+);
 
-CREATE TABLE `BucketList`.`tbl_wish` (
+CREATE TABLE `tbl_wish` (
   `wish_id` int(11) NOT NULL AUTO_INCREMENT,
   `wish_title` varchar(45) DEFAULT NULL,
   `wish_description` varchar(5000) DEFAULT NULL,
@@ -14,88 +15,54 @@ CREATE TABLE `BucketList`.`tbl_wish` (
   PRIMARY KEY (`wish_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
-
 USE BucketList;
 
 INSERT INTO tbl_user
-values
-(10,'ahmed','ahmed','ahmed');
+VALUES
+(10, 'ahmed', 'ahmed', 'ahmed');
 
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_createUser`(
+CREATE PROCEDURE sp_createUser (
     IN p_name VARCHAR(200),
     IN p_username VARCHAR(100),
     IN p_password VARCHAR(200)
 )
 BEGIN
-    if ( select exists (select 1 from tbl_user where user_username = p_username) ) THEN
-     
-        select 'Username Exists !!';
-     
+    IF (SELECT EXISTS (SELECT 1 FROM tbl_user WHERE user_username = p_username)) THEN
+        SELECT 'Username Exists !!';
     ELSE
-     
-        insert into tbl_user
-        (
-            user_name,
-            user_username,
-            user_password
-        )
-        values
-        (
-            p_name,
-            p_username,
-            p_password
-        );
-     
+        INSERT INTO tbl_user (user_name, user_username, user_password)
+        VALUES (p_name, p_username, p_password);
     END IF;
-END$$
-DELIMITER ;
+END;
 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_validateLogin`(
-IN p_username VARCHAR(200)
+CREATE PROCEDURE sp_validateLogin (
+    IN p_username VARCHAR(200)
 )
 BEGIN
-    select * from tbl_user where user_username = p_username;
-END$$
-DELIMITER ;
+    SELECT * FROM tbl_user WHERE user_username = p_username;
+END;
 
+USE BucketList;
 
-USE `BucketList`;
-DROP procedure IF EXISTS `BucketList`.`sp_addWish`;
-DELIMITER $$
-USE `BucketList`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_addWish`(
+DROP PROCEDURE IF EXISTS sp_addWish;
+
+CREATE PROCEDURE sp_addWish (
     IN p_title varchar(45),
 	IN p_description varchar(1000),
 	IN p_user_id bigint
 )
 BEGIN
-	insert into tbl_wish(
-		wish_title,
-		wish_description,
-		wish_user_id,
-		wish_date
-	)
-	values
-	(
-		p_title,
-		p_description,
-		p_user_id,
-		NOW()
-	);
-END$$
-DELIMITER ;
+    INSERT INTO tbl_wish (wish_title, wish_description, wish_user_id, wish_date)
+    VALUES (p_title, p_description, p_user_id, NOW());
+END;
 
-USE `BucketList`;
-DROP procedure IF EXISTS `sp_GetWishByUser`;
-DELIMITER $$
-USE `BucketList`$$
-CREATE PROCEDURE `sp_GetWishByUser` (
-IN p_user_id bigint
+USE BucketList;
+
+DROP PROCEDURE IF EXISTS sp_GetWishByUser;
+
+CREATE PROCEDURE sp_GetWishByUser (
+    IN p_user_id bigint
 )
 BEGIN
-    select * from tbl_wish where wish_user_id = p_user_id;
-END$$
-DELIMITER ;
+    SELECT * FROM tbl_wish WHERE wish_user_id = p_user_id;
+END;
