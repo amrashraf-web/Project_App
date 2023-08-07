@@ -46,6 +46,4 @@
 
 - name: Manually complete Jenkins setup
   debug:
-- name: Manually complete Jenkins setup
-  debug:
     msg: "Please access Jenkins through the web browser and complete the initial setup.\nURL: http://{{ hostvars['Project_Server']['ansible_host'] }}:8080\nAdmin API Token: {{ admin_password.stdout }}"
