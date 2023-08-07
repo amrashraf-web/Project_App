@@ -124,7 +124,7 @@
      - Use Username with password, scope Global.
      - Provide your AWS Access Key and Secret Key.
      - ID: aws_key
-     - 
+
 ### 4.1 Access Jenkins
 Access Jenkins using the provided URL and login with your admin API token.
 
