@@ -92,11 +92,11 @@
      - ### Replace You Aws Key Paid in ansible_ssh_private_key_file in this file [inventory.ini](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/inventory.ini)
    
 ### 3.3 **Run Deployment Script**: Navigate to the project folder and run the deployment script.
-      ```
+    ```
      cd ~/Project_App
      chmod +x Deploy.sh
      ./Deploy.sh
-     ```
+    ```
 ### 3.4 **OutPut Terraform Ansible Image**
   - Here Output Of Terraform - Ansible Image
     ![1](https://github.com/amrashraf-web/Project_App/assets/82893114/456638cc-d6f6-4269-ae45-2d02a626afb7)
