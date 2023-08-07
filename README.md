@@ -1,9 +1,9 @@
 <div align="center">
-  <h1 style="color: red;"> Sprints Graduation Project</h1>
+  <h1 style="color: red;"> :heart_on_fire: Sprints Graduation Project</h1>
 </div>
 
 <div align="center">
-  <h1 style="color: green;">Deploying Flask Application Using ( K8s - Jenkins )</h1>
+  <h1 style="color: green;"> :right_anger_bubble: Deploying Flask Application Using ( K8s - Jenkins )</h1>
 </div>
 
 
