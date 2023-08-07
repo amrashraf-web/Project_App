@@ -89,7 +89,7 @@
      
 ### 3.2 Replace Private Key in Ansible
 1. **Replace Private Key**: Replace your private key pair in Ansible configuration.
-     - ### Put Your Aws Key Pair In This Folder [Ansible_Files](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files)
+     - ### Put Your Aws Key Pair File (.pem) In This Folder [Ansible_Files](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files)
        
      - ### Replace You Aws Key Pair in ansible_ssh_private_key_file in this file [inventory.ini](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/inventory.ini)
    
@@ -108,8 +108,6 @@
    
     ![2](https://github.com/amrashraf-web/Project_App/assets/82893114/2a830cfe-ba7f-4193-87cb-f75d8f76b5d0)
 
-
-   
 
 ## 4. Update Jenkins with Dependencies
 
@@ -138,8 +136,18 @@
 ## 5. Create Deployment Pipeline
 
 ### 5.1 Configure Jenkins Job
-Create a Jenkins pipeline job and configure the pipeline script.
-
+  1. - Click Create Job 
+  2. - In Enter an item name Field Put Any Name For Pipeline
+  3. - Choose Pipeline
+  4. - Click Ok
+  5. - in The Configure Page 
+      1. - Check True For This Option : GitHub hook trigger for GITScm polling In Build Triggers
+      2. - In Pipeline Choose Pipeline Script And Put Your Jenkins Code 
+         > [!NOTE]
+          > Make Sure That You Replaced My ECR repository with your ECR repository in JenkinsFile Code Line 5 [jenkinsfile](https://github.com/amrashraf-web/Project_App/blob/master/Jenkinsfile)
+      3. - Click Save 
+      4. - Now Click Build
+         - 
 ### 5.2 Run the Pipeline
 Start the pipeline and monitor the progress.
 
