@@ -80,7 +80,7 @@
 
 ### 2.3 Prepare Infrastructure
   1. Configure your access-secret key in Terraform and update necessary information.
-     ### this is ansible_ssh_private_key_file in file [values.auto.tfvars](https://github.com/amrashraf-web/Project_App/blob/master/Jenkinsfile](https://github.com/amrashraf-web/Project_App/blob/master/Terraform_Files/values.auto.tfvars)
+     ### this is ansible_ssh_private_key_file in file [values.auto.tfvars]{https://github.com/amrashraf-web/Project_App/blob/master/Jenkinsfile](https://github.com/amrashraf-web/Project_App/blob/master/Terraform_Files/values.auto.tfvars}
 
 ## 3. Automate Infrastructure and Dependencies
 
