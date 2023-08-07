@@ -89,7 +89,7 @@
      
 ### 3.2 Replace Private Key in Ansible
 1. **Replace Private Key**: Replace your private key pair in Ansible configuration.
-     - ### Replace You Aws Key Paid in ansible_ssh_private_key_file in this file [inventory.ini](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/inventory.ini)
+     - ### Replace You Aws Key Pair in ansible_ssh_private_key_file in this file [inventory.ini](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/inventory.ini)
    
 ### 3.3 **Run Deployment Script**: Navigate to the project folder and run the deployment script.
    ```
