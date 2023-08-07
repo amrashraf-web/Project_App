@@ -1,8 +1,4 @@
 -- Local database definition.
-
-CREATE DATABASE BucketList;
-
-
 CREATE TABLE `BucketList`.`tbl_user` (
   `user_id` BIGINT NOT NULL AUTO_INCREMENT,
   `user_name` VARCHAR(200) NULL,
