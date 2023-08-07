@@ -46,7 +46,7 @@ echo "Starting script..."
 # Call the functions to run Terraform and Ansible
 run_terraform
 update_inventory
-echo "Please Wait 10 Sec Until The Server Initializes"
+echo "Please Wait 10 Sec Until The Server Initialize"
 sleep 10
 run_ansible
 echo "Script execution finished."
