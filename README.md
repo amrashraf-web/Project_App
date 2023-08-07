@@ -6,6 +6,8 @@
   <h1 style="color: green;"> :right_anger_bubble: Deploying Flask Application Using ( K8s - Jenkins )</h1>
 </div>
 
+[![Up to Date](https://github.com/ikatyang/emoji-cheat-sheet/workflows/Up%20to%20Date/badge.svg)](https://github.com/amrashraf-web/Project_App/actions)
+
 <div align="center">
   <h1 style="color: yellow;">Introduction</h1>
   <h2>Welcome to the comprehensive guide on deploying a Flask application using Kubernetes (K8s) and Jenkins. This guide is designed to take you through every step necessary to successfully set up, automate, and deploy your Flask application, streamlining your development workflow and ensuring a smooth deployment process. Whether you're new to the world of deployment or looking to enhance your existing knowledge, this guide has got you covered.</h2>
