@@ -53,10 +53,8 @@ spec:
     spec:
       initContainers:
         - name: copy-sql-file
-          image: busybox  # You can use any lightweight image with basic file utilities
-          # command: ["sh","-c","cp /var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries/BucketList.sql /mnt/BucketList.sql"]
-          command: ["sh"]
-          args: ["-c", "ls /mnt && ls /docker-entrypoint-initdb.d"]
+          image: busybox:latest
+          command: ["sh", "-c", "cp /var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries/BucketList.sql /mnt/BucketList.sql"]
           volumeMounts:
             - name: sql-file
               mountPath: /mnt
@@ -74,13 +72,18 @@ spec:
                 secretKeyRef:
                   name: mysql-secret
                   key: MYSQL_DATABASE
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              cp /mnt/BucketList.sql /tmp/BucketList.sql &&
+              mysql -h localhost -u root -p$MYSQL_ROOT_PASSWORD < /tmp/BucketList.sql
           ports:
             - containerPort: 3306
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql
             - name: sql-file
-              mountPath: /docker-entrypoint-initdb.d
+              mountPath: /mnt
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:
