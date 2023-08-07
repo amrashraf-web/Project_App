@@ -80,13 +80,12 @@
 
 ### 2.3 Prepare Infrastructure
   1. Configure your access-secret key in Terraform and update necessary information.
-     ### this is ansible_ssh_private_key_file in file [values.auto.tfvars](https://github.com/amrashraf-web/Project_App/blob/master/Terraform_Files/values.auto.tfvars)
+     ### Put Your Aws Access - Secret Key in file [values.auto.tfvars](https://github.com/amrashraf-web/Project_App/blob/master/Terraform_Files/values.auto.tfvars)
 
 ## 3. Automate Infrastructure and Dependencies
-
-1. **Replace Private Key**: Replace your private key pair in Ansible configuration.
-     ### this is [inventory.ini](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/inventory.ini)
+   
 3. **Run Deployment Script**: Navigate to the project folder and run the deployment script.
+   
    ```
    cd ~/Project_App
    chmod +x Deploy.sh
@@ -94,8 +93,9 @@
    ```
    
 ### 3.1 Replace Private Key in Ansible
-Update your private key in Ansible configuration.
-
+1. **Replace Private Key**: Replace your private key pair in Ansible configuration.
+     ### Replace You Aws Key Paid in ansible_ssh_private_key_file in this file [inventory.ini](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/inventory.ini)
+   
 ### 3.2 Run Deployment Script
 Automate infrastructure deployment and dependencies installation.
 
