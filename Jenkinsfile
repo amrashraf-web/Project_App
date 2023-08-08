@@ -16,7 +16,7 @@ pipeline {
                     def gitCredentialsId = 'github_key' // Replace with your actual credentials ID
                     checkout([
                         $class: 'GitSCM',
-                        branches: [[name: '*/**']],
+                        branches: [[name: '*/**']], // Here Mean Working On All Branches
                         userRemoteConfigs: [[
                             url: 'https://github.com/amrashraf-web/Project_App', // Replace with your actual project
                             credentialsId: gitCredentialsId
