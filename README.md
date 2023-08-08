@@ -14,6 +14,22 @@
 <div align="center">
   <h1 style="color: green;"> :sunglasses: Explanation</h1>
   <h2>In this guide, we've outlined a detailed roadmap to guide you through each stage of deploying a Flask application using Kubernetes and Jenkins. We've broken down the process into several key sections</h2>
+  
+  <p>Ansible: Is automation tool that allows you to manage and configure systems in a declarative manner. It has a simple syntax, is agentless, and can automate complex tasks across different systems. Ansible ensures consistent configurations, reduces manual error, and improves efficiency in managing infrastructure and application deployments.</p>
+  
+<p>Terraform: Terraform is an infrastructure as code (IaC) tool that enables you to define and manage your infrastructure in a version-controlled and repeatable way. It supports multiple cloud providers and ensures consistent infrastructure deployments. Terraform's code-based approach makes it easy to understand and collaborate on infrastructure changes, improving maintainability and reducing manual setup time.</p>
+
+<p>Docker: Docker is a containerization platform that allows you to package applications and their dependencies into isolated containers. Containers ensure consistency between development and production environments, making it easier to deploy and scale applications. Docker simplifies deployment, reduces conflicts between dependencies, and promotes microservices architecture</p>
+  
+<p>Docker Compose: Docker Compose is a tool for defining and running multi-container Docker applications using a single configuration file. It simplifies the process of managing complex applications by allowing you to define the relationships between different services and spin them up together. Docker Compose streamlines development and testing workflows, making it easier to replicate environments across different machines.</p>
+  
+<p>Jenkins: Jenkins is a widely-used open-source automation server that helps automate the building, testing, and deployment of software projects. It supports continuous integration and continuous delivery (CI/CD) pipelines, enabling efficient and reliable software releases. Jenkins integrates with various tools and services, enhancing collaboration and automation across the development lifecycle.</p>
+  
+<p>Kubernetes: Kubernetes is an orchestration platform for containerized applications. It automates deployment, scaling, and management of application containers. Kubernetes abstracts away the underlying infrastructure, making it easier to manage applications across different environments. It enhances application availability, scalability, and resilience.</p>
+  
+<p>Amazon EKS: Amazon EKS is a managed Kubernetes service provided by AWS. It simplifies the deployment and management of Kubernetes clusters, allowing you to focus on your applications rather than managing the underlying infrastructure. EKS provides security, scalability, and reliability for your containerized applications</p>
+  
+<p>Amazon ECR: Amazon ECR is a managed Docker container registry provided by AWS. It allows you to store, manage, and deploy Docker container images. ECR integrates seamlessly with other AWS services, making it easy to build and deploy containers in your AWS environment. ECR ensures secure storage, distribution, and versioning of container images.</p>
 </div>
 
   [![Up to Date](https://github.com/ikatyang/emoji-cheat-sheet/workflows/Up%20to%20Date/badge.svg)](https://github.com/amrashraf-web/Project_App/actions)
