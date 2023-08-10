@@ -252,8 +252,8 @@
 
 </b></details>
 
+## 6. Check Pods and Nodes
 <details>
-### 6. Check Pods and Nodes
 <summary><a name="6-check-pods-and-nodes"></a></summary><br><b>
 
 ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/27be02d4-2874-495a-95a7-733afd2bb70c)
