@@ -255,7 +255,7 @@
 ## 6. Check Pods and Nodes
 
 <details>
-<summary><a name="6-check-pods-and-nodes">6. Check Pods and Nodes</a></summary><br><b>
+<summary><a name="6-check-pods-and-nodes">6.1 Check Pods and Nodes</a></summary><br><b>
 
 ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/27be02d4-2874-495a-95a7-733afd2bb70c)
 
@@ -264,7 +264,7 @@
 ## 7. Test Project and Database
 
 <details>
-<summary><a name="7-test-project-and-database"></a>7. Test Project and Database</summary><br><b>
+<summary><a name="7-test-project-and-database"></a>7.1 Test Project and Database</summary><br><b>
 
 
 1. ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/37a88674-401f-455d-a502-d483f51c5d20)
@@ -278,7 +278,7 @@
 ## 8. Test Locally with Docker-compose
 
 <details>
-<summary><a name="8-test-locally-with-docker-compose"></a>8. Test Locally with Docker-compose</summary><br><b>
+<summary><a name="8-test-locally-with-docker-compose"></a>8.1 Test Locally with Docker-compose</summary><br><b>
 
 
 ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/b0420d91-571b-4280-8ed9-94cbe11edbd0)
