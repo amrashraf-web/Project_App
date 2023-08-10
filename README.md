@@ -97,20 +97,28 @@
 7. **Download Key Pair**: After creating the key pair, the private key will be automatically downloaded.
 </b></details>
 
-### 1.4 Ubuntu Machine
+<details>
+<summary><a name="14-ubuntu-machine"></a>1.4 Ubuntu Machine</summary><br><b>
+
   Ensure you have access to an Ubuntu machine.
+<details>
 
 ## 2. Install Dependencies and Prepare Infrastructure
 
+<details>
+<summary><a name="21-clone-the-project"></a>2.1 Clone the Project</summary><br><b>
 
-### 2.1 Clone the Project
   1. **Clone Project**: Clone this project into your home directory with the provided command.
      ```
      cd ~
      git clone https://github.com/amrashraf-web/Project_App
      ```
 
-### 2.2 Install Terraform and Ansible
+<details>
+
+<details>
+
+<summary><a name="22-install-terraform-and-ansible"></a>2.2 Install Terraform and Ansible</summary><br><b>
 
   1. **Install Dependencies**: Navigate to the project folder and install Terraform and Ansible.
      ```
@@ -119,30 +127,45 @@
      ./Install_Terrafrom_Ansible.sh
      ```
 
+<details>
 
 
 ## 3. Automate Infrastructure and Dependencies
 
-### 3.1 Prepare Infrastructure
+<details>
+<summary><a name="31-prepare-infrastructure"></a>3.1 Prepare Infrastructure</summary><br><b>
+
   1. Configure Your Access-Secret key And Key Pair Name in Terraform and update necessary information.
      - ### Put Your Aws Access - Secret Key - Key Pair Name in file [values.auto.tfvars](https://github.com/amrashraf-web/Project_App/blob/master/Terraform_Files/values.auto.tfvars)
      
-### 3.2 Replace Private Key in Ansible
+<details>
+
+<details>
+<summary><a name="32-replace-private-key-in-ansible"></a>3.2 Replace Private Key in Ansible</summary><br><b>
+
 1. **Replace Private Key**: Replace your private key pair in Ansible configuration.
      - ### Put Your Aws Key Pair File (.pem) In This Folder [Ansible_Files](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files)
        
      - ### Replace You Aws Key Pair in ansible_ssh_private_key_file in this file [inventory.ini](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/inventory.ini)
 
     - ### Put Your Your Access-Secret key In This File [main.yml](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/roles/Install_Aws/vars/main.yml)
-      
-### 3.3 **Run Deployment Script**
+
+<details>
+
+<details>
+<summary><a name="33-run-deployment-script"></a>3.3 Run Deployment Script</summary><br><b>
+
 1. Navigate to the project folder and run the deployment script.
    ```
    cd ~/Project_App
    chmod +x Deploy.sh
    ./Deploy.sh
    ```
-### 3.4 **OutPut Terraform Ansible Image**
+<details>
+
+<details>
+<summary><a name="34-OutPut-Terraform-Ansible-Image"></a>3.4 OutPut Terraform Ansible Image</summary><br><b>
+
   - Here Output Of Terraform Image
    
     ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/6e762903-e52d-418b-8403-b4acb4d41fa1)
@@ -151,6 +174,7 @@
    
     ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/ad14539a-49d6-4d2d-87de-294942164a75)
 
+<details>
 
 
 ## 4. Update Jenkins with Dependencies
