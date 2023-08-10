@@ -84,8 +84,9 @@
 7. **Generate Access Key**: After creating the user, generate an access key.
 8. **Copy Token**: AWS will generate an access-secret key pair. Copy these keys and store them securely.
 </b></details>
-### 1.3 AWS Key Pair
 
+<details>
+<summary><a name="13-aws-key-pair"></a>1.3 AWS Key Pair</summary><br><b>
 1. **Login to AWS Console**: Log in to your AWS Management Console.
 2. **Access EC2 Dashboard**: Go to the "EC2 Dashboard" from the services menu.
 3. **Key Pairs**: In the EC2 dashboard, select "Key Pairs" from the left sidebar under the "Network & Security" section.
@@ -93,11 +94,13 @@
 5. **Key Pair Name**: Give your key pair a name. Choose "pem" format to generate a .pem file containing your private key.
 6. **Create Key Pair**: Click the "Create Key Pair" button.
 7. **Download Key Pair**: After creating the key pair, the private key will be automatically downloaded.
+</b></details>
 
 ### 1.4 Ubuntu Machine
   Ensure you have access to an Ubuntu machine.
 
 ## 2. Install Dependencies and Prepare Infrastructure
+
 
 ### 2.1 Clone the Project
   1. **Clone Project**: Clone this project into your home directory with the provided command.
