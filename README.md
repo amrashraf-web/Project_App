@@ -101,7 +101,7 @@
 <summary><a name="14-ubuntu-machine"></a>1.4 Ubuntu Machine</summary><br><b>
 
   Ensure you have access to an Ubuntu machine.
-<details>
+</b></details>
 
 ## 2. Install Dependencies and Prepare Infrastructure
 
@@ -114,7 +114,7 @@
      git clone https://github.com/amrashraf-web/Project_App
      ```
 
-<details>
+</b></details>
 
 <details>
 
@@ -127,7 +127,7 @@
      ./Install_Terrafrom_Ansible.sh
      ```
 
-<details>
+</b></details>
 
 
 ## 3. Automate Infrastructure and Dependencies
@@ -138,7 +138,7 @@
   1. Configure Your Access-Secret key And Key Pair Name in Terraform and update necessary information.
      - ### Put Your Aws Access - Secret Key - Key Pair Name in file [values.auto.tfvars](https://github.com/amrashraf-web/Project_App/blob/master/Terraform_Files/values.auto.tfvars)
      
-<details>
+</b></details>
 
 <details>
 <summary><a name="32-replace-private-key-in-ansible"></a>3.2 Replace Private Key in Ansible</summary><br><b>
@@ -150,7 +150,7 @@
 
     - ### Put Your Your Access-Secret key In This File [main.yml](https://github.com/amrashraf-web/Project_App/blob/master/Ansible_Files/roles/Install_Aws/vars/main.yml)
 
-<details>
+</b></details>
 
 <details>
 <summary><a name="33-run-deployment-script"></a>3.3 Run Deployment Script</summary><br><b>
@@ -161,7 +161,7 @@
    chmod +x Deploy.sh
    ./Deploy.sh
    ```
-<details>
+</b></details>
 
 <details>
 <summary><a name="34-OutPut-Terraform-Ansible-Image"></a>3.4 OutPut Terraform Ansible Image</summary><br><b>
@@ -174,7 +174,7 @@
    
     ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/ad14539a-49d6-4d2d-87de-294942164a75)
 
-<details>
+</b></details>
 
 
 ## 4. Update Jenkins with Dependencies
