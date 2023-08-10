@@ -59,8 +59,8 @@
 
 
 ## 1. Prerequisites
-
-### 1.1 GitHub Account and Token
+<details>
+<summary>### 1.1 GitHub Account and Token</summary><br><b>
 
 1. **Login to GitHub**: Log in to your GitHub account.
 2. **Access Personal Access Tokens**: Go to your GitHub settings. Click on your profile picture in the top right corner, then select "Settings".
@@ -70,7 +70,8 @@
 6. **Select Scopes**: GitHub offers various scopes for different permissions. Choose the ones that align with your requirements.
 7. **Generate Token**: After configuring permissions, click the "Generate token" button at the bottom of the page.
 8. **Copy Token**: GitHub will generate a token for you. Copy this token and store it securely.
-
+   
+</b></details>
 ### 1.2 AWS Account and Access-Secret Key
 
 1. **Login to AWS Console**: Log in to your AWS Management Console.
