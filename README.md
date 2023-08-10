@@ -34,32 +34,20 @@
 
   [![Up to Date](https://github.com/ikatyang/emoji-cheat-sheet/workflows/Up%20to%20Date/badge.svg)](https://github.com/amrashraf-web/Project_App/actions)
   
-| ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/10f7ee88-fda2-40d5-82cb-b264e45a7016) | 
-|---|
-| **Table of Contents** |
-| - [1. Prerequisites](#1-prerequisites) |
-|   - [1.1 GitHub Account and Token](#11-github-account-and-token) |
-|   - [1.2 AWS Account and Access-Secret Key](#12-aws-account-and-access-secret-key) |
-|   - [1.3 AWS Key Pair](#13-aws-key-pair) |
-|   - [1.4 Ubuntu Machine](#14-ubuntu-machine) |
-| - [2. Install Dependencies and Prepare Infrastructure](#2-install-dependencies-and-prepare-infrastructure) |
-|   - [2.1 Clone the Project](#21-clone-the-project) |
-|   - [2.2 Install Terraform and Ansible](#22-install-terraform-and-ansible) |
-| - [3. Automate Infrastructure and Dependencies](#3-automate-infrastructure-and-dependencies) |
-|   - [3.1 Prepare Infrastructure](#31-prepare-infrastructure) |
-|   - [3.2 Replace Private Key in Ansible](#32-replace-private-key-in-ansible) |
-|   - [3.3 Run Deployment Script](#33-run-deployment-script) |
-|   - [3.4 OutPut Terraform Ansible Image](#34-OutPut-Terraform-Ansible-Image) |
-| - [4. Update Jenkins with Dependencies](#4-update-jenkins-with-dependencies) |
-|   - [4.1 Access Jenkins](#41-access-jenkins) |
-|   - [4.2 Add GitHub and AWS Keys](#42-add-github-and-aws-keys) |
-| - [5. Create Deployment Pipeline](#5-create-deployment-pipeline) |
-|   - [5.1 Create a Webhook in Github](#51-Create-a-Webhook-in-Github) |
-|   - [5.2 Configure Jenkins Job](#52-configure-jenkins-job) |
-| - [6. Check Pods and Nodes](#6-check-pods-and-nodes) |
-| - [7. Test Project and Database](#7-test-project-and-database) |
-| - [8. Test Locally with Docker-compose](#8-test-locally-with-docker-compose) |
-
+<div style="display: flex; flex-direction: row-reverse;">
+  <div style="flex: 1;">
+    <!-- Your table of contents here -->
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#1-prerequisites">1. Prerequisites</a></li>
+      <!-- ... -->
+      <li><a href="#8-test-locally-with-docker-compose">8. Test Locally with Docker-compose</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1; padding-left: 20px;">
+    <img src="https://github.com/amrashraf-web/Project_App/assets/82893114/10f7ee88-fda2-40d5-82cb-b264e45a7016" alt="image" width="300">
+  </div>
+</div>
 
 
 
