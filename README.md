@@ -72,7 +72,8 @@
 8. **Copy Token**: GitHub will generate a token for you. Copy this token and store it securely.
    
 </b></details>
-### 1.2 AWS Account and Access-Secret Key
+<details>
+<summary><a name="12-aws-account-and-access-secret-key"></a>1.2 AWS Account and Access-Secret Key</summary><br><b>
 
 1. **Login to AWS Console**: Log in to your AWS Management Console.
 2. **Access IAM**: Go to the "Identity and Access Management (IAM)" service.
@@ -82,7 +83,7 @@
 6. **Set Permissions**: Choose between adding the user to a group with necessary permissions or attaching policies directly to the user.
 7. **Generate Access Key**: After creating the user, generate an access key.
 8. **Copy Token**: AWS will generate an access-secret key pair. Copy these keys and store them securely.
-
+</b></details>
 ### 1.3 AWS Key Pair
 
 1. **Login to AWS Console**: Log in to your AWS Management Console.
