@@ -179,13 +179,19 @@
 
 ## 4. Update Jenkins with Dependencies
 
-### 4.1 Access Jenkins
+<details>
+<summary><a name="41-access-jenkins"></a>4.1 Access Jenkins</summary><br><b>
+
 1. **Access Jenkins**: Access Jenkins using the provided URL in Last Image Mentioned Above and login with The Admin API token.
 2. **Install Plugins**: Click "Install suggested plugins" and wait for the installation to finish.
 3. **Create User**: Create a user with necessary information.
 4. **Start Jenkins**: Click "Start Jenkins".
 
-### 4.2 Add GitHub and AWS Keys
+</b></details>
+
+<details>
+<summary><a name="42-add-github-and-aws-keys"></a>4.2 Add GitHub and AWS Keys</summary><br><b>
+
 1. **Add GitHub and AWS Keys**:
 
    - GitHub Key:
@@ -200,10 +206,13 @@
      - Provide your AWS Access Key in username field and Secret Key in password field.
      - ID: aws_key
 
+</b></details>
 
 ## 5. Create Deployment Pipeline
 
-### 5.1 Create a Webhook in Github
+<details>
+<summary><a name="51-Create-a-Webhook-in-Github"></a>5.1 Create a Webhook in Github</summary><br><b>
+
 1. Create a Webhook:
 
   - Go to your GitHub repository.
@@ -221,7 +230,11 @@
 
 ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/1f37f386-6247-4e92-9224-34519dbf1dd9)
 
-### 5.2 Configure Jenkins Job
+</b></details>
+
+<details>
+<summary><a name="52-configure-jenkins-job"></a>5.2 Configure Jenkins Job</summary><br><b>
+
   1. - In Jenkins Page Click Create Job 
   2. - In Enter an item name Field Put Any Name For Pipeline
   3. - Choose Pipeline
@@ -237,12 +250,18 @@
       - Click Save 
       - Now Click Build
 
-## 6. Check Pods and Nodes
+</b></details>
+
+<details>
+<summary><a name="6-check-pods-and-nodes"></a>6. Check Pods and Nodes</summary><br><b>
 
 ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/27be02d4-2874-495a-95a7-733afd2bb70c)
 
+</b></details>
 
-## 7. Test Project and Database
+<details>
+<summary><a name="7-test-project-and-database"></a>7. Test Project and Database</summary><br><b>
+
 
 1. ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/37a88674-401f-455d-a502-d483f51c5d20)
 
@@ -250,11 +269,15 @@
 
 3. ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/9ad65d47-ef50-4444-8f5b-51312b8d7130)
 
+</b></details>
 
-## 8. Test Locally with Docker-compose
+<details>
+<summary><a name="8-test-locally-with-docker-compose"></a>8. Test Locally with Docker-compose</summary><br><b>
+
 
 ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/b0420d91-571b-4280-8ed9-94cbe11edbd0)
 
+</b></details>
 
 <div align="center">
   <h1 style="color: yellow;"> :100: Conclusion</h1>
