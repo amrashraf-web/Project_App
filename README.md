@@ -60,8 +60,8 @@
 
 ## 1. Prerequisites
 <details>
-<!-- <summary>1.1 GitHub Account and Token</summary><br><b> -->
-### 1.1 GitHub Account and Token
+<summary>1.1 GitHub Account and Token</summary><br><b>
+
 1. **Login to GitHub**: Log in to your GitHub account.
 2. **Access Personal Access Tokens**: Go to your GitHub settings. Click on your profile picture in the top right corner, then select "Settings".
 3. **Access Developer Settings**: In the left sidebar, under "Developer settings", click on "Personal access tokens".
