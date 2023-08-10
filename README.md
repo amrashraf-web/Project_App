@@ -87,6 +87,7 @@
 
 <details>
 <summary><a name="13-aws-key-pair"></a>1.3 AWS Key Pair</summary><br><b>
+  
 1. **Login to AWS Console**: Log in to your AWS Management Console.
 2. **Access EC2 Dashboard**: Go to the "EC2 Dashboard" from the services menu.
 3. **Key Pairs**: In the EC2 dashboard, select "Key Pairs" from the left sidebar under the "Network & Security" section.
