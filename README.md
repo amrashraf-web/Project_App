@@ -34,7 +34,8 @@
 
   [![Up to Date](https://github.com/ikatyang/emoji-cheat-sheet/workflows/Up%20to%20Date/badge.svg)](https://github.com/amrashraf-web/Project_App/actions)
 
-![image](https://github.com/amrashraf-web/Project_App/assets/82893114/10f7ee88-fda2-40d5-82cb-b264e45a7016)
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/3c6e7ba0-1138-433c-a5d0-df24cdcf5d1d)
+
 
 ## Table of Contents
 - [1. Prerequisites](#1-prerequisites)
