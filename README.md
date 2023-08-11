@@ -173,11 +173,12 @@
 
   - Here Output Of Terraform Image
    
-    ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/6e762903-e52d-418b-8403-b4acb4d41fa1)
+   ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/65d035da-a3a3-4842-9f3d-a9a1ecc7f7d8)
 
   - Here Output Of Ansible Image
    
-    ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/ad14539a-49d6-4d2d-87de-294942164a75)
+    ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/7e11fc1b-13cb-45b8-a94e-ae6102a1ab70)
+
 
 </b></details>
 
@@ -233,7 +234,8 @@
 
   - Click the "Add webhook" button to save your webhook configuration.
 
-![image](https://github.com/amrashraf-web/Project_App/assets/82893114/1f37f386-6247-4e92-9224-34519dbf1dd9)
+  ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/b4fc47c2-96b0-4922-b156-100db67aa447)
+
 
 </b></details>
 
@@ -262,7 +264,8 @@
 <details>
 <summary><a name="6-check-pods-and-nodes">6.1 Check Pods and Nodes</a></summary><br><b>
 
-![image](https://github.com/amrashraf-web/Project_App/assets/82893114/27be02d4-2874-495a-95a7-733afd2bb70c)
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/b5fcb2eb-3ad9-4b85-94df-a19d4114a1b5)
+
 
 </b></details>
 
@@ -272,11 +275,20 @@
 <summary><a name="7-test-project-and-database"></a>7.1 Test Project and Database</summary><br><b>
 
 
-1. ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/37a88674-401f-455d-a502-d483f51c5d20)
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/290ba1fe-a4fd-43ef-b005-33beae855e8d)
 
-2. ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/0cef5dc9-693d-4fb0-959a-f075211a3b90)
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/d6b9beec-9c47-4176-a114-947a183cadb1)
 
-3. ![image](https://github.com/amrashraf-web/Project_App/assets/82893114/9ad65d47-ef50-4444-8f5b-51312b8d7130)
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/934ec5f5-b98d-433c-9319-73101ce59f96)
+
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/d7dc3a1b-b23b-48ca-bfc8-d39119ffbf82)
+
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/26ae7bec-a237-4477-a8cf-4f82a1f6a0aa)
+
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/735d4181-32d1-4592-880f-00b4f52b36ee)
+
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/de690b40-37b2-47bb-ba70-84d1d0c3ac50)
+
 
 </b></details>
 
@@ -285,8 +297,17 @@
 <details>
 <summary><a name="8-test-locally-with-docker-compose"></a>8.1 Test Locally with Docker-compose</summary><br><b>
 
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/89d7cd61-3a60-43f4-98a6-1d52692e4882)
 
-![image](https://github.com/amrashraf-web/Project_App/assets/82893114/b0420d91-571b-4280-8ed9-94cbe11edbd0)
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/079ddade-6f6e-4e27-8e34-e3f69367fa2e)
+
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/d7dd19f3-a88e-41ec-8726-1d51bbd58033)
+
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/f551a643-d05d-4049-89bd-e8e9079363ae)
+
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/9dbd52c7-d1d3-4689-a094-2b9361204c1e)
+
+![image](https://github.com/amrashraf-web/Project_App/assets/82893114/fda809dd-389f-4202-9fd0-883ba48e67ba)
 
 </b></details>
 
