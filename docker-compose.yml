@@ -6,6 +6,7 @@ services:
     environment:
       TZ: "UTC" 
       MYSQL_ROOT_PASSWORD: MyPassword@123
+      MYSQL_DATABASE: BucketList
       MYSQL_ROOT_HOST: '%'
     volumes:
       - ./MySQL-and-Python/MySQL_Queries:/docker-entrypoint-initdb.d
