@@ -77,7 +77,8 @@ pipeline {
                         // Create the new ConfigMap
                         sh "kubectl create configmap $CONFIGMAP_NAME --from-file=BucketList.sql=/var/lib/jenkins/workspace/MyProject/MySQL-and-Python/MySQL_Queries/BucketList.sql -n $NAMESPACE"
                         echo "Created new ConfigMap: $CONFIGMAP_NAME"
-        
+                        
+                        // Apply The Kubernetes Manifests
                         sh "kubectl apply -f Kubernets_Files/"
                     }
                 }
